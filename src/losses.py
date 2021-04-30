@@ -7,17 +7,92 @@
 
 from logging import getLogger
 import torch
+from src.utils import (
+    AllGather,
+    AllReduce
+)
 
 logger = getLogger()
 
 
-def init_ntxent_loss(
+def init_paws_loss(
+    multicrop=6,
+    tau=0.1,
+    T=0.25,
+    me_max=True
+):
+    """
+    Make semi-supervised PAWS loss
+
+    :param multicrop: number of small multi-crop views
+    :param tau: cosine similarity temperature
+    :param T: target sharpenning temperature
+    :param me_max: whether to perform me-max regularization
+    """
+    softmax = torch.nn.Softmax(dim=1)
+
+    def sharpen(p):
+        sharp_p = p**(1./T)
+        sharp_p /= torch.sum(sharp_p, dim=1, keepdim=True)
+        return sharp_p
+
+    def snn(query, supports, labels):
+        """ Soft Nearest Neighbours similarity classifier """
+        # Step 1: normalize embeddings
+        query = torch.nn.functional.normalize(query)
+        supports = torch.nn.functional.normalize(supports)
+
+        # Step 2: gather embeddings from all workers
+        supports = AllGather.apply(supports)
+
+        # Step 3: compute similarlity between local embeddings
+        return softmax(query @ supports.T / tau) @ labels
+
+    def loss(
+        anchor_views,
+        anchor_supports,
+        anchor_support_labels,
+        target_views,
+        target_supports,
+        target_support_labels,
+        sharpen=sharpen,
+        snn=snn
+    ):
+        # -- NOTE: num views of each unlabeled instance = 2+multicrop
+        batch_size = len(anchor_views) // (2+multicrop)
+
+        # Step 1: compute anchor predictions
+        probs = snn(anchor_views, anchor_supports, anchor_support_labels)
+
+        # Step 2: compute targets for anchor predictions
+        with torch.no_grad():
+            targets = snn(target_views, target_supports, target_support_labels)
+            targets = sharpen(targets)
+            if multicrop > 0:
+                mc_target = 0.5*(targets[:batch_size]+targets[batch_size:])
+                targets = torch.cat([targets, *[mc_target for _ in range(multicrop)]], dim=0)
+            targets[targets < 1e-4] *= 0  # numerical stability
+
+        # Step 3: compute cross-entropy loss H(targets, queries)
+        loss = torch.mean(torch.sum(torch.log(probs**(-targets)), dim=1))
+
+        # Step 4: compute me-max regularizer
+        rloss = 0.
+        if me_max:
+            avg_probs = AllReduce.apply(torch.mean(sharpen(probs), dim=0))
+            rloss -= torch.sum(torch.log(avg_probs**(-avg_probs)))
+
+        return loss, rloss
+
+    return loss
+
+
+def init_simclr_loss(
     batch_size,
     world_size,
     rank,
     temperature,
-    device,
-    gather_tensors=True
+    device
 ):
     """
     Make NTXent loss with normalized embeddings and a temperature parameter
@@ -35,7 +110,7 @@ def init_ntxent_loss(
     total_images = 2*batch_size*world_size
     pos_mask = torch.zeros(2*batch_size, total_images).to(device)
     diag_mask = torch.ones(2*batch_size, total_images).to(device)
-    offset = rank*2*batch_size if gather_tensors else 0
+    offset = rank*2*batch_size
     for i in range(batch_size):
         pos_mask[i, offset + batch_size + i] = 1.
         pos_mask[batch_size + i, offset + i] = 1.
@@ -44,20 +119,21 @@ def init_ntxent_loss(
 
     def contrastive_loss(z):
         # Step 1: normalize embeddings
-        z = z.div(z.norm(dim=1).unsqueeze(1))
+        z = torch.nn.functional.normalize(z)
 
         # Step 2: gather embeddings from all workers
-        z_buffer = gather_from_all(z) if gather_tensors else z
+        z_buffer = AllGather.apply(z.detach())
         logger.debug(f'{z_buffer.shape}')
 
         # Step 3: compute similarity between local embeddings and all others
-        exp_cs = torch.exp(z @ z_buffer.t() / temperature) * diag_mask
+        exp_cs = torch.exp(z @ z_buffer.T / temperature) * diag_mask
 
         # Step 4: separate positive sample from negatives and compute loss
         pos = torch.sum(exp_cs * pos_mask, dim=1)
         diag = torch.sum(exp_cs, dim=1)
         loss = - torch.sum(torch.log(pos.div(diag))) / (2.*batch_size)
-        return loss
+
+        return loss.squeeze()
 
     return contrastive_loss
 
@@ -69,10 +145,10 @@ def init_suncet_loss(
     rank,
     temperature,
     device,
-    gather_tensors=True
+    unique_classes=False
 ):
     """
-    Make SuNCE loss with normalized embeddings and a temperature parameter
+    Make SuNCEt supervised contrastive loss
 
     NOTE: Assumes data is loaded with data-loaders constrcuted from 'init_data'
           method in data_manager.py
@@ -83,39 +159,72 @@ def init_suncet_loss(
     :param rank: local rank in network
     :param temperature: temp. param
     :param device: device to map tensors onto
-    :param gather_tensors: whether to all-gather tensors across workers
+    :param unique_classes: whether each worker loads the same set of classes
     """
     local_images = batch_size*num_classes
     total_images = local_images*world_size
     diag_mask = torch.ones(local_images, total_images).to(device)
-    offset = rank*local_images if gather_tensors else 0
+    offset = rank*local_images
     for i in range(local_images):
         diag_mask[i, offset + i] = 0.
 
-    def contrastive_loss(z):
+    def contrastive_loss(z, labels):
 
         # Step 1: normalize embeddings
-        z = z.div(z.norm(dim=1).unsqueeze(1))
+        z = torch.nn.functional.normalize(z)
 
         # Step 2: gather embeddings from all workers
-        z_buffer = gather_from_all(z) if gather_tensors else z
+        z_buffer = AllGather.apply(z)
 
-        # Step 3: compute similarlity between local embeddings
-        exp_cs = torch.exp(z @ z_buffer.t() / temperature) * diag_mask
+        # Step 3: compute class predictions
+        exp_cs = torch.exp(z @ z_buffer.T / temperature) * diag_mask
+        probs = exp_cs.div(exp_cs.sum(dim=1, keepdim=True)) @ labels
 
-        # Step 4: compute normalization
-        den = torch.sum(exp_cs, dim=1)
-
-        # Step 5: compute loss for each class and accumulate
-        loss = torch.zeros(1).to(device)
-        for i in range(num_classes):
-            pos_cls = torch.sum(exp_cs[i::num_classes, i::num_classes], dim=1)
-            den_cls = den[i::num_classes]
-            loss += - torch.sum(torch.log(pos_cls.div(den_cls))) / batch_size
-        loss /= num_classes
+        # Step 4: compute loss for predictions
+        targets = labels[offset:offset+local_images]
+        overlap = probs**(-targets)
+        loss = torch.mean(torch.sum(torch.log(overlap), dim=1))
         return loss
 
     return contrastive_loss
+
+
+def make_labels_matrix(
+    num_classes,
+    s_batch_size,
+    world_size,
+    device,
+    unique_classes=False,
+    smoothing=0.0
+):
+    """
+    Make one-hot labels matrix for labeled samples
+
+    NOTE: Assumes labeled data is loaded with ClassStratifiedSampler from
+          src/data_manager.py
+    """
+
+    local_images = s_batch_size*num_classes
+    total_images = local_images*world_size
+
+    off_value = smoothing/(num_classes*world_size) if unique_classes else smoothing/num_classes
+
+    if unique_classes:
+        labels = torch.zeros(total_images, num_classes*world_size).to(device) + off_value
+        for r in range(world_size):
+            # -- index range for rank 'r' images
+            s1 = r * local_images
+            e1 = s1 + local_images
+            # -- index offset for rank 'r' classes
+            offset = r * num_classes
+            for i in range(num_classes):
+                labels[s1:e1][i::num_classes][:, offset+i] = 1. - smoothing + off_value
+    else:
+        labels = torch.zeros(total_images, num_classes*world_size).to(device) + off_value
+        for i in range(num_classes):
+            labels[i::num_classes][:, i] = 1. - smoothing + off_value
+
+    return labels
 
 
 def gather_from_all(tensor):

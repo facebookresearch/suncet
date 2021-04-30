@@ -1,0 +1,41 @@
+criterion:
+  classes_per_batch: 10
+  me_max: true
+  sharpen: 0.25
+  supervised_imgs_per_class: 64
+  supervised_views: 2
+  temperature: 0.1
+  unsupervised_batch_size: 256
+data:
+  color_jitter_strength: 0.5
+  data_seed: 152
+  dataset: cifar10
+  image_folder: cifar-pytorch/11222017/
+  label_smoothing: 0.1
+  multicrop: 6
+  normalize: true
+  root_path: datasets/
+  subset_path: cifar10_subsets/
+  unique_classes_per_rank: false
+  unlabeled_frac: 0.92
+logging:
+  folder: /path_to_save_models_and_logs/
+  write_tag: paws
+meta:
+  copy_data: true
+  device: cuda:0
+  load_checkpoint: false
+  model_name: wide_resnet28w2
+  output_dim: 128
+  read_checkpoint: null
+  use_fp16: true
+  use_pred_head: false
+optimization:
+  epochs: 600
+  final_lr: 0.032
+  lr: 3.2
+  momentum: 0.9
+  nesterov: false
+  start_lr: 0.8
+  warmup: 10
+  weight_decay: 1.0e-06

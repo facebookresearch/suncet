@@ -1,0 +1,37 @@
+criterion:
+  classes_per_batch: 10
+  supervised_views: 2
+  supervised_batch_size: 64
+  temperature: 0.1
+data:
+  data_seed: 152
+  dataset: cifar10_fine_tune
+  image_folder: cifar-pytorch/11222017/
+  label_smoothing: 0.0
+  normalize: true
+  root_path: datasets/
+  subset_path: cifar10_subsets/
+  unique_classes_per_rank: false
+  unlabeled_frac: 0.92
+logging:
+  folder: /path_to_pretrained_models_and_logs/
+  pretrain_path: paws-latest.pth.tar
+  write_tag: paws-latest-SNN
+meta:
+  copy_data: true
+  device: cuda:0
+  load_checkpoint: false
+  model_name: wide_resnet28w2
+  output_dim: 128
+  use_pred_head: false
+  use_fp16: true
+optimization:
+  epochs: 30
+  final_lr: 0.01
+  lr: 0.1
+  momentum: 0.9
+  nesterov: false
+  start_lr: 0.1
+  use_lars: true
+  warmup: 0
+  weight_decay: 0.0

@@ -8,6 +8,7 @@
 import os
 import math
 import torch
+import torch.distributed as dist
 
 from logging import getLogger
 
@@ -32,12 +33,12 @@ def gpu_timer(closure, log_timings=True):
     return result, elapsed_time
 
 
-def init_distributed():
+def init_distributed(port=40101):
     try:
         world_size = int(os.environ['SLURM_NTASKS'])
         rank = int(os.environ['SLURM_PROCID'])
         os.environ['MASTER_ADDR'] = os.environ['HOSTNAME']
-        os.environ['MASTER_PORT'] = '40101'
+        os.environ['MASTER_PORT'] = str(port)
         torch.distributed.init_process_group(
             backend='nccl',
             world_size=world_size,
@@ -102,3 +103,73 @@ class CSVLogger(object):
             for i, tv in enumerate(zip(self.types, argv), 1):
                 end = ',' if i < len(argv) else '\n'
                 print(tv[0] % tv[1], end=end, file=f)
+
+
+class AverageMeter(object):
+    """computes and stores the average and current value"""
+
+    def __init__(self):
+        self.reset()
+
+    def reset(self):
+        self.val = 0
+        self.avg = 0
+        self.max = float('-inf')
+        self.min = float('inf')
+        self.sum = 0
+        self.count = 0
+
+    def update(self, val, n=1):
+        self.val = val
+        self.max = max(val, self.max)
+        self.min = min(val, self.min)
+        self.sum += val * n
+        self.count += n
+        self.avg = self.sum / self.count
+
+
+class AllGather(torch.autograd.Function):
+
+    @staticmethod
+    def forward(ctx, x):
+        if (
+            dist.is_available()
+            and dist.is_initialized()
+            and (dist.get_world_size() > 1)
+        ):
+            outputs = [torch.zeros_like(x) for _ in range(dist.get_world_size())]
+            dist.all_gather(outputs, x)
+            return torch.cat(outputs, 0)
+        return x
+
+    @staticmethod
+    def backward(ctx, grads):
+        if (
+            dist.is_available()
+            and dist.is_initialized()
+            and (dist.get_world_size() > 1)
+        ):
+            s = (grads.shape[0] // dist.get_world_size()) * dist.get_rank()
+            e = (grads.shape[0] // dist.get_world_size()) * (dist.get_rank() + 1)
+            grads = grads.contiguous()
+            dist.all_reduce(grads)
+            return grads[s:e]
+        return grads
+
+
+class AllReduce(torch.autograd.Function):
+
+    @staticmethod
+    def forward(ctx, x):
+        if (
+            dist.is_available()
+            and dist.is_initialized()
+            and (dist.get_world_size() > 1)
+        ):
+            x = x.contiguous() / dist.get_world_size()
+            dist.all_reduce(x)
+        return x
+
+    @staticmethod
+    def backward(ctx, grads):
+        return grads
