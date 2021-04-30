@@ -1,0 +1,38 @@
+criterion:
+  classes_per_batch: 20
+  supervised_epochs: 100
+  supervised_imgs_per_class: 2
+  supervised_views: 1
+  temperature: 0.1
+  unsupervised_batch_size: 44
+data:
+  color_jitter_strength: 1.0
+  dataset: imagenet
+  image_folder: imagenet_full_size/061417/
+  label_smoothing: 0.0
+  normalize: true
+  root_path: datasets/
+  subset_path: imagenet_subsets
+  unique_classes_per_rank: false
+  unlabeled_frac: 0.9
+logging:
+  folder: /path_to_save_models_and_logs/
+  write_tag: suncet-tmp
+meta:
+  copy_data: true
+  device: cuda:0
+  load_checkpoint: false
+  model_name: resnet50
+  output_dim: 2048
+  read_checkpoint: null
+  use_fp16: true
+  use_pred_head: false
+optimization:
+  epochs: 100
+  final_lr: 0.048
+  lr: 4.8
+  momentum: 0.9
+  nesterov: false
+  start_lr: 0.6
+  warmup: 10
+  weight_decay: 1.0e-06

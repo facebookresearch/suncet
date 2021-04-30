@@ -11,8 +11,10 @@ import logging
 import pprint
 import yaml
 
-from src.train import main as train
+from src.paws_train import main as paws
+from src.suncet_train import main as suncet
 from src.fine_tune import main as fine_tune
+from src.snn_fine_tune import main as snn_fine_tune
 
 logging.basicConfig()
 logger = logging.getLogger()
@@ -27,8 +29,10 @@ parser.add_argument(
     '--sel', type=str,
     help='which script to run',
     choices=[
-        'train',
-        'fine_tune'
+        'paws_train',
+        'suncet_train',
+        'fine_tune',
+        'snn_fine_tune'
     ])
 
 
@@ -44,10 +48,14 @@ def main(sel, fname):
         pp.pprint(params)
 
     logger.info('Running %s' % sel)
-    if sel == 'train':
-        return train(params)
+    if sel == 'paws_train':
+        return paws(params)
+    elif sel == 'suncet_train':
+        return suncet(params)
     elif sel == 'fine_tune':
         return fine_tune(params)
+    elif sel == 'snn_fine_tune':
+        return snn_fine_tune(params)
 
 
 if __name__ == '__main__':
