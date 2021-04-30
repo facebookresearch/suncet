@@ -12,7 +12,12 @@ __all__ = [
     'resnet50',
     'resnet50w2',
     'resnet50w4',
-    'resnet50_cifar10'
+    'resnet101',
+    'resnet101w2',
+    'resnet151',
+    'resnet151w2',
+    'resnet200',
+    'resnet200w2'
 ]
 
 
@@ -149,14 +154,14 @@ class ResNet(nn.Module):
         replace_stride_with_dilation=None,
         norm_layer=None,
         use_maxpool=True,
-        before_head=False
+        return_mc=False
     ):
         super(ResNet, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
         self._norm_layer = norm_layer
         self.use_maxpool = use_maxpool
-        self.before_head = before_head
+        self.return_mc = return_mc
 
         self.inplanes = width_per_group * widen
         self.dilation = 1
@@ -195,6 +200,7 @@ class ResNet(nn.Module):
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
 
         self.fc = None
+        self.pred = None
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -254,7 +260,7 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def forward(self, x):
+    def _forward_backbone(self, x, return_before_head=False):
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
@@ -266,12 +272,29 @@ class ResNet(nn.Module):
         x = self.layer4(x)
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
+
         if self.fc is not None:
-            if self.before_head:
+            if return_before_head and (self.pred is None):
                 return x, self.fc(x)
             x = self.fc(x)
 
+        if self.pred is not None:
+            if return_before_head:
+                return x, self.pred(x)
+            x = self.pred(x)
+
         return x
+
+    def forward(self, imgs, mc_imgs=None, return_before_head=False):
+        f_imgs = self._forward_backbone(imgs, return_before_head)
+
+        f_mc = None
+        if mc_imgs is not None:
+            f_mc = self._forward_backbone(mc_imgs, False)
+        if (f_mc is not None) or self.return_mc:
+            return f_imgs, f_mc
+
+        return f_imgs
 
 
 def resnet50(**kwargs):
@@ -286,10 +309,25 @@ def resnet50w4(**kwargs):
     return ResNet(Bottleneck, [3, 4, 6, 3], widen=4, **kwargs)
 
 
-def resnet50_cifar10(**kwargs):
-    kwargs['use_maxpool'] = False
-    model = resnet50(**kwargs)
-    conv1 = torch.nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
-    nn.init.kaiming_normal_(conv1.weight, mode='fan_out', nonlinearity='relu')
-    model.conv1 = conv1
-    return model
+def resnet101(**kwargs):
+    return ResNet(Bottleneck, [3, 4, 23, 3], **kwargs)
+
+
+def resnet101w2(**kwargs):
+    return ResNet(Bottleneck, [3, 4, 23, 3], widen=2, **kwargs)
+
+
+def resnet151(**kwargs):
+    return ResNet(Bottleneck, [3, 8, 36, 3], **kwargs)
+
+
+def resnet151w2(**kwargs):
+    return ResNet(Bottleneck, [3, 8, 36, 3], widen=2, **kwargs)
+
+
+def resnet200(**kwargs):
+    return ResNet(Bottleneck, [3, 24, 36, 3], **kwargs)
+
+
+def resnet200w2(**kwargs):
+    return ResNet(Bottleneck, [3, 24, 36, 3], widen=2, **kwargs)

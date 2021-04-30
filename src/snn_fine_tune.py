@@ -18,11 +18,12 @@ except Exception:
     pass
 
 import logging
+import contextlib
+import io
 import sys
 import copy
 
 from collections import OrderedDict
-
 import numpy as np
 
 import torch
@@ -33,13 +34,21 @@ from src.utils import (
     init_distributed,
     WarmupCosineSchedule
 )
+from src.losses import (
+    init_suncet_loss,
+    make_labels_matrix
+)
 from src.data_manager import (
     init_data,
     make_transforms
 )
+
 from src.sgd import SGD
-from torch.nn.parallel import DistributedDataParallel
 from src.lars import LARS
+
+from torch.nn.parallel import DistributedDataParallel
+
+from snn_eval import main as val_run
 
 # --
 log_timings = True
@@ -60,33 +69,41 @@ def main(args):
 
     # -- META
     model_name = args['meta']['model_name']
-    port = args['meta']['master_port']
     load_checkpoint = args['meta']['load_checkpoint']
-    training = args['meta']['training']
     copy_data = args['meta']['copy_data']
+    output_dim = args['meta']['output_dim']
+    use_pred_head = args['meta']['use_pred_head']
     use_fp16 = args['meta']['use_fp16']
     device = torch.device(args['meta']['device'])
     torch.cuda.set_device(device)
 
     # -- DATA
     unlabeled_frac = args['data']['unlabeled_frac']
+    label_smoothing = args['data']['label_smoothing']
     normalize = args['data']['normalize']
     root_path = args['data']['root_path']
     image_folder = args['data']['image_folder']
     dataset_name = args['data']['dataset']
     subset_path = args['data']['subset_path']
-    num_classes = args['data']['num_classes']
-    data_seed = None
-    if 'cifar10' in dataset_name:
-        data_seed = args['data']['data_seed']
-    crop_scale = (0.5, 1.0) if 'cifar10' in dataset_name else (0.08, 1.0)
+    unique_classes = args['data']['unique_classes_per_rank']
+    data_seed = args['data']['data_seed']
+
+    # -- CRITERTION
+    classes_per_batch = args['criterion']['classes_per_batch']
+    supervised_views = args['criterion']['supervised_views']
+    batch_size = args['criterion']['supervised_batch_size']
+    temperature = args['criterion']['temperature']
 
     # -- OPTIMIZATION
     wd = float(args['optimization']['weight_decay'])
-    ref_lr = args['optimization']['lr']
-    use_lars = args['optimization']['use_lars']
-    zero_init = args['optimization']['zero_init']
     num_epochs = args['optimization']['epochs']
+    use_lars = args['optimization']['use_lars']
+    warmup = args['optimization']['warmup']
+    start_lr = args['optimization']['start_lr']
+    ref_lr = args['optimization']['lr']
+    final_lr = args['optimization']['final_lr']
+    momentum = args['optimization']['momentum']
+    nesterov = args['optimization']['nesterov']
 
     # -- LOGGING
     folder = args['logging']['folder']
@@ -95,31 +112,34 @@ def main(args):
 
     # -- log/checkpointing paths
     r_enc_path = os.path.join(folder, r_file_enc)
-    w_enc_path = os.path.join(folder, f'{tag}-fine-tune.pth.tar')
+    w_enc_path = os.path.join(folder, f'{tag}-fine-tune-SNN.pth.tar')
 
     # -- init distributed
-    world_size, rank = init_distributed(port)
+    world_size, rank = init_distributed()
     logger.info(f'initialized rank/world-size: {rank}/{world_size}')
 
-    # -- optimization/evaluation params
-    if training:
-        batch_size = 256
-    else:
-        batch_size = 16
-        unlabeled_frac = 0.0
-        load_checkpoint = True
-        num_epochs = 1
-
     # -- init loss
-    criterion = torch.nn.CrossEntropyLoss()
+    suncet = init_suncet_loss(
+        num_classes=classes_per_batch,
+        batch_size=batch_size*supervised_views,
+        world_size=world_size,
+        rank=rank,
+        temperature=temperature,
+        device=device)
+    labels_matrix = make_labels_matrix(
+        num_classes=classes_per_batch,
+        s_batch_size=batch_size,
+        world_size=world_size,
+        device=device,
+        unique_classes=unique_classes,
+        smoothing=label_smoothing)
 
-    # -- make train data transforms and data loaders/samples
+    # -- make data transforms
     transform, init_transform = make_transforms(
         dataset_name=dataset_name,
         subset_path=subset_path,
         unlabeled_frac=unlabeled_frac,
-        training=training,
-        crop_scale=crop_scale,
+        training=True,
         split_seed=data_seed,
         basic_augmentations=True,
         normalize=normalize)
@@ -128,133 +148,100 @@ def main(args):
          dataset_name=dataset_name,
          transform=transform,
          init_transform=init_transform,
+         supervised_views=supervised_views,
          u_batch_size=None,
+         stratify=True,
          s_batch_size=batch_size,
-         classes_per_batch=None,
+         classes_per_batch=classes_per_batch,
+         unique_classes=unique_classes,
          world_size=world_size,
          rank=rank,
          root_path=root_path,
          image_folder=image_folder,
-         training=training,
+         training=True,
          copy_data=copy_data)
+
+    # -- rough estimate of labeled imgs per class used to set the number of
+    #    fine-tuning iterations
+    imgs_per_class = int(1300*(1.-unlabeled_frac)) if 'imagenet' in dataset_name else int(5000*(1.-unlabeled_frac))
+    dist_sampler.set_inner_epochs(imgs_per_class//batch_size)
 
     ipe = len(data_loader)
     logger.info(f'initialized data-loader (ipe {ipe})')
-
-    # -- make val data transforms and data loaders/samples
-    val_transform, val_init_transform = make_transforms(
-        dataset_name=dataset_name,
-        subset_path=subset_path,
-        unlabeled_frac=-1,
-        training=True,
-        basic_augmentations=True,
-        force_center_crop=True,
-        normalize=normalize)
-    (val_data_loader,
-     val_dist_sampler) = init_data(
-         dataset_name=dataset_name,
-         transform=val_transform,
-         init_transform=val_init_transform,
-         u_batch_size=None,
-         s_batch_size=batch_size,
-         classes_per_batch=None,
-         world_size=1,
-         rank=0,
-         root_path=root_path,
-         image_folder=image_folder,
-         training=True,
-         copy_data=copy_data)
-    logger.info(f'initialized val data-loader (ipe {len(val_data_loader)})')
 
     # -- init model and optimizer
     scaler = torch.cuda.amp.GradScaler(enabled=use_fp16)
     encoder, optimizer, scheduler = init_model(
         device=device,
-        device_str=args['meta']['device'],
-        num_classes=num_classes,
-        training=training,
-        use_fp16=use_fp16,
+        training=True,
         r_enc_path=r_enc_path,
         iterations_per_epoch=ipe,
         world_size=world_size,
+        start_lr=start_lr,
         ref_lr=ref_lr,
-        weight_decay=wd,
-        use_lars=use_lars,
-        zero_init=zero_init,
         num_epochs=num_epochs,
-        model_name=model_name)
+        output_dim=output_dim,
+        model_name=model_name,
+        warmup_epochs=warmup,
+        use_pred_head=use_pred_head,
+        use_fp16=use_fp16,
+        wd=wd,
+        final_lr=final_lr,
+        momentum=momentum,
+        nesterov=nesterov,
+        use_lars=use_lars)
 
-    best_acc = None
+    best_acc, val_top1 = None, None
     start_epoch = 0
     # -- load checkpoint
-    if not training or load_checkpoint:
-        encoder, optimizer, scheduler, start_epoch, best_acc = load_from_path(
+    if load_checkpoint:
+        encoder, optimizer, scaler, scheduler, start_epoch, best_acc = load_from_path(
             r_path=w_enc_path,
             encoder=encoder,
             opt=optimizer,
-            sched=scheduler,
             scaler=scaler,
-            device_str=args['meta']['device'],
-            use_fp16=use_fp16)
-    if not training:
-        logger.info('putting model in eval mode')
-        encoder.eval()
-        logger.info(sum(p.numel() for n, p in encoder.named_parameters()
-                        if p.requires_grad and ('fc' not in n)))
-        start_epoch = 0
+            sched=scheduler,
+            device=device,
+            use_fp16=use_fp16,
+            ckp=True)
 
     for epoch in range(start_epoch, num_epochs):
 
         def train_step():
             # -- update distributed-data-loader epoch
             dist_sampler.set_epoch(epoch)
-            top1_correct, top5_correct, total = 0, 0, 0
+
             for i, data in enumerate(data_loader):
+                imgs = torch.cat([s.to(device) for s in data[:-1]], 0)
+                labels = torch.cat([labels_matrix for _ in range(supervised_views)])
                 with torch.cuda.amp.autocast(enabled=use_fp16):
-                    inputs, labels = data[0].to(device), data[1].to(device)
-                    outputs = encoder(inputs)
-                    loss = criterion(outputs, labels)
-                total += inputs.shape[0]
-                top5_correct += float(outputs.topk(5, dim=1).indices.eq(labels.unsqueeze(1)).sum())
-                top1_correct += float(outputs.max(dim=1).indices.eq(labels).sum())
-                top1_acc = 100. * top1_correct / total
-                top5_acc = 100. * top5_correct / total
-                if training:
-                    scaler.scale(loss).backward()
-                    scaler.step(optimizer)
-                    scaler.update()
-                    scheduler.step()
                     optimizer.zero_grad()
+                    z = encoder(imgs)
+                    loss = suncet(z, labels)
+                scaler.scale(loss).backward()
+                scaler.step(optimizer)
+                scaler.update()
+                scheduler.step()
                 if i % log_freq == 0:
-                    logger.info('[%d, %5d] %.3f%% %.3f%% (loss: %.3f)'
-                                % (epoch + 1, i, top1_acc, top5_acc, loss))
-            return 100. * top1_correct / total
+                    logger.info('[%d, %5d] (loss: %.3f)' % (epoch + 1, i, loss))
 
-        def val_step():
-            val_encoder = copy.deepcopy(encoder).eval()
-            top1_correct, total = 0, 0
-            for i, data in enumerate(val_data_loader):
-                inputs, labels = data[0].to(device), data[1].to(device)
-                outputs = val_encoder(inputs)
-                total += inputs.shape[0]
-                top1_correct += float(outputs.max(dim=1).indices.eq(labels).sum())
-                top1_acc = 100. * top1_correct / total
-
-            logger.info('[%d, %5d] %.3f%%' % (epoch + 1, i, top1_acc))
-            return 100. * top1_correct / total
-
-        train_top1 = 0.
-        train_top1 = train_step()
         with torch.no_grad():
-            val_top1 = val_step()
-
-        log_str = 'train:' if training else 'test:'
-        logger.info('[%d] (%s: %.3f%%) (val: %.3f%%)'
-                    % (epoch + 1, log_str, train_top1, val_top1))
+            with nostdout():
+                val_top1, _ = val_run(
+                    pretrained=copy.deepcopy(encoder),
+                    subset_path=subset_path,
+                    unlabeled_frac=unlabeled_frac,
+                    dataset_name=dataset_name,
+                    root_path=root_path,
+                    image_folder=image_folder,
+                    use_pred=use_pred_head,
+                    normalize=normalize,
+                    split_seed=data_seed)
+        logger.info('[%d] (val: %.3f%%)' % (epoch + 1, val_top1))
+        train_step()
 
         # -- logging/checkpointing
-        if training and (rank == 0) and ((best_acc is None)
-                                         or (best_acc < val_top1)):
+        if (rank == 0) and ((best_acc is None) or (best_acc < val_top1)):
             best_acc = val_top1
             save_dict = {
                 'encoder': encoder.state_dict(),
@@ -263,23 +250,27 @@ def main(args):
                 'epoch': epoch + 1,
                 'unlabel_prob': unlabeled_frac,
                 'world_size': world_size,
-                'best_top1_acc': best_acc,
                 'batch_size': batch_size,
+                'best_top1_acc': best_acc,
                 'lr': ref_lr,
                 'amp': scaler.state_dict()
             }
             torch.save(save_dict, w_enc_path)
 
-    return train_top1, val_top1
+    logger.info('[%d] (best-val: %.3f%%)' % (epoch + 1, best_acc))
 
 
 def load_pretrained(
     r_path,
     encoder,
-    device_str
+    device,
+    ckp=False
 ):
-    checkpoint = torch.load(r_path, map_location='cpu')
-    pretrained_dict = {k.replace('module.', ''): v for k, v in checkpoint['encoder'].items()}
+    checkpoint = torch.load(r_path, map_location=device)
+    if ckp:
+        pretrained_dict = {k: v for k, v in checkpoint['encoder'].items()}
+    else:
+        pretrained_dict = {k.replace('module.', ''): v for k, v in checkpoint['encoder'].items()}
     for k, v in encoder.state_dict().items():
         if k not in pretrained_dict:
             logger.info(f'key "{k}" could not be found in loaded state dict')
@@ -300,17 +291,16 @@ def load_from_path(
     opt,
     sched,
     scaler,
-    device_str,
-    use_fp16=False
+    device,
+    use_fp16=False,
+    ckp=False
 ):
-    encoder = load_pretrained(r_path, encoder, device_str)
-    checkpoint = torch.load(r_path, map_location=device_str)
-
+    encoder = load_pretrained(r_path, encoder, device, ckp)
+    checkpoint = torch.load(r_path, map_location=device)
+    epoch = checkpoint['epoch']
     best_acc = None
     if 'best_top1_acc' in checkpoint:
         best_acc = checkpoint['best_top1_acc']
-
-    epoch = checkpoint['epoch']
     if opt is not None:
         if use_fp16:
             scaler.load_state_dict(checkpoint['amp'])
@@ -319,27 +309,29 @@ def load_from_path(
         logger.info(f'loaded optimizers from epoch {epoch}')
     logger.info(f'read-path: {r_path}')
     del checkpoint
-    return encoder, opt, sched, epoch, best_acc
+    return encoder, opt, scaler, sched, epoch, best_acc
 
 
 def init_model(
     device,
-    device_str,
-    num_classes,
     training,
     use_fp16,
     r_enc_path,
     iterations_per_epoch,
     world_size,
+    start_lr,
     ref_lr,
     num_epochs,
-    use_lars=False,
-    zero_init=True,
+    output_dim=128,
     model_name='resnet50',
     warmup_epochs=0,
-    weight_decay=0
+    use_pred_head=False,
+    use_lars=False,
+    wd=1e-6,
+    final_lr=0.,
+    momentum=0.9,
+    nesterov=False
 ):
-    # -- init model
     if 'wide_resnet' in model_name:
         encoder = wide_resnet.__dict__[model_name](dropout_rate=0.0)
         hidden_dim = 128
@@ -356,18 +348,33 @@ def init_model(
         ('fc1', torch.nn.Linear(hidden_dim, hidden_dim)),
         ('bn1', torch.nn.BatchNorm1d(hidden_dim)),
         ('relu1', torch.nn.ReLU(inplace=True)),
-        ('fc2', torch.nn.Linear(hidden_dim, num_classes))
+        ('fc2', torch.nn.Linear(hidden_dim, hidden_dim)),
+        ('bn2', torch.nn.BatchNorm1d(hidden_dim)),
+        ('relu2', torch.nn.ReLU(inplace=True)),
+        ('fc3', torch.nn.Linear(hidden_dim, output_dim))
     ]))
+
+    # -- prediction head
+    encoder.pred = None
+    if use_pred_head:
+        mx = 4  # 4x bottleneck prediction head
+        pred_head = OrderedDict([])
+        pred_head['bn1'] = torch.nn.BatchNorm1d(output_dim)
+        pred_head['fc1'] = torch.nn.Linear(output_dim, output_dim//mx)
+        pred_head['bn2'] = torch.nn.BatchNorm1d(output_dim//mx)
+        pred_head['relu'] = torch.nn.ReLU(inplace=True)
+        pred_head['fc2'] = torch.nn.Linear(output_dim//mx, output_dim)
+        encoder.pred = torch.nn.Sequential(pred_head)
+
+    for m in encoder.modules():
+        if isinstance(m, torch.nn.BatchNorm1d) or isinstance(m, torch.nn.BatchNorm2d):
+            m.eval()
 
     encoder.to(device)
     encoder = load_pretrained(
         r_path=r_enc_path,
         encoder=encoder,
-        device_str=device_str)
-
-    if zero_init:
-        for p in encoder.fc.fc2.parameters():
-            torch.nn.init.zeros_(p)
+        device=device)
 
     # -- init optimizer
     optimizer, scheduler = None, None
@@ -377,27 +384,38 @@ def init_model(
                         if ('bias' not in n) and ('bn' not in n))},
             {'params': (p for n, p in encoder.named_parameters()
                         if ('bias' in n) or ('bn' in n)),
-             'LARS_exclude': True,
-             'weight_decay': 0}
+                'LARS_exclude': True,
+                'weight_decay': 0}
         ]
         optimizer = SGD(
             param_groups,
-            nesterov=True,
-            weight_decay=weight_decay,
-            momentum=0.9,
+            momentum=momentum,
+            nesterov=nesterov,
+            weight_decay=wd,
             lr=ref_lr)
         scheduler = WarmupCosineSchedule(
             optimizer,
             warmup_steps=warmup_epochs*iterations_per_epoch,
-            start_lr=ref_lr,
+            start_lr=start_lr,
             ref_lr=ref_lr,
+            final_lr=final_lr,
             T_max=num_epochs*iterations_per_epoch)
         if use_lars:
             optimizer = LARS(optimizer, trust_coefficient=0.001)
     if world_size > 1:
-        encoder = DistributedDataParallel(encoder, broadcast_buffers=False)
+        encoder = DistributedDataParallel(encoder)
 
     return encoder, optimizer, scheduler
+
+
+@contextlib.contextmanager
+def nostdout():
+    logger.disabled = True
+    save_stdout = sys.stdout
+    sys.stdout = io.BytesIO()
+    yield
+    sys.stdout = save_stdout
+    logger.disabled = False
 
 
 if __name__ == "__main__":

@@ -12,8 +12,10 @@ import pprint
 import yaml
 import sys
 
-from src.train import main as train
+from src.paws_train import main as paws
+from src.suncet_train import main as suncet
 from src.fine_tune import main as fine_tune
+from src.snn_fine_tune import main as snn_fine_tune
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger()
@@ -51,8 +53,10 @@ parser.add_argument(
     '--sel', type=str,
     help='which script to run',
     choices=[
-        'train',
-        'fine_tune'
+        'paws_train',
+        'suncet_train',
+        'fine_tune',
+        'snn_fine_tune'
     ])
 
 
@@ -80,10 +84,14 @@ class Trainer:
             pp.pprint(params)
 
         logger.info('Running %s' % sel)
-        if sel == 'train':
-            train(params)
+        if sel == 'paws_train':
+            return paws(params)
+        elif sel == 'suncet_train':
+            return suncet(params)
         elif sel == 'fine_tune':
-            fine_tune(params)
+            return fine_tune(params)
+        elif sel == 'snn_fine_tune':
+            return snn_fine_tune(params)
 
     def checkpoint(self):
         fb_trainer = Trainer(self.sel, self.fname, True)
@@ -95,8 +103,8 @@ def launch():
     executor.update_parameters(
         slurm_partition=args.partition,
         slurm_constraint=args.device,
-        slurm_comment='running the SuNCEt code',
-        slurm_mem='512G',
+        slurm_comment='comms release April 30',
+        slurm_mem='450G',
         timeout_min=args.time,
         nodes=args.nodes,
         tasks_per_node=args.tasks_per_node,
