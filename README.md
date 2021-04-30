@@ -4,7 +4,7 @@ This code provides PyTorch implementations for PAWS (**p**redicting view **a**ss
 
 ![CD21_260_SWAV2_PAWS_Flowchart_FINAL](https://user-images.githubusercontent.com/7530871/116110279-c82ff200-a672-11eb-9037-5c88d787f52e.png)
 
-PAWS is a conceptually simple and efficient method for semi-supervised learning, which builds on the principles of self-supervised distance-metric learning. PAWS pre-trains a model to minimize a consistency loss, which ensures that different views of the same unlabeled image are assigned similar pseudo-labels. The pseudo-labels are generated non-parametrically, by comparing the representations of the image views to those of a set of randomly sampled labeled images. The distance between the view representations and labeled representations is used to provide a weighting over class labels, which we interpret as a soft pseudo-label. By non-parametrically incorporating labeled samples in this way, PAWS extends the distance-metric loss used in self-supervised methods such as BYOL and SwAV to the semi-supervised setting.
+PAWS is a method for semi-supervised learning that builds on the principles of self-supervised distance-metric learning. PAWS pre-trains a model to minimize a consistency loss, which ensures that different views of the same unlabeled image are assigned similar pseudo-labels. The pseudo-labels are generated non-parametrically, by comparing the representations of the image views to those of a set of randomly sampled labeled images. The distance between the view representations and labeled representations is used to provide a weighting over class labels, which we interpret as a soft pseudo-label. By non-parametrically incorporating labeled samples in this way, PAWS extends the distance-metric loss used in self-supervised methods such as BYOL and SwAV to the semi-supervised setting.
 
 Also provided in this repo is a PyTorch implementation of the semi-supervised SimCLR+CT method described in the paper [Supervision Accelerates Pretraining in Contrastive Semi-Supervised Learning of Visual Representations](https://arxiv.org/abs/2006.10803). SimCLR+CT combines the SimCLR self-supervised loss with the SuNCEt (supervised noise contrastive estimation) loss for semi-supervised learning.
 
@@ -115,7 +115,7 @@ python main_distributed.py
 ```
 
 #### ImageNet fine-tuning
-To fine-tune a pre-trained model on 4 GPUs using the fine-tuning experiment configs specificed inside [configs/paws/fine_tune.yaml](configs/paws/fine_tune.yaml), run:
+To fine-tune a pre-trained model on 4 GPUs using the fine-tuning experiment configs specified inside [configs/paws/fine_tune.yaml](configs/paws/fine_tune.yaml), run:
 ```
 python main_distributed.py
   --sel fine_tune
@@ -150,7 +150,7 @@ See the [LICENSE](./LICENSE) file for details about the license under which this
 ## Citation
 If you find this repository useful in your research, please consider giving a star :star: and a citation :paw_prints:
 ```
-@article{assran2020semisupervised,
+@article{assran2021semisupervised,
   title={Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples}, 
   author={Assran, Mahmoud, and Caron, Mathilde, and Misra, Ishan, and Bojanowski, Piotr and Joulin, Armand, and Ballas, Nicolas, and Rabbat, Michael},
   journal={arXiv preprint arXiv:2104.13963},
