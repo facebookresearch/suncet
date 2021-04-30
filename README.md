@@ -1,6 +1,6 @@
 # PAWS  :paw_prints: **P**redicting View-**A**ssignments **w**ith **S**upport Samples
 
-This code provides PyTorch implementations for PAWS (**p**redicting view **a**ssignments **w**ith **s**upport samples), as described in the paper [Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples](https://arxiv.org/abs/2104.13963).
+This repo provides a PyTorch implementation of PAWS (**p**redicting view **a**ssignments **w**ith **s**upport samples), as described in the paper [Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples](https://arxiv.org/abs/2104.13963).
 
 ![CD21_260_SWAV2_PAWS_Flowchart_FINAL](https://user-images.githubusercontent.com/7530871/116110279-c82ff200-a672-11eb-9037-5c88d787f52e.png)
 
