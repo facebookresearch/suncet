@@ -263,19 +263,11 @@ def main(args):
         data_meter = AverageMeter()
 
         for itr, udata in enumerate(unsupervised_loader):
-            if use_fp16:
-                udata = [u.half() for u in udata]
 
             def load_imgs():
-                # -- unsupervised imgs (2 views)
-                imgs = [u.to(device) for u in udata[:2]]
-
-                # -- unsupervised multicrop img views
-                mc_imgs = None
-                if multicrop > 0:
-                    mc_imgs = torch.cat([u.to(device) for u in udata[2:-1]], dim=0)
-
-                # -- labeled support imgs
+                # -- unsupervised imgs
+                uimgs = [u.to(device, non_blocking=True) for u in udata[:-1]]
+                # -- supervised imgs
                 global iter_supervised
                 try:
                     sdata = next(iter_supervised)
@@ -284,45 +276,44 @@ def main(args):
                     logger.info(f'len.supervised_loader: {len(iter_supervised)}')
                     sdata = next(iter_supervised)
                 finally:
-                    if use_fp16:
-                        sdata = [s.half() for s in sdata]
-                    simgs = [s.to(device) for s in sdata[:-1]]
                     labels = torch.cat([labels_matrix for _ in range(supervised_views)])
-
-                # -- concatenate unlabeled images and labeled support images
-                imgs = torch.cat(imgs + simgs, dim=0)
-
-                return imgs, mc_imgs, labels
-            (imgs, mc_imgs, labels), dtime = gpu_timer(load_imgs)
+                    simgs = [s.to(device, non_blocking=True) for s in sdata[:-1]]
+                # -- concatenate supervised imgs and unsupervised imgs
+                imgs = simgs + uimgs
+                return imgs, labels
+            (imgs, labels), dtime = gpu_timer(load_imgs)
             data_meter.update(dtime)
 
             def train_step():
                 with torch.cuda.amp.autocast(enabled=use_fp16):
                     optimizer.zero_grad()
-                    (h, z), z_mc = encoder(imgs, mc_imgs, return_before_head=True)
+
+                    # --
+                    # h: representations of 'imgs' before head
+                    # z: representations of 'imgs' after head
+                    h, z = encoder(imgs, return_before_head=True)
+                    if not use_pred_head:
+                        z = h
 
                     # Compute paws loss in full precision
                     with torch.cuda.amp.autocast(enabled=False):
 
                         # Step 1. convert representations to fp32
                         h, z = h.float(), z.float()
-                        if z_mc is not None:
-                            z_mc = z_mc.float()
 
                         # Step 2. determine anchor views/supports and their
                         #         corresponding target views/supports
-                        if not use_pred_head:
-                            h = z
-                        target_supports = h[2*u_batch_size:].detach()
-                        target_views = h[:2*u_batch_size].detach()
-                        target_views = torch.cat([
-                            target_views[u_batch_size:],
-                            target_views[:u_batch_size]], dim=0)
                         # --
-                        anchor_supports = z[2*u_batch_size:]
-                        anchor_views = z[:2*u_batch_size]
-                        if multicrop > 0:
-                            anchor_views = torch.cat([anchor_views, z_mc], dim=0)
+                        num_support = supervised_views * s_batch_size * classes_per_batch
+                        # --
+                        anchor_supports = z[:num_support]
+                        anchor_views = z[num_support:]
+                        # --
+                        target_supports = h[:num_support].detach()
+                        target_views = h[num_support:].detach()
+                        target_views = torch.cat([
+                            target_views[u_batch_size:2*u_batch_size],
+                            target_views[:u_batch_size]], dim=0)
 
                         # Step 3. compute paws loss with me-max regularization
                         (ploss, me_max) = paws(
@@ -425,10 +416,10 @@ def init_model(
     output_dim=128
 ):
     if 'wide_resnet' in model_name:
-        encoder = wide_resnet.__dict__[model_name](return_mc=True, dropout_rate=0.0)
+        encoder = wide_resnet.__dict__[model_name](dropout_rate=0.0)
         hidden_dim = 128
     else:
-        encoder = resnet.__dict__[model_name](return_mc=True)
+        encoder = resnet.__dict__[model_name]()
         hidden_dim = 2048
         if 'w2' in model_name:
             hidden_dim *= 2

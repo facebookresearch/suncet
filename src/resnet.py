@@ -153,15 +153,13 @@ class ResNet(nn.Module):
         width_per_group=64,
         replace_stride_with_dilation=None,
         norm_layer=None,
-        use_maxpool=True,
-        return_mc=False
+        use_maxpool=True
     ):
         super(ResNet, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
         self._norm_layer = norm_layer
         self.use_maxpool = use_maxpool
-        self.return_mc = return_mc
 
         self.inplanes = width_per_group * widen
         self.dilation = 1
@@ -260,7 +258,7 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def _forward_backbone(self, x, return_before_head=False):
+    def _forward_backbone(self, x):
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
@@ -272,29 +270,34 @@ class ResNet(nn.Module):
         x = self.layer4(x)
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
-
         if self.fc is not None:
-            if return_before_head and (self.pred is None):
-                return x, self.fc(x)
             x = self.fc(x)
-
-        if self.pred is not None:
-            if return_before_head:
-                return x, self.pred(x)
-            x = self.pred(x)
-
         return x
 
-    def forward(self, imgs, mc_imgs=None, return_before_head=False):
-        f_imgs = self._forward_backbone(imgs, return_before_head)
+    def _forward_head(self, x):
+        if self.pred is not None:
+            x = self.pred(x)
+        return x
 
-        f_mc = None
-        if mc_imgs is not None:
-            f_mc = self._forward_backbone(mc_imgs, False)
-        if (f_mc is not None) or self.return_mc:
-            return f_imgs, f_mc
-
-        return f_imgs
+    def forward(self, inputs, return_before_head=False):
+        if not isinstance(inputs, list):
+            inputs = [inputs]
+        idx_crops = torch.cumsum(torch.unique_consecutive(
+            torch.tensor([inp.shape[-1] for inp in inputs]),
+            return_counts=True,
+        )[1], 0)
+        start_idx = 0
+        for end_idx in idx_crops:
+            _h = self._forward_backbone(torch.cat(inputs[start_idx:end_idx]))
+            _z = self._forward_head(_h)
+            if start_idx == 0:
+                h, z = _h, _z
+            else:
+                h, z = torch.cat((h, _h)), torch.cat((z, _z))
+            start_idx = end_idx
+        if return_before_head:
+            return h, z
+        return z
 
 
 def resnet50(**kwargs):

@@ -5,7 +5,7 @@
 # LICENSE file in the root directory of this source tree.
 #
 
-
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -53,11 +53,9 @@ class WideResNet(nn.Module):
         self,
         depth,
         widen_factor,
-        dropout_rate=0.3,
-        return_mc=False
+        dropout_rate=0.3
     ):
         super(WideResNet, self).__init__()
-        self.return_mc = return_mc
 
         self.in_planes = 16
         assert ((depth-4) % 6 == 0), 'Wide-resnet depth should be 6n+4'
@@ -85,37 +83,42 @@ class WideResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def _forward_backbone(self, x, return_before_head=False):
+    def _forward_backbone(self, x):
         x = self.conv1(x)
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
         x = F.relu(self.bn1(x))
-        # x = F.avg_pool2d(x, 8)
         x = self.avgpool(x)
         x = x.view(x.size(0), -1)
-
         if self.fc is not None:
-            if return_before_head and (self.pred is None):
-                return x, self.fc(x)
             x = self.fc(x)
-
-        if self.pred is not None:
-            if return_before_head:
-                return x, self.pred(x)
-            x = self.pred(x)
-
         return x
 
-    def forward(self, imgs, mc_imgs=None, return_before_head=False):
-        z = self._forward_backbone(imgs, return_before_head)
+    def _forward_head(self, x):
+        if self.pred is not None:
+            x = self.pred(x)
+        return x
 
-        # -- multicrop not supported right now
-        z_mc = None
-        if mc_imgs is not None:
-            z_mc = self._forward_backbone(mc_imgs, False)
-        if (z_mc is not None) or self.return_mc:
-            return z, z_mc
+    def forward(self, inputs, return_before_head=False):
+        if not isinstance(inputs, list):
+            inputs = [inputs]
+        idx_crops = torch.cumsum(torch.unique_consecutive(
+            torch.tensor([inp.shape[-1] for inp in inputs]),
+            return_counts=True,
+        )[1], 0)
+        start_idx = 0
+        for end_idx in idx_crops:
+            _h = self._forward_backbone(torch.cat(inputs[start_idx:end_idx]))
+            _z = self._forward_head(_h)
+            if start_idx == 0:
+                h, z = _h, _z
+            else:
+                h, z = torch.cat((h, _h)), torch.cat((z, _z))
+            start_idx = end_idx
+
+        if return_before_head:
+            return h, z
 
         return z
 
