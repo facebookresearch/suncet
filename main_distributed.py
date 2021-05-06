@@ -103,7 +103,7 @@ def launch():
     executor.update_parameters(
         slurm_partition=args.partition,
         slurm_constraint=args.device,
-        slurm_comment='comms release April 30',
+        slurm_comment='running PAWS code',
         slurm_mem='450G',
         timeout_min=args.time,
         nodes=args.nodes,
