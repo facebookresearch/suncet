@@ -291,9 +291,10 @@ def main(args):
                     # --
                     # h: representations of 'imgs' before head
                     # z: representations of 'imgs' after head
+                    # -- If use_pred_head=False, then encoder.pred (prediction
+                    #    head) is None, and _forward_head just returns the
+                    #    identity, z=h
                     h, z = encoder(imgs, return_before_head=True)
-                    if not use_pred_head:
-                        z = h
 
                     # Compute paws loss in full precision
                     with torch.cuda.amp.autocast(enabled=False):
