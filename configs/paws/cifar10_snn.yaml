@@ -6,7 +6,7 @@ criterion:
 data:
   data_seed: 152
   dataset: cifar10_fine_tune
-  image_folder: cifar-pytorch/11222017/
+  image_folder: cifar10-data/
   label_smoothing: 0.0
   normalize: true
   root_path: datasets/
