@@ -99,6 +99,26 @@ python snn_eval.py
   --split-seed $which_prespecified_seed_to_split_labeled_data
 ```
 
+#### CIFAR10 data setup
+When setting up your CIFAR10 data, note the following relevant items in the config:
+- `root_path` is the datasets directory where you put all your data
+- `image_folder` is the folder inside `root_path` where `cifar-10-batches-py` exists (`cifar-10-batches-py` is the folder `torchvision.CIFAR10` looks for)
+
+Here is __an example__ to setup your CIFAR10 data:
+
+First [download](https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz) CIFAR10 and unzip; you will get a `cifar-10-batches-py` directory.
+Then create the following directory structure:
+```
+|- datasets/
+|-- cifar10-data/
+|---- cifar-10-batches-py/
+```
+Finally, in your config specify:
+- `root_path: datasets/`
+- `image_folder: cifar10-data/`
+
+You should now be able to run CIFAR10 experiments.
+
 ### Multi-GPU training
 Running PAWS across multiple GPUs on a cluster is also very simple. In the multi-GPU setting, the implementation starts from [main_distributed.py](main_distributed.py), which, in addition to parsing the config file and launching the desired script, also allows for specifying details about distributed training. For distributed training, we use the popular open-source [submitit](https://github.com/facebookincubator/submitit) tool and provide examples for a SLURM cluster, but feel free to edit [main_distributed.py](main_distributed.py) for your purposes to specify a different approach to launching a multi-GPU job on a cluster.
 
