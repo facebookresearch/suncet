@@ -90,7 +90,7 @@ python main.py
 To then evaluate the nearest-neighbours performance of the model, locally, on a single GPU, run:
 ```
 python snn_eval.py
-  --model-name wide_resnet28w2 --use-pred
+  --model-name wide_resnet28w2
   --pretrained $path_to_pretrained_model
   --unlabeled_frac $1.-fraction_of_labeled_train_data_to_support_nearest_neighbour_classification
   --root-path $path_to_root_datasets_directory
