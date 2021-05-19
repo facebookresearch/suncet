@@ -580,15 +580,6 @@ def _make_imgnt_transforms(
             rnd_gray])
         return color_distort
 
-    def get_gaussian_blur(ks=25):
-        def gaussian_blur(img):
-            radius_min, radius_max = 0.1, 2.0
-            return img.filter(ImageFilter.GaussianBlur(
-                radius=np.random.uniform(radius_min, radius_max)))
-        t_gaussian_blur = transforms.Lambda(gaussian_blur)
-        rnd_gaussian_blur = transforms.RandomApply([t_gaussian_blur], p=0.5)
-        return rnd_gaussian_blur
-
     logger.debug(f'uprob: {unlabel_prob}\t training: {training}\t basic: {basic}\t normalize: {normalize}\t color_distortion: {color_distortion}')
     if training and (not force_center_crop):
         if basic:
@@ -602,7 +593,7 @@ def _make_imgnt_transforms(
                 [transforms.RandomResizedCrop(size=224, scale=scale),
                  transforms.RandomHorizontalFlip(),
                  get_color_distortion(s=color_distortion),
-                 get_gaussian_blur(ks=23),
+                 GaussianBlur(p=0.5),
                  transforms.ToTensor()])
     else:
         transform = transforms.Compose(
@@ -736,21 +727,12 @@ def _make_multicrop_imgnt_transforms(
             rnd_gray])
         return color_distort
 
-    def get_gaussian_blur(ks=25):
-        def gaussian_blur(img):
-            radius_min, radius_max = 0.1, 2.0
-            return img.filter(ImageFilter.GaussianBlur(
-                radius=np.random.uniform(radius_min, radius_max)))
-        t_gaussian_blur = transforms.Lambda(gaussian_blur)
-        rnd_gaussian_blur = transforms.RandomApply([t_gaussian_blur], p=0.5)
-        return rnd_gaussian_blur
-
     logger.debug('making multicrop transforms')
     transform = transforms.Compose(
         [transforms.RandomResizedCrop(size=size, scale=scale),
          transforms.RandomHorizontalFlip(),
          get_color_distortion(s=color_distortion),
-         get_gaussian_blur(ks=23),
+         GaussianBlur(p=0.5),
          transforms.ToTensor()])
 
     if normalize:
@@ -1193,3 +1175,17 @@ def copy_cifar10_locally(
                 logger.info(f'{local_rank}: Checking {tmp_sgnl_file}')
 
     return data_path
+
+
+class GaussianBlur(object):
+    def __init__(self, p=0.5, radius_min=0.1, radius_max=2.):
+        self.prob = p
+        self.radius_min = radius_min
+        self.radius_max = radius_max
+
+    def __call__(self, img):
+        if torch.bernoulli(torch.tensor(self.prob)) == 0:
+            return img
+
+        radius = self.radius_min + torch.rand(1) * (self.radius_max - self.radius_min)
+        return img.filter(ImageFilter.GaussianBlur(radius=radius))
