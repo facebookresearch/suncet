@@ -63,8 +63,11 @@ def process_main(rank, sel, fname, world_size, devices):
             yaml.dump(params, f)
 
     world_size, rank = init_distributed(rank_and_world_size=(rank, world_size))
+
+    # -- make sure all processes correctly initialized torch-distributed
     logger.info(f'Running {sel} (rank: {rank}/{world_size})')
 
+    # -- turn off info-logging for ranks > 0, otherwise too much std output
     if rank == 0:
         logger.setLevel(logging.INFO)
     else:
