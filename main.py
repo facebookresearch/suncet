@@ -45,10 +45,6 @@ def process_main(rank, sel, fname, world_size, devices):
     import logging
     logging.basicConfig()
     logger = logging.getLogger()
-    if rank == 0:
-        logger.setLevel(logging.INFO)
-    else:
-        logger.setLevel(logging.ERROR)
 
     logger.info(f'called-params {sel} {fname}')
 
@@ -69,6 +65,11 @@ def process_main(rank, sel, fname, world_size, devices):
     world_size, rank = init_distributed(rank_and_world_size=(rank, world_size))
     logger.info(f'Running {sel} (rank: {rank}/{world_size})')
 
+    if rank == 0:
+        logger.setLevel(logging.INFO)
+    else:
+        logger.setLevel(logging.ERROR)
+
     if sel == 'paws_train':
         return paws(params)
     elif sel == 'suncet_train':
@@ -83,9 +84,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     num_gpus = len(args.devices)
-    processes = []
-    for rank in range(num_gpus):
-        mp.spawn(
-            process_main,
-            nprocs=num_gpus,
-            args=(args.sel, args.fname, num_gpus, args.devices))
+    mp.spawn(
+        process_main,
+        nprocs=num_gpus,
+        args=(args.sel, args.fname, num_gpus, args.devices))
