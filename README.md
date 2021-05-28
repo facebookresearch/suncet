@@ -29,7 +29,7 @@ Top-1 classification accuracy for the pretrained models is reported using a near
   <tr>
     <td>300</td>
     <td>RN50</td>
-    <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_1percent_300ep.pth.tar">65.4%</a></td>
+    <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_1percent_300ep.pth.tar">64.2%</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_1percent_300ep_finetuned.pth.tar">66.5%</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_10percent_300ep.pth.tar">73.1%</a></td>
     <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_10percent_300ep_finetuned.pth.tar">75.5%</a></td>
@@ -37,7 +37,7 @@ Top-1 classification accuracy for the pretrained models is reported using a near
   <tr>
     <td>200</td>
     <td>RN50</td>
-    <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_1percent_200ep.pth.tar">64.6%</a></td>
+    <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_1percent_200ep.pth.tar">63.2%</a></td>
     <td>66.1%</td>
     <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_10percent_200ep.pth.tar">71.9%</a></td>
     <td>75.0%</td>
@@ -45,7 +45,7 @@ Top-1 classification accuracy for the pretrained models is reported using a near
   <tr>
     <td>100</td>
     <td>RN50</td>
-    <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_1percent_100ep.pth.tar">62.6%</a></td>
+    <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_1percent_100ep.pth.tar">61.5%</a></td>
     <td>63.8%</td>
     <td><a href="https://dl.fbaipublicfiles.com/paws/paws_imgnt_10percent_100ep.pth.tar">71.0%</a></td>
     <td>73.9%</td>
