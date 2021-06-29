@@ -93,7 +93,7 @@ class WarmupCosineSchedule(torch.optim.lr_scheduler.LambdaLR):
             return new_lr / self.ref_lr
 
         # -- progress after warmup
-        progress = float(step - self.warmup_steps) / float(max(1, self.T_max - self.warmup_steps))
+        progress = float(step - self.warmup_steps) / float(max(1, self.T_max))
         new_lr = max(self.final_lr,
                      self.final_lr + (self.ref_lr - self.final_lr) * 0.5 * (1. + math.cos(math.pi * progress)))
         return new_lr / self.ref_lr
