@@ -22,6 +22,7 @@ import torchvision
 import PIL
 from PIL import Image
 from PIL import ImageFilter
+from PIL import ImageOps
 
 _GLOBAL_SEED = 0
 logger = getLogger()
@@ -489,21 +490,10 @@ def _make_cifar10_transforms(
         color_jitter = transforms.ColorJitter(0.8*s, 0.8*s, 0.8*s, 0.2*s)
         rnd_color_jitter = transforms.RandomApply([color_jitter], p=0.8)
 
-        def Solarize(img):
-            v = np.random.uniform(0, 256)
-            return PIL.ImageOps.solarize(img, v)
-        solarize = transforms.Lambda(Solarize)
-        rnd_solarize = transforms.RandomApply([solarize], p=0.2)
-
-        def Equalize(img):
-            return PIL.ImageOps.equalize(img)
-        equalize = transforms.Lambda(Equalize)
-        rnd_equalize = transforms.RandomApply([equalize], p=0.2)
-
         color_distort = transforms.Compose([
             rnd_color_jitter,
-            rnd_solarize,
-            rnd_equalize])
+            Solarize(p=0.2),
+            Equalize(p=0.2)])
         return color_distort
 
     if training and (not force_center_crop):
@@ -678,21 +668,10 @@ def _make_multicrop_cifar10_transforms(
         color_jitter = transforms.ColorJitter(0.8*s, 0.8*s, 0.8*s, 0.2*s)
         rnd_color_jitter = transforms.RandomApply([color_jitter], p=0.8)
 
-        def Solarize(img):
-            v = np.random.uniform(0, 256)
-            return PIL.ImageOps.solarize(img, v)
-        solarize = transforms.Lambda(Solarize)
-        rnd_solarize = transforms.RandomApply([solarize], p=0.2)
-
-        def Equalize(img):
-            return PIL.ImageOps.equalize(img)
-        equalize = transforms.Lambda(Equalize)
-        rnd_equalize = transforms.RandomApply([equalize], p=0.2)
-
         color_distort = transforms.Compose([
             rnd_color_jitter,
-            rnd_solarize,
-            rnd_equalize])
+            Solarize(p=0.2),
+            Equalize(p=0.2)])
         return color_distort
 
     transform = transforms.Compose(
@@ -1175,6 +1154,29 @@ def copy_cifar10_locally(
                 logger.info(f'{local_rank}: Checking {tmp_sgnl_file}')
 
     return data_path
+
+
+class Solarize(object):
+    def __init__(self, p=0.2):
+        self.prob = p
+
+    def __call__(self, img):
+        if torch.bernoulli(torch.tensor(self.prob)) == 0:
+            return img
+
+        v = torch.rand(1) * 256
+        return ImageOps.solarize(img, v)
+
+
+class Equalize(object):
+    def __init__(self, p=0.2):
+        self.prob = p
+
+    def __call__(self, img):
+        if torch.bernoulli(torch.tensor(self.prob)) == 0:
+            return img
+
+        return ImageOps.equalize(img)
 
 
 class GaussianBlur(object):
