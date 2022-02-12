@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dae16f7d-7d6d-4e49-bb0b-d516984950fa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/configs/base_slurm.slurm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/base_train.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/cemhole_fine_tune.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/chestx_fine_tune.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/chestx_train.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/cryoem_fine_tune.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/eurosat_fine_tune.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/eurosat_train.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/isic_fine_tune.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/isic_train.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/plantvillage_fine_tune.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/paws/plantvillage_train.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/run_file.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/paws_run.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relax_policy/load_augment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sampler/DistributedWeightedSampler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/create_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_manager_2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data_manager_old.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dataset_prep.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/paws_eval.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/res_updloader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cifar10_subsets/spc.4000_split.152.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cifar10_subsets/spc.4000_split.321.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cifar10_subsets/spc.4000_split.401.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cifar10_subsets/spc.4000_split.73.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cifar10_subsets/spc.4000_split.91.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/paws/cifar10_snn.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/paws/cifar10_snn.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/paws/cifar10_train.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/paws/cifar10_train.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/paws/imgnt_fine_tune.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/paws/imgnt_fine_tune.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/paws/imgnt_train.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/paws/imgnt_train.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagenet_subsets/90percent.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagenet_subsets/99percent.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagenet_subsets/val.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snn_eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/snn_eval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fine_tune.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fine_tune.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/losses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/paws_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/paws_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/snn_fine_tune.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/snn_fine_tune.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/suncet_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/suncet_train.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/configs/paws/plantvillage_train.yaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/configs/paws/plantvillage_fine_tune.yaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/paws_run.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/configs/run_file.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/configs/paws/chestx_train.yaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/configs/paws/isic_train.yaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/data_manager_2.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/paws_train.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1vhnS9XOx0IdrQCpBW5ey87Aktf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/create_config.py" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\suncet\src" />
+      <recent name="D:\GitHub\suncet\relax_search" />
+      <recent name="D:\GitHub\suncet\configs\paws" />
+      <recent name="D:\GitHub\suncet\configs\run_configs" />
+      <recent name="D:\GitHub\suncet\sampler" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\suncet\relax_policy" />
+      <recent name="D:\GitHub\suncet\relax_search" />
+      <recent name="D:\GitHub\suncet\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.create_config">
+    <configuration name="create_config" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="suncet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="sftp://zipped@satori-login-001.mit.edu:22/nobackup/users/zipped/anaconda3/envs/paws/bin/python3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/create_config.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dataset_prep" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="suncet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/dataset_prep.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prep_config (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="suncet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/prep_config.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prep_config" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="suncet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\GitHub\suncet\src\prep_config.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="suncet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.dataset_prep" />
+      <item itemvalue="Python.prep_config" />
+      <item itemvalue="Python.prep_config (1)" />
+      <item itemvalue="Python.create_config" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.create_config" />
+        <item itemvalue="Python.prep_config (1)" />
+        <item itemvalue="Python.prep_config" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.dataset_prep" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dae16f7d-7d6d-4e49-bb0b-d516984950fa" name="Default Changelist" comment="" />
+      <created>1627023185582</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627023185582</updated>
+      <workItem from="1627023190728" duration="10217000" />
+      <workItem from="1627294889735" duration="94000" />
+      <workItem from="1627295109901" duration="7425000" />
+      <workItem from="1627399858039" duration="7000" />
+      <workItem from="1627399946417" duration="1714000" />
+      <workItem from="1627638320430" duration="3337000" />
+      <workItem from="1627891978726" duration="21438000" />
+      <workItem from="1627977769541" duration="3555000" />
+      <workItem from="1627987042698" duration="1975000" />
+      <workItem from="1628015840137" duration="1223000" />
+      <workItem from="1628062957407" duration="10053000" />
+      <workItem from="1628100372725" duration="2176000" />
+      <workItem from="1628149159676" duration="31278000" />
+      <workItem from="1628235650531" duration="6504000" />
+      <workItem from="1628492948850" duration="19218000" />
+      <workItem from="1628579985700" duration="15723000" />
+      <workItem from="1628667629348" duration="5826000" />
+      <workItem from="1628755203532" duration="23974000" />
+      <workItem from="1629099959548" duration="16708000" />
+      <workItem from="1629190264562" duration="927000" />
+      <workItem from="1629192470652" duration="6827000" />
+      <workItem from="1629202101886" duration="11415000" />
+      <workItem from="1629274497534" duration="5562000" />
+      <workItem from="1629362662928" duration="7472000" />
+      <workItem from="1629376479045" duration="8862000" />
+      <workItem from="1629449505148" duration="1463000" />
+      <workItem from="1629456162019" duration="2014000" />
+      <workItem from="1629704002807" duration="22094000" />
+      <workItem from="1629789506790" duration="15363000" />
+      <workItem from="1629877816469" duration="10213000" />
+      <workItem from="1630482587560" duration="2283000" />
+      <workItem from="1630655576627" duration="21845000" />
+      <workItem from="1630747493359" duration="781000" />
+      <workItem from="1630912315130" duration="30978000" />
+      <workItem from="1630998483967" duration="24283000" />
+      <workItem from="1631086987629" duration="17438000" />
+      <workItem from="1631171490706" duration="25889000" />
+      <workItem from="1631258109539" duration="29110000" />
+      <workItem from="1631352365724" duration="850000" />
+      <workItem from="1631436959832" duration="13885000" />
+      <workItem from="1631462326440" duration="5056000" />
+      <workItem from="1631526271667" duration="12223000" />
+      <workItem from="1631609657698" duration="3514000" />
+      <workItem from="1631691295427" duration="23308000" />
+      <workItem from="1631780561058" duration="15304000" />
+      <workItem from="1631869635359" duration="16353000" />
+      <workItem from="1631890205580" duration="4330000" />
+      <workItem from="1632073557727" duration="12301000" />
+      <workItem from="1632124076225" duration="15739000" />
+      <workItem from="1632209471726" duration="18824000" />
+      <workItem from="1632251500449" duration="3821000" />
+      <workItem from="1632297032144" duration="24161000" />
+      <workItem from="1632382041353" duration="21318000" />
+      <workItem from="1632428523864" duration="455000" />
+      <workItem from="1632470236187" duration="7920000" />
+      <workItem from="1632519537996" duration="589000" />
+      <workItem from="1632560654010" duration="1709000" />
+      <workItem from="1632580737226" duration="256000" />
+      <workItem from="1632735771771" duration="3546000" />
+      <workItem from="1632817268177" duration="4806000" />
+      <workItem from="1632853224627" duration="1306000" />
+      <workItem from="1633423053391" duration="1959000" />
+      <workItem from="1633517576597" duration="3161000" />
+      <workItem from="1633533847418" duration="753000" />
+      <workItem from="1633599405624" duration="7099000" />
+      <workItem from="1633694047013" duration="1137000" />
+      <workItem from="1633773089574" duration="3561000" />
+      <workItem from="1633884165331" duration="1797000" />
+      <workItem from="1633941611065" duration="4338000" />
+      <workItem from="1634050432539" duration="1320000" />
+      <workItem from="1634114962951" duration="3774000" />
+      <workItem from="1634207972301" duration="12181000" />
+      <workItem from="1634290829386" duration="4276000" />
+      <workItem from="1634544419423" duration="8574000" />
+      <workItem from="1634628157348" duration="5757000" />
+      <workItem from="1634727527923" duration="1334000" />
+      <workItem from="1634814952147" duration="3048000" />
+      <workItem from="1634976917227" duration="821000" />
+      <workItem from="1635146338656" duration="10232000" />
+      <workItem from="1635233755667" duration="1748000" />
+      <workItem from="1635406927508" duration="6065000" />
+      <workItem from="1635492009578" duration="17054000" />
+      <workItem from="1635682384051" duration="2182000" />
+      <workItem from="1635771919339" duration="3337000" />
+      <workItem from="1635843411710" duration="13105000" />
+      <workItem from="1635929162323" duration="12690000" />
+      <workItem from="1636025280050" duration="13092000" />
+      <workItem from="1636105269388" duration="15525000" />
+      <workItem from="1636198655508" duration="4836000" />
+      <workItem from="1636361165292" duration="15286000" />
+      <workItem from="1636457283196" duration="4220000" />
+      <workItem from="1636558625101" duration="3599000" />
+      <workItem from="1636620665937" duration="674000" />
+      <workItem from="1636621584401" duration="4964000" />
+      <workItem from="1636717070256" duration="2547000" />
+      <workItem from="1636968980514" duration="4943000" />
+      <workItem from="1637054863918" duration="12054000" />
+      <workItem from="1637155820721" duration="2750000" />
+      <workItem from="1637224438628" duration="12196000" />
+      <workItem from="1637573115473" duration="2103000" />
+      <workItem from="1638370576064" duration="626000" />
+      <workItem from="1639129893091" duration="4824000" />
+      <workItem from="1639406921583" duration="745000" />
+      <workItem from="1639574725918" duration="2391000" />
+      <workItem from="1639745833651" duration="9462000" />
+      <workItem from="1639827952057" duration="16200000" />
+      <workItem from="1639911109015" duration="2997000" />
+      <workItem from="1639995846535" duration="3824000" />
+      <workItem from="1640083634928" duration="10632000" />
+      <workItem from="1640184052630" duration="9498000" />
+      <workItem from="1640869536532" duration="1479000" />
+      <workItem from="1641215685894" duration="703000" />
+      <workItem from="1641390822741" duration="1841000" />
+      <workItem from="1641465361313" duration="5103000" />
+      <workItem from="1641809081332" duration="2803000" />
+      <workItem from="1641823558878" duration="3131000" />
+      <workItem from="1641991877128" duration="7384000" />
+      <workItem from="1642068926359" duration="482000" />
+      <workItem from="1642682248589" duration="658000" />
+      <workItem from="1643815584559" duration="1010000" />
+      <workItem from="1644240532930" duration="2043000" />
+      <workItem from="1644249018113" duration="683000" />
+      <workItem from="1644316423320" duration="1216000" />
+      <workItem from="1644395960552" duration="189000" />
+      <workItem from="1644396929722" duration="26634000" />
+      <workItem from="1644486112472" duration="6040000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/AppData/Local/JetBrains/PyCharm2021.1/remote_sources/-728697919/817940753/torch/cuda/__init__.py</url>
+          <line>298</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/utils.py</url>
+          <line>155</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/data_manager_old.py</url>
+          <line>1144</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/data_manager_old.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataset_prep.py</url>
+          <line>197</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/snn_eval.py</url>
+          <line>181</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/AppData/Local/JetBrains/PyCharm2021.2/remote_sources/-728697919/817940753/torch/utils/data/sampler.py</url>
+          <line>231</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/dataset_prep.py</url>
+          <line>232</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/suncet$paws_run.coverage" NAME="paws_run Coverage Results" MODIFIED="1632253878419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/suncet$test.coverage" NAME="test Coverage Results" MODIFIED="1639938557951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/suncet$snn_eval.coverage" NAME="snn_eval Coverage Results" MODIFIED="1629715744384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/suncet$res_updloader.coverage" NAME="res_updloader Coverage Results" MODIFIED="1631875750683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/suncet$run_script.coverage" NAME="run_script Coverage Results" MODIFIED="1644486173866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/suncet$main.coverage" NAME="main Coverage Results" MODIFIED="1632388612166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/suncet$dataset_prep.coverage" NAME="dataset_prep Coverage Results" MODIFIED="1637078541350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/suncet$prep_config__1_.coverage" NAME="prep_config (1) Coverage Results" MODIFIED="1644486368869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/suncet$create_config.coverage" NAME="create_config Coverage Results" MODIFIED="1644490130927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+  </component>
+</project>
