@@ -1,0 +1,46 @@
+criterion:
+  classes_per_batch: 12  # reduce from imagenet
+  me_max: true
+  sharpen: 0.25
+  supervised_imgs_per_class: 5  # reduce from imagenet
+  supervised_views: 1
+  temperature: 0.1
+  unsupervised_batch_size: 64
+data:
+  color_jitter_strength: 1.0
+  data_seed: null
+  dataset: semi-inat
+  image_folder: semi-inat-2021
+  label_smoothing: 0.1
+  multicrop: 6
+  normalize: true
+  root_path: datasets/
+  subset_path: semi-inat_subsets
+  unique_classes_per_rank: true
+  unlabeled_frac: 0.9
+logging:
+  folder: /path_to_save_models_and_logs/
+  write_tag: paws
+meta:
+  copy_data: true
+  device: cuda:0
+  load_checkpoint: false
+  model_name: resnet50
+  output_dim: 2048
+  read_checkpoint: null
+  use_fp16: true
+  use_pred_head: true
+optimization:
+  epochs: 800
+  final_lr: 0.064
+  lr: 6.4
+  momentum: 0.9
+  nesterov: false
+  start_lr: 0.3
+  warmup: 10
+  weight_decay: 1.0e-06
+ropaws:
+  use_ropaws: true
+  prior_tau: 3.0
+  prior_pow: 1.0
+  label_ratio: 5.0

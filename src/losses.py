@@ -6,6 +6,7 @@
 #
 
 from logging import getLogger
+import math
 import torch
 from src.utils import (
     AllGather,
@@ -16,10 +17,20 @@ logger = getLogger()
 
 
 def init_paws_loss(
+    # paws configs
     multicrop=6,
     tau=0.1,
     T=0.25,
-    me_max=True
+    me_max=True,
+    # ropaws configs
+    ropaws=False,
+    prior_tau=3.0,
+    prior_pow=1.0,
+    label_ratio=5.0,
+    s_batch_size=6720,
+    u_batch_size=4096,
+    rank=0,
+    world_size=1,
 ):
     """
     Make semi-supervised PAWS loss
@@ -48,6 +59,62 @@ def init_paws_loss(
         # Step 3: compute similarlity between local embeddings
         return softmax(query @ supports.T / tau) @ labels
 
+    def snn_semi(query, supports, labels, n_views):
+        """ Semi-supervised density estmation """
+        # Step 1: normalize embeddings
+        query = torch.nn.functional.normalize(query)
+        supports = torch.nn.functional.normalize(supports)
+
+        # Step 2: gather embeddings from all workers
+        supports = AllGather.apply(supports)
+
+        # Step 3: compute similarlity between local embeddings
+        probs = []
+        for q in query.chunk(n_views):  # for each view
+            p = _snn_semi_each(q, supports, labels)
+            probs.append(p)
+        probs = torch.cat(probs, dim=0)  # concat over views
+
+        # Step 4: convert p_out probability to uniform
+        M, C = probs.shape
+        p_in = probs.sum(dim=1)
+        unif = torch.ones(M, C, device=probs.device) / C
+        probs = probs + (1 - p_in.view(M, 1)) * unif
+
+        p_in = sum(p_in.chunk(n_views)) / n_views  # average over views
+
+        return probs, p_in
+
+    def _snn_semi_each(query, supports, labels):
+        query = AllGather.apply(query)
+        M = query.size(0)
+        N, K = labels.size()
+
+        device = query.device
+        arange = lambda n: torch.arange(n, device=device)
+        eye = lambda n: torch.eye(n, n, device=device)
+
+        # compute similarity matrix
+        s_sims = query @ supports.T  # cosine sims MxN
+        u_sims = query @ query.T  # cosine sims MxM
+        u_sims[arange(M), arange(M)] = -float('inf')  # remove self-sims
+
+        # compute in-domain prior
+        max_sim = s_sims.max(dim=1)[0]
+        prior = ((max_sim - 1) / prior_tau).exp().view(M, 1)
+
+        # compute pseudo-label
+        r = label_ratio * u_batch_size / s_batch_size
+        s_sims = s_sims + math.log(r) * tau  # upscale labeled batch
+
+        C = softmax(torch.cat([s_sims, u_sims], dim=1) / tau) * prior  # Mx(N+M)
+        C_L, C_U = C[:, :N], C[:, N:]  # MxN, MxM
+        probs = torch.linalg.inv(eye(M) - C_U) @ C_L @ labels  # MxK
+
+        # get values for this node
+        probs = probs[ M//world_size * rank : M//world_size * (rank + 1) ]
+        return probs
+
     def loss(
         anchor_views,
         anchor_supports,
@@ -56,7 +123,8 @@ def init_paws_loss(
         target_supports,
         target_support_labels,
         sharpen=sharpen,
-        snn=snn
+        snn=snn,
+        snn_semi=snn_semi,
     ):
         # -- NOTE: num views of each unlabeled instance = 2+multicrop
         batch_size = len(anchor_views) // (2+multicrop)
@@ -66,7 +134,10 @@ def init_paws_loss(
 
         # Step 2: compute targets for anchor predictions
         with torch.no_grad():
-            targets = snn(target_views, target_supports, target_support_labels)
+            if ropaws:
+                targets, p_in = snn_semi(target_views, target_supports, target_support_labels, n_views=2)
+            else:
+                targets = snn(target_views, target_supports, target_support_labels)
             targets = sharpen(targets)
             if multicrop > 0:
                 mc_target = 0.5*(targets[:batch_size]+targets[batch_size:])
@@ -74,7 +145,11 @@ def init_paws_loss(
             targets[targets < 1e-4] *= 0  # numerical stability
 
         # Step 3: compute cross-entropy loss H(targets, queries)
-        loss = torch.mean(torch.sum(torch.log(probs**(-targets)), dim=1))
+        if ropaws:
+            weight = p_in.repeat(2 + multicrop) ** prior_pow  # weighted loss
+            loss = torch.mean(weight * torch.sum(-targets * torch.log(probs), dim=1))
+        else:
+            loss = torch.mean(torch.sum(torch.log(probs ** (-targets)), dim=1))
 
         # Step 4: compute me-max regularizer
         rloss = 0.
