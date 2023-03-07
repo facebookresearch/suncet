@@ -121,6 +121,18 @@ def main(args):
     mom = args['optimization']['momentum']
     nesterov = args['optimization']['nesterov']
 
+    # -- RoPAWS
+    if 'ropaws' in args:
+        use_ropaws = args['ropaws']['use_ropaws']
+        prior_tau = args['ropaws']['prior_tau']
+        prior_pow = args['ropaws']['prior_pow']
+        label_ratio = args['ropaws']['label_ratio']
+    else:
+        use_ropaws = False
+        prior_tau = None
+        prior_pow = None
+        label_ratio = None
+
     # -- LOGGING
     folder = args['logging']['folder']
     tag = args['logging']['write_tag']
@@ -159,10 +171,21 @@ def main(args):
 
     # -- init losses
     paws = init_paws_loss(
+        # paws configs
         multicrop=multicrop,
         tau=temperature,
         T=sharpen,
-        me_max=reg)
+        me_max=reg,
+        # ropaws configs
+        ropaws=use_ropaws,
+        prior_tau=prior_tau,
+        prior_pow=prior_pow,
+        label_ratio=label_ratio,
+        s_batch_size=s_batch_size,
+        u_batch_size=u_batch_size,
+        rank=rank,
+        world_size=world_size,
+    )
     # -- assume support images are sampled with ClassStratifiedSampler
     labels_matrix = make_labels_matrix(
         num_classes=classes_per_batch,

@@ -1,10 +1,14 @@
 # PAWS  :paw_prints: **P**redicting View-**A**ssignments **w**ith **S**upport Samples
 
-This repo provides a PyTorch implementation of PAWS (**p**redicting view **a**ssignments **w**ith **s**upport samples), as described in the paper [Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples](https://arxiv.org/abs/2104.13963).
+This repo provides a PyTorch implementation of:
+* PAWS (**p**redicting view **a**ssignments **w**ith **s**upport samples), as described in the paper [Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples](https://arxiv.org/abs/2104.13963) (ICCV'21).
+* RoPAWS (robust PAWS), as described in the paper [RoPAWS: Robust Semi-supervised Representation Learning from Uncurated Data](https://openreview.net/forum?id=G1H4NSATlr) (ICLR'23).
 
 ![CD21_260_SWAV2_PAWS_Flowchart_FINAL](https://user-images.githubusercontent.com/7530871/116110279-c82ff200-a672-11eb-9037-5c88d787f52e.png)
 
 PAWS is a method for semi-supervised learning that builds on the principles of self-supervised distance-metric learning. PAWS pre-trains a model to minimize a consistency loss, which ensures that different views of the same unlabeled image are assigned similar pseudo-labels. The pseudo-labels are generated non-parametrically, by comparing the representations of the image views to those of a set of randomly sampled labeled images. The distance between the view representations and labeled representations is used to provide a weighting over class labels, which we interpret as a soft pseudo-label. By non-parametrically incorporating labeled samples in this way, PAWS extends the distance-metric loss used in self-supervised methods such as BYOL and SwAV to the semi-supervised setting.
+
+RoPAWS extends PAWS to be robust when unlabeled data is uncurated, e.g., contains out-of-class data. To that end, RoPAWS reinterprets PAWS as a generative classifier that models densities on the representation space using kernel density estimation (KDE). From this probabilistic perspective, RoPAWS calibrates its prediction based on the densities of labeled and unlabeled data, which leads to a simple closed-form solution from the Bayes' rule. This simple modification makes PAWS robust under realistic uncuraed semi-supervised learning benchmarks.
 
 Also provided in this repo is a PyTorch implementation of the semi-supervised SimCLR+CT method described in the paper [Supervision Accelerates Pretraining in Contrastive Semi-Supervised Learning of Visual Representations](https://arxiv.org/abs/2006.10803). SimCLR+CT combines the SimCLR self-supervised loss with the SuNCEt (supervised noise contrastive estimation) loss for semi-supervised learning.
 
@@ -53,6 +57,10 @@ Top-1 classification accuracy for the pretrained models is reported using a near
 </table>
 
 ## Running PAWS semi-supervised pre-training and fine-tuning
+
+### Running PAWS vs. RoPAWS
+
+To run RoPAWS, set `use_ropaws=True` and hyperparameters as in `configs/ropaws`. It changes the loss function `src/losses.py` to use RoPAWS version during training, and inference is the same as PAWS.
 
 ### Config files
 All experiment parameters are specified in config files (as opposed to command-line-arguments). Config files make it easier to keep track of different experiments, as well as launch batches of jobs at a time. See the [configs/](configs/) directory for example config files.
@@ -175,6 +183,14 @@ If you find this repository useful in your research, please consider giving a st
   author={Assran, Mahmoud, and Caron, Mathilde, and Misra, Ishan, and Bojanowski, Piotr and Joulin, Armand, and Ballas, Nicolas, and Rabbat, Michael},
   journal={arXiv preprint arXiv:2104.13963},
   year={2021}
+}
+```
+```
+@article{mo2023ropaws,
+  title={RoPAWS: Robust Semi-supervised Representation Learning from Uncurated Data},
+  author={Mo, Sangwoo and Su, Jong-Chyi and Ma, Chih-Yao and Assran, Mido and Misra, Ishan and Yu, Licheng and Bell, Sean},
+  journal={arXiv preprint arXiv:2302.14483},
+  year={2023}
 }
 ```
 ```
