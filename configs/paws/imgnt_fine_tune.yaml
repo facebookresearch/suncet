@@ -1,15 +1,15 @@
 data:
   data_seed: 152
   dataset: imagenet_fine_tune
-  image_folder: imagenet_full_size/061417/
+  image_folder: ImageNet2012/
   normalize: true
   num_classes: 1000
-  root_path: datasets/
+  root_path: /scratch2/clear/dataset/
   subset_path: imagenet_subsets/
   unlabeled_frac: 0.90
 logging:
-  folder: /path_to_save_models_and_logs/
-  pretrain_path: paws-latest.pth.tar
+  folder: /scratch2/clear/larbez/Workspace/PAWS/imagenet_finetune/
+  pretrain_path: /scratch2/clear/larbez/Workspace/PAWS/pretrained_weights_paws/paws_imgnt_10percent_300ep.pth.tar
   write_tag: paws-latest
 meta:
   copy_data: true

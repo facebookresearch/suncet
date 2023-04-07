@@ -3,3 +3,5 @@ __pycache__
 datasets
 .*.swp
 *.pdf
+*.ipynb
+

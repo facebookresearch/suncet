@@ -33,7 +33,7 @@ from src.utils import (
     init_distributed,
     WarmupCosineSchedule
 )
-from src.data_manager import (
+from src.data_manager_clustervec import (
     init_data,
     make_transforms
 )
@@ -56,8 +56,8 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger()
 
 
-def main(args):
-
+def main(args,run):
+    #run ="AAA"
     # -- META
     model_name = args['meta']['model_name']
     port = args['meta']['master_port']
@@ -103,7 +103,7 @@ def main(args):
 
     # -- optimization/evaluation params
     if training:
-        batch_size = 256
+        batch_size = 128
     else:
         batch_size = 16
         unlabeled_frac = 0.0
@@ -112,7 +112,7 @@ def main(args):
 
     # -- init loss
     criterion = torch.nn.CrossEntropyLoss()
-
+    
     # -- make train data transforms and data loaders/samples
     transform, init_transform = make_transforms(
         dataset_name=dataset_name,
@@ -162,7 +162,7 @@ def main(args):
          rank=0,
          root_path=root_path,
          image_folder=image_folder,
-         training=True,
+         training=False,
          copy_data=copy_data)
     logger.info(f'initialized val data-loader (ipe {len(val_data_loader)})')
 
@@ -228,30 +228,46 @@ def main(args):
                 if i % log_freq == 0:
                     logger.info('[%d, %5d] %.3f%% %.3f%% (loss: %.3f)'
                                 % (epoch + 1, i, top1_acc, top5_acc, loss))
+                if run is not None: 
+                    run.log({
+                        "step":i,
+                        "train_top1_acc":top1_acc,
+                        "train_top5_acc":top5_acc,
+                        "loss":loss
+                    })
             return 100. * top1_correct / total
 
         def val_step():
             val_encoder = copy.deepcopy(encoder).eval()
-            top1_correct, total = 0, 0
+            top1_correct, top5_correct, total = 0, 0, 0
             for i, data in enumerate(val_data_loader):
                 inputs, labels = data[0].to(device), data[1].to(device)
                 outputs = val_encoder(inputs)
-                total += inputs.shape[0]
+                total += inputs.shape[0]                
+                top5_correct += float(outputs.topk(5, dim=1).indices.eq(labels.unsqueeze(1)).sum())
                 top1_correct += float(outputs.max(dim=1).indices.eq(labels).sum())
                 top1_acc = 100. * top1_correct / total
+                top5_acc = 100. * top5_correct / total
+
 
             logger.info('[%d, %5d] %.3f%%' % (epoch + 1, i, top1_acc))
-            return 100. * top1_correct / total
+            return 100. * top1_correct / total, 100. * top5_correct / total
 
         train_top1 = 0.
         train_top1 = train_step()
         with torch.no_grad():
-            val_top1 = val_step()
+            val_top1, val_top5 = val_step()
 
         log_str = 'train:' if training else 'test:'
         logger.info('[%d] (%s: %.3f%%) (val: %.3f%%)'
                     % (epoch + 1, log_str, train_top1, val_top1))
-
+        if run is not None:
+            run.log({
+                    "epoch":epoch+1,
+                    "train_top1":train_top1,
+                    "val_top1":val_top1,
+                    "val_top5":val_top5
+                    })
         # -- logging/checkpointing
         if training and (rank == 0) and ((best_acc is None)
                                          or (best_acc < val_top1)):
@@ -286,6 +302,7 @@ def load_pretrained(
         elif pretrained_dict[k].shape != v.shape:
             logger.info(f'key "{k}" is of different shape in model and loaded state dict')
             pretrained_dict[k] = v
+    #from pudb import forked; forked.set_trace() 
     msg = encoder.load_state_dict(pretrained_dict, strict=False)
     logger.info(f'loaded pretrained model with msg: {msg}')
     logger.info(f'loaded pretrained encoder from epoch: {checkpoint["epoch"]} '

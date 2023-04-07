@@ -11,6 +11,7 @@ import torch.multiprocessing as mp
 
 import pprint
 import yaml
+import wandb
 
 from src.paws_train import main as paws
 from src.suncet_train import main as suncet
@@ -34,7 +35,9 @@ parser.add_argument(
         'paws_train',
         'suncet_train',
         'fine_tune',
-        'snn_fine_tune'
+        'snn_fine_tune',
+        'paws_tests',
+        'paws_finetune'
     ])
 
 
@@ -58,6 +61,10 @@ def process_main(rank, sel, fname, world_size, devices):
             pp.pprint(params)
 
     if rank == 0:
+        
+        if not os.path.isdir(params['logging']['folder']):
+            os.makedirs(params['logging']['folder'])
+
         dump = os.path.join(params['logging']['folder'], f'params-{sel}.yaml')
         with open(dump, 'w') as f:
             yaml.dump(params, f)
@@ -74,13 +81,26 @@ def process_main(rank, sel, fname, world_size, devices):
         logger.setLevel(logging.ERROR)
 
     if sel == 'paws_train':
-        return paws(params)
+        run = wandb.init(project="Paws_train", entity="arbezlo", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
+        run.config.update(params)
+        return paws(params, run)
+    if sel == 'paws_tests': 
+        run= "AAA"    
+        return paws(params,run) #paws(params, run)
     elif sel == 'suncet_train':
         return suncet(params)
     elif sel == 'fine_tune':
-        return fine_tune(params)
+        run = wandb.init(project="Paws_resnet_ft", entity="arbezlo", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
+        run.config.update(params)
+        return fine_tune(params,run)
     elif sel == 'snn_fine_tune':
-        return snn_fine_tune(params)
+        run = wandb.init(project="Paws_snn_finetune", entity="arbezlo", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
+        run.config.update(params)
+        return snn_fine_tune(params,run)
+    elif sel == "paws_finetune":
+        run = wandb.init(project="Paws_finetune", entity="arbezlo", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
+        run.config.update(params)
+        return paws(params,run)
 
 
 if __name__ == '__main__':

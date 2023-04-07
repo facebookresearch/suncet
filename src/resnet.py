@@ -9,6 +9,7 @@ import torch
 import torch.nn as nn
 
 __all__ = [
+    'resnet18',
     'resnet50',
     'resnet50w2',
     'resnet50w4',
@@ -299,6 +300,8 @@ class ResNet(nn.Module):
             return h, z
         return z
 
+def resnet18(**kwargs):
+    return ResNet(Bottleneck, [2, 2, 2, 2], **kwargs)
 
 def resnet50(**kwargs):
     return ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)

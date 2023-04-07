@@ -14,15 +14,15 @@ data:
   label_smoothing: 0.1
   multicrop: 6
   normalize: true
-  root_path: datasets/
+  root_path: /scratch2/clear/larbez/Workspace/datasets/
   subset_path: cifar10_subsets/
   unique_classes_per_rank: false
   unlabeled_frac: 0.92
 logging:
-  folder: /path_to_save_models_and_logs/
+  folder: /scratch2/clear/larbez/Workspace/PAWS/test_cifar2_train/
   write_tag: paws
 meta:
-  copy_data: true
+  copy_data: false
   device: cuda:0
   load_checkpoint: false
   model_name: wide_resnet28w2

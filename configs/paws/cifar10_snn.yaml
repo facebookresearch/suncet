@@ -9,12 +9,12 @@ data:
   image_folder: cifar10-data/
   label_smoothing: 0.0
   normalize: true
-  root_path: datasets/
+  root_path: /scratch2/clear/larbez/Workspace/datasets/
   subset_path: cifar10_subsets/
   unique_classes_per_rank: false
   unlabeled_frac: 0.92
 logging:
-  folder: /path_to_pretrained_models_and_logs/
+  folder: /scratch2/clear/larbez/Workspace/PAWS/test_snn_cifar1/
   pretrain_path: paws-latest.pth.tar
   write_tag: paws-latest-SNN
 meta:
@@ -24,7 +24,7 @@ meta:
   model_name: wide_resnet28w2
   output_dim: 128
   use_pred_head: false
-  use_fp16: true
+  use_fp16: true #False
 optimization:
   epochs: 30
   final_lr: 0.01

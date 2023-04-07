@@ -1,0 +1,27 @@
+data:
+  data_seed: 155
+  dataset: clustervec_fine_tune
+  image_folder: split_ls/
+  normalize: true
+  num_classes: 5
+  root_path: /scratch2/clear/larbez/Workspace/datasets/Prioritaires_cropped/
+  subset_path: PRIO_subsets/
+  unlabeled_frac: 0.9
+logging:
+  folder: /scratch2/clear/larbez/Workspace/PAWS/Prio_10percent_fine_tune/
+  pretrain_path: /scratch2/clear/larbez/Workspace/PAWS/Prio_ft_from_imagnet_continue/paws-ep400.pth.tar
+  write_tag: paws-latest
+meta:
+  copy_data: false
+  device: cuda:0
+  load_checkpoint: false
+  master_port: 4029
+  model_name: resnet50
+  training: true
+  use_fp16: false
+optimization:
+  epochs: 300
+  lr: 0.02
+  use_lars: false
+  weight_decay: 0.0
+  zero_init: false
