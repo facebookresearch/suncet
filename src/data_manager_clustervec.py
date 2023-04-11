@@ -21,7 +21,9 @@ from pudb import forked
 
 import torchvision.transforms as transforms
 import torchvision
-
+import pandas as pd
+import json
+from src.custom_generator import DatasetDataframe, Crop
 import PIL
 from PIL import Image
 from PIL import ImageFilter
@@ -1536,21 +1538,23 @@ class GaussianBlur(object):
 ################################## CUSTOM DATALOADER CLASS ##############################################
 
 
-class ClusterVec(torchvision.datasets.ImageFolder):
+class ClusterVec(DatasetDataframe):
 
     def __init__(
         self,
         root,
         image_folder='imagenet_full_size/061417/',
-        tar_folder='imagenet_full_size/',
-        tar_file='imagenet_full_size-061417.tar',
         train=True,
         transform=None,
         target_transform=None,
         job_id=None,
         local_rank=None,
+        tar_folder='imagenet_full_size/',
+        tar_file='imagenet_full_size-061417.tar',
         copy_data=True
     ):
+        
+
         """
         ClusterVec
 
@@ -1565,34 +1569,39 @@ class ClusterVec(torchvision.datasets.ImageFolder):
         :param job_id: scheduler job-id used to create dir on local machine
         :param copy_data: whether to copy data from network file locally
         """
+        from pudb import forked; forked.set_trace()
+        if train: 
+            df_dir = os.path.join(root, 'train.csv')
+        else:
+            df_dir = os.path.join(root, 'val.csv')
+        
+        def get_class_to_idx(root):
+            with open(os.path.join(root,"idx_to_class.json")) as json_file:
+                data = json.load(json_file)
+            return data
+        
 
-        suffix = 'train/' if train else 'test/'
+        self.class_to_idx = get_class_to_idx(root)
         data_path = None
-        if copy_data:
-            logger.info('copying data locally')
-            data_path = copy_imgnt_locally(
-                root=root,
-                suffix=suffix,
-                image_folder=image_folder,
-                tar_folder=tar_folder,
-                tar_file=tar_file,
-                job_id=job_id,
-                local_rank=local_rank)
-        if (not copy_data) or (data_path is None):
-            data_path = os.path.join(root, image_folder, suffix)
+        data_path = os.path.join(root, image_folder)
+        dataframe = pd.read_csv(df_dir,usecols=['img_path',  'x1', 'y1', 'x2', 'y2', 'score' ,'target'], index_col=False)
+
+        dataframe['target'] = dataframe['target'].astype(int)
         logger.info(f'data-path {data_path}')
 
         super(ClusterVec, self).__init__(
-            root=data_path,
+            data_path,
+            df=dataframe,
             transform=transform,
             target_transform=target_transform)
         logger.info('Initialized ClusterVec')
-
+        
     #TODO override the original getitem to get the image_class
 
 
 class TransClusterVec(ClusterVec):
 
+    
     def __init__(
         self,
         dataset,
@@ -1608,16 +1617,20 @@ class TransClusterVec(ClusterVec):
         return multiple transformed copies of the same image in each call
         to __getitem__
         """
+        
+
+        
         self.dataset = dataset
         self.supervised = supervised
         self.supervised_views = supervised_views
         self.multicrop_transform = multicrop_transform
         
+        
 
-        self.targets, self.samples = dataset.targets, dataset.samples
+        self.targets, self.samples = dataset.target, dataset.samples
         if self.supervised:
             self.targets, self.samples = init_transform(
-                dataset.root,
+                dataset.root_dir,
                 dataset.samples,
                 dataset.class_to_idx,
                 seed)
