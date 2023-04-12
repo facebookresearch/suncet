@@ -57,7 +57,11 @@ Top-1 classification accuracy for the pretrained models is reported using a near
 ### Config files
 All experiment parameters are specified in config files (as opposed to command-line-arguments). Config files make it easier to keep track of different experiments, as well as launch batches of jobs at a time. See the [configs/](configs/) directory for example config files.
 
-### Requirements
+### NEW : Requierements
+* Python 3.8.16
+* Check the requierements.txt file
+
+### ORIGINAL : Requirements
 * Python 3.8
 * PyTorch install 1.7.1
 * torchvision
