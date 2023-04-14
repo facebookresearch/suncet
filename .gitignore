@@ -4,4 +4,4 @@ datasets
 .*.swp
 *.pdf
 *.ipynb
-
+configs/*

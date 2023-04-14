@@ -6,10 +6,10 @@ data:
   num_classes: 5
   root_path: /scratch2/clear/larbez/Workspace/datasets/Prioritaires_cropped/
   subset_path: PRIO_subsets/
-  unlabeled_frac: 0.9
+  unlabeled_frac: 0.97
 logging:
-  folder: /scratch2/clear/larbez/Workspace/PAWS/Prio_10percent_fine_tune/
-  pretrain_path: /scratch2/clear/larbez/Workspace/PAWS/Prio_ft_from_imagnet_continue/paws-ep400.pth.tar
+  folder: /scratch2/clear/larbez/Workspace/PAWS/Prio_3percent_fine_tune/
+  pretrain_path: /scratch2/clear/larbez/Workspace/PAWS/pretrained_weights_paws/paws_imgnt_10percent_300ep.pth.tar
   write_tag: paws-latest
 meta:
   copy_data: false
