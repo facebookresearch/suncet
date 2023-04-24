@@ -1,9 +1,9 @@
 criterion:
-  classes_per_batch: 5
+  classes_per_batch: 25
   me_max: false
   sharpen: 0.25
-  supervised_imgs_per_class: 4
-  supervised_views: 2
+  supervised_imgs_per_class: 5
+  supervised_views: 1
   temperature: 0.1
   unsupervised_batch_size: 32
 data:
@@ -15,7 +15,7 @@ data:
   multicrop: 6
   normalize: true
   root_path: /scratch2/clear/larbez/Workspace/datasets/clustervec-small/
-  subset_path: PRIO_subsets/
+  subset_path: clustervec_subsets/
   unique_classes_per_rank: true
   unlabeled_frac: 0.9
 logging:

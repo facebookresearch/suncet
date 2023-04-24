@@ -272,7 +272,7 @@ def main(args,run):
         for itr, udata in enumerate(unsupervised_loader):
 
             def load_imgs():
-                #from pudb import forked;forked.set_trace()
+                from pudb import forked;forked.set_trace()
                 # -- unsupervised imgs
                 uimgs = [u.to(device, non_blocking=True) for u in udata[:-1]]
                 # -- supervised imgs

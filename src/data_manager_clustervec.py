@@ -1098,7 +1098,7 @@ class ClassStratifiedSampler(torch.utils.data.Sampler):
         """
         super(ClassStratifiedSampler, self).__init__(data_source)
         self.data_source = data_source
-
+        #forked.set_trace()
         self.rank = rank
         self.world_size = world_size
         self.cpb = classes_per_batch
@@ -1569,7 +1569,7 @@ class ClusterVec(DatasetDataframe):
         :param job_id: scheduler job-id used to create dir on local machine
         :param copy_data: whether to copy data from network file locally
         """
-        from pudb import forked; forked.set_trace()
+        
         if train: 
             df_dir = os.path.join(root, 'train.csv')
         else:
@@ -1578,14 +1578,15 @@ class ClusterVec(DatasetDataframe):
         def get_class_to_idx(root):
             with open(os.path.join(root,"idx_to_class.json")) as json_file:
                 data = json.load(json_file)
-            return data
+            
+            return {v: k for k, v in data.items()}
         
-
-        self.class_to_idx = get_class_to_idx(root)
+        data = get_class_to_idx(root)
+        self.class_to_idx = data
         data_path = None
         data_path = os.path.join(root, image_folder)
         dataframe = pd.read_csv(df_dir,usecols=['img_path',  'x1', 'y1', 'x2', 'y2', 'score' ,'target'], index_col=False)
-
+        self.classes = list(data.keys()) #Careful with methods myboy
         dataframe['target'] = dataframe['target'].astype(int)
         logger.info(f'data-path {data_path}')
 
@@ -1595,6 +1596,7 @@ class ClusterVec(DatasetDataframe):
             transform=transform,
             target_transform=target_transform)
         logger.info('Initialized ClusterVec')
+
         
     #TODO override the original getitem to get the image_class
 
@@ -1806,6 +1808,7 @@ class ClusterVecSampler(ClassStratifiedSampler):
         ipe = (self.num_classes // self.cpb if not self.unique_cpb
                else self.num_classes // (self.cpb * self.world_size)) * self.batch_size
 
+        #from pudb import forked; forked.set_trace()
         for epoch in range(self.epochs):
 
             # -- shuffle class order
