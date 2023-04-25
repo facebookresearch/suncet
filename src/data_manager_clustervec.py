@@ -546,12 +546,14 @@ def _init_clustervec_data(
         pin_memory=True,
         num_workers=8)#changed_numworkers
     logger.info('ClusterVec unsupervised data loader created')
-
+    #forked.set_trace()
     supervised_sampler, supervised_loader = None, None
     if classes_per_batch > 0 and s_batch_size > 0:
         logger.info('Making supervised ClusterVec data loader...')
         supervised_set = TransClusterVec(
             dataset=clustervec,
+            root=root_path,
+            image_path = image_folder,
             supervised=True,
             supervised_views=supervised_views,
             init_transform=init_transform,
@@ -907,9 +909,15 @@ def _make_clustervec_transforms(
             logger.info(f'Using {keep_file}')
             with open(keep_file, 'r') as rfile:
                 for line in rfile:
+
                     class_name = line.split('_')[:-1] #TODO change class_name method/function
                     class_name = "_".join(class_name)
-                    target = class_to_idx[class_name]
+                    try:
+                        target = class_to_idx[class_name]
+                    except:
+                        class_name = class_name.replace('_',' ')
+                        target = class_to_idx[class_name]
+
                     img = line.split('\n')[0]
                     new_samples.append(
                         (os.path.join(root, class_name, img),
@@ -1175,6 +1183,7 @@ class ClassStratifiedSampler(torch.utils.data.Sampler):
         return zip(*subsampled_samplers)
 
     def __iter__(self):
+        #forked.set_trace()
         self._ssi = self.rank*self.cpb if self.unique_cpb else 0
         self._next_perm()
         
@@ -1282,7 +1291,7 @@ class TransImageNet(ImageNet):
         self.supervised = supervised
         self.supervised_views = supervised_views
         self.multicrop_transform = multicrop_transform
-        self.targets, self.samples = dataset.targets, dataset.samples
+        self.targets, self.samples = dataset.targets.astype(int), dataset.samples
         if self.supervised:
             self.targets, self.samples = init_transform(
                 dataset.root,
@@ -1607,6 +1616,8 @@ class TransClusterVec(ClusterVec):
     def __init__(
         self,
         dataset,
+        root=None , 
+        image_path = None,
         supervised=False,
         supervised_views=1,
         init_transform=None,
@@ -1628,14 +1639,19 @@ class TransClusterVec(ClusterVec):
         self.multicrop_transform = multicrop_transform
         
         
-
+        
         self.targets, self.samples = dataset.target, dataset.samples
+        
+        self.root= root
+        self.image_folder = image_path
         if self.supervised:
             self.targets, self.samples = init_transform(
                 dataset.root_dir,
                 dataset.samples,
                 dataset.class_to_idx,
                 seed)
+            self.targets = self.targets.astype(int)
+            
             logger.debug(f'num-labeled {len(self.samples)}')
             mint = None
             self.target_indices = []
@@ -1664,7 +1680,16 @@ class TransClusterVec(ClusterVec):
         if self.supervised:
             target = self.targets[index]
             path = self.samples[index][0]
-            path = os.path.join(self.dataset.root,path.split(os.sep)[-2],path.split(os.sep)[-1].split('_')[-1])
+            #forked.set_trace()
+            img_name = path.split(os.sep)[-1].split('_')[-1]
+            paths = path.split(os.sep)[:-1]
+            paths.append(img_name)
+            path = os.path.join(*paths)
+            path = '/'+path
+            # try:
+            #     path = os.path.join(self.dataset.root,path.split(os.sep)[-2],path.split(os.sep)[-1].split('_')[-1])
+            # except:
+            #     path= os.path.join(self.root, self.image_folder,path.split(os.sep)[-2],path.split(os.sep)[-1].split('_')[-1])
             img = self.dataset.loader(path)
         else:
             target = self.targets[index]
