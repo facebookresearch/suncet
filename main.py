@@ -81,7 +81,7 @@ def process_main(rank, sel, fname, world_size, devices):
         logger.setLevel(logging.ERROR)
 
     if sel == 'paws_train':
-        run = wandb.init(project="Paws_train", entity="arbezlo", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
+        run = wandb.init(project="Paws_train", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
         run.config.update(params)
         return paws(params, run)
     if sel == 'paws_tests': 
@@ -90,15 +90,15 @@ def process_main(rank, sel, fname, world_size, devices):
     elif sel == 'suncet_train':
         return suncet(params)
     elif sel == 'fine_tune':
-        run = wandb.init(project="Paws_resnet_ft", entity="arbezlo", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
+        run = wandb.init(project="Paws_resnet_ft", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
         run.config.update(params)
         return fine_tune(params,run)
     elif sel == 'snn_fine_tune':
-        run = wandb.init(project="Paws_snn_finetune", entity="arbezlo", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
+        run = wandb.init(project="Paws_snn_finetune", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
         run.config.update(params)
         return snn_fine_tune(params,run)
     elif sel == "paws_finetune":
-        run = wandb.init(project="Paws_finetune", entity="arbezlo", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
+        run = wandb.init(project="Paws_finetune", name=params['logging']['folder'].split(os.sep)[-2], dir=params['logging']['folder'])
         run.config.update(params)
         return paws(params,run)
 
