@@ -1,10 +1,3 @@
-apex==0.1
-numpy==1.23.5
-pandas==1.5.3
-Pillow==9.5.0
-pudb==2022.1.3
-PyYAML==6.0
-submitit==1.4.5
-torch==1.13.1
-torchvision==0.14.1
-wandb==0.13.9
+pandas<2.0
+psutil==5.9.1
+wandb

@@ -69,6 +69,16 @@ All experiment parameters are specified in config files (as opposed to command-l
 * Apex with CUDA extension
 * Other dependencies: PyYaml, numpy, opencv, submitit
 
+### Docker support
+
+Tested with Nvidia Cuda 11.0, Driver Version 450.80.02 and Titan V (Volta architecture)
+Docker version 20.10.7, Docker-compose version 1.27.2
+
+Usage : 
+```bash
+docker-compose up
+# Visit localhost:8888 to open Jupyter notebook
+```
 ### Labeled Training Splits
 For reproducibilty, we have pre-specified the labeled training images as `.txt` files in the [imagenet_subsets/](imagenet_subsets/) and [cifar10_subsets/](cifar10_subsets/) directories.
 Based on your specifications in your experiment's config file, our implementation will automatically use the images specified in one of these `.txt` files as the set of labeled images. On ImageNet, if you happen to request a split of the data that is not contained in [imagenet_subsets/](imagenet_subsets/) (for example, if  you set `unlabeled_frac !=0.9 and unlabeled_frac != 0.99`, i.e., not 10% labeled or 1% labeled settings), then the code will independently flip a coin at the start of training for each training image with probability `1-unlabeled_frac` to determine whether or not to keep the image's label.

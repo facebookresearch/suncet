@@ -1,0 +1,6 @@
+.ipynb_checkpoints
+__pycache__
+datasets
+.*.swp
+*.pdf
+*.ipynb
