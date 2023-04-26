@@ -8,7 +8,7 @@ data:
   subset_path: clustervec_subsets/
   unlabeled_frac: 0.9
 logging:
-  folder: /scratch2/clear/larbez/Workspace/PAWS/Test_new_dataloaders/
+  folder: /scratch2/clear/larbez/Workspace/PAWS/Test_new_dataloaders_bis/
   pretrain_path: /scratch2/clear/larbez/Workspace/PAWS/pretrained_weights_paws/paws_imgnt_10percent_300ep.pth.tar
   write_tag: paws-latest
 meta:

@@ -549,6 +549,7 @@ def _init_clustervec_data(
     supervised_sampler, supervised_loader = None, None
     if classes_per_batch > 0 and s_batch_size > 0:
         logger.info('Making supervised ClusterVec data loader...')
+        from pudb import forked; forked.set_trace()
         supervised_set = TransClusterVec(
             dataset=clustervec,
             root=root_path,
@@ -905,6 +906,7 @@ def _make_clustervec_transforms(
         new_targets, new_samples = [], []
 
         if training and (keep_file is not None) and os.path.exists(keep_file):
+            liste_samples = [ i[0] for i in samples]
             logger.info(f'Using {keep_file}')
             with open(keep_file, 'r') as rfile:
                 for line in rfile:
@@ -918,9 +920,10 @@ def _make_clustervec_transforms(
                         target = class_to_idx[class_name]
 
                     img = line.split('\n')[0]
-                    new_samples.append(
-                        (os.path.join(root, class_name, img),
-                         target))
+                    img = img.split('_')[-1]
+                    n_sample = os.path.join(root, class_name, img)
+                    index_sample = liste_samples.index(n_sample)
+                    new_samples.append(samples[index_sample])
                     new_targets.append(target)
         else:
             logger.info('flipping coin to keep labels')
@@ -1286,6 +1289,7 @@ class TransImageNet(ImageNet):
         return multiple transformed copies of the same image in each call
         to __getitem__
         """
+        
         self.dataset = dataset
         self.supervised = supervised
         self.supervised_views = supervised_views
@@ -1649,6 +1653,8 @@ class TransClusterVec(ClusterVec):
                 dataset.samples,
                 dataset.class_to_idx,
                 seed)
+            
+            
             self.targets = self.targets.astype(int)
             
             logger.debug(f'num-labeled {len(self.samples)}')
@@ -1670,30 +1676,16 @@ class TransClusterVec(ClusterVec):
                 mint = len(indices) if mint is None else min(mint, len(indices))
                 logger.debug(f'num-labeled target {t} {len(indices)}')
             logger.debug(f'min. labeled indices {mint}')
-
+    #from pudb import forked; forked.set_trace() 
     @property
     def classes(self):
         return self.dataset.classes
 
     def __getitem__(self, index):
-        if self.supervised:
-            target = self.targets[index]
-            path = self.samples[index][0]
-            #forked.set_trace()
-            img_name = path.split(os.sep)[-1].split('_')[-1]
-            paths = path.split(os.sep)[:-1]
-            paths.append(img_name)
-            path = os.path.join(*paths)
-            path = '/'+path
-            # try:
-            #     path = os.path.join(self.dataset.root,path.split(os.sep)[-2],path.split(os.sep)[-1].split('_')[-1])
-            # except:
-            #     path= os.path.join(self.root, self.image_folder,path.split(os.sep)[-2],path.split(os.sep)[-1].split('_')[-1])
-            img = self.dataset.loader(path)
-        else:
-            target = self.targets[index]
-            path = self.samples[index][0]
-            img = self.dataset.loader(path)
+        
+        path, target, coords = self.samples[index] # coords [x1,y1,x2,y2]
+        img = self.dataset.loader(path)
+        img = img.crop(coords)
             
         if self.dataset.target_transform is not None:
             target = self.dataset.target_transform(target)

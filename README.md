@@ -1,6 +1,6 @@
 # PAWS  :paw_prints: **P**redicting View-**A**ssignments **w**ith **S**upport Samples
 
-This repo provides a PyTorch implementation of PAWS (**p**redicting view **a**ssignments **w**ith **s**upport samples), as described in the paper [Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples](https://arxiv.org/abs/2104.13963).
+This repo provides a PyTorch implementation of PAWS (**p**redicting view **a**ssignments **w**ith **s**upport samples), as described in the paper [Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples](https://arxiv.org/abs/2104.13963). In this forek, we focused on offering a way to use custum dataloaders to use the code from the original repository.
 
 ![CD21_260_SWAV2_PAWS_Flowchart_FINAL](https://user-images.githubusercontent.com/7530871/116110279-c82ff200-a672-11eb-9037-5c88d787f52e.png)
 
@@ -73,6 +73,9 @@ All experiment parameters are specified in config files (as opposed to command-l
 For reproducibilty, we have pre-specified the labeled training images as `.txt` files in the [imagenet_subsets/](imagenet_subsets/) and [cifar10_subsets/](cifar10_subsets/) directories.
 Based on your specifications in your experiment's config file, our implementation will automatically use the images specified in one of these `.txt` files as the set of labeled images. On ImageNet, if you happen to request a split of the data that is not contained in [imagenet_subsets/](imagenet_subsets/) (for example, if  you set `unlabeled_frac !=0.9 and unlabeled_frac != 0.99`, i.e., not 10% labeled or 1% labeled settings), then the code will independently flip a coin at the start of training for each training image with probability `1-unlabeled_frac` to determine whether or not to keep the image's label.
 
+#### Custom case
+In order for you to use the method with custom data, you will need to create a similar `.txt` file as you can see in the [clustervec_subsets/](clustervec_subsets/) directory. These files are composed of file names expressed as in the example `class_imagename.extension` you can see the file [90percent.txt](clustervec_subsets/90percent.txt) as a real use case example.  
+
 ### Single-GPU training
 PAWS is very simple to implement and experiment with. Our implementation starts from the [main.py](main.py), which parses the experiment config file and runs the desired script (e.g., paws pre-training or fine-tuning) locally on a single GPU.
 
@@ -122,6 +125,73 @@ Finally, in your config specify:
 - `image_folder: cifar10-data/`
 
 You should now be able to run CIFAR10 experiments.
+
+### Custom data setup
+
+As for setting up the CIFAR10 data, the most relevant items you will have to change in the config file will be :
+- `root_path` is the datasets directory where you put all your data
+- `image_folder` is the folder inside `root_path` where your dataset images are stored
+
+Depending on which mode you want to function either through an ImageFolder organisation of the files or through a composition of 2  train and validation `.csv` files there is 2 possible organisations for your root folder:
+
+-First case : ImageFolder like functionning
+
+This mode is the one implemented on the main branch of this repository. For it to work your folder should look like this :
+
+```
+root_path/
+  └── image_folder/
+      ├── train/ 
+      |    ├── class_0/
+      |    |      ├──img0.jpg
+      |    |      ├──img1.jpg
+      |    |      ├──img2.jpg
+      |    |      ...
+      |    |      └──imgN.jpg  
+      |    ├── class_1/
+      |    ...
+      |    └──class_M/
+      └──test/ 
+          ├── class_0/
+          ├── class_1/
+          ...
+          └──class_M/
+```
+- Second case : `csv` fonctionning
+
+This second methos is the one used in the 2nd branch iaflash_dataloaders. It uses csv files to locate the images and crop it accordingly during loading. 
+
+The csv files should be formatted in the following way :
+
+|       | x1   | y1   | x2   | y2   | img_path                                                                                               | score | target |
+|-------|------|------|------|------|--------------------------------------------------------------------------------------------------------|-------|--------|
+| 8936  | 514  | 219  | 1137 | 582  | root_path/image_folder/class_name0/image_name.jpg                | 1.0   | 0      |
+| 1466  | 512  | 0    | 1214 | 416  | root_path/image_folder/class_name1/image_name.jpg               | 1.0   | 1      |
+
+Then, the `root_folder` should be organized in the following way :
+
+
+```
+root_path/
+  ├── image_folder/
+  |    ├── class_0/
+  |    |      ├──img0.jpg
+  |    |      ├──img1.jpg
+  |    |      ├──img2.jpg
+  |    |      ...
+  |    |      └──imgN.jpg  
+  |    ├── class_1/
+  |    ├── class_0/
+  |    ...
+  |    └──class_M/
+  ├── train.csv
+  ├── test.csv
+  ├── val.csv
+  └── idx_to_class.json
+  
+```
+The class_to_idx.json file is a dictionnary containning as key the idx and as value the class used for creating the target column in the different `.csv` files. 
+
 
 ### Multi-GPU training
 Running PAWS across multiple GPUs on a cluster is also very simple. In the multi-GPU setting, the implementation starts from [main_distributed.py](main_distributed.py), which, in addition to parsing the config file and launching the desired script, also allows for specifying details about distributed training. For distributed training, we use the popular open-source [submitit](https://github.com/facebookincubator/submitit) tool and provide examples for a SLURM cluster, but feel free to edit [main_distributed.py](main_distributed.py) for your purposes to specify a different approach to launching a multi-GPU job on a cluster.
