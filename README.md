@@ -132,9 +132,9 @@ As for setting up the CIFAR10 data, the most relevant items you will have to cha
 - `root_path` is the datasets directory where you put all your data
 - `image_folder` is the folder inside `root_path` where your dataset images are stored
 
-Depending on which mode you want to function either through an ImageFolder organisation of the files or through a composition of 2  train and validation `.csv` files there is 2 possible organisations for your root folder:
+Depending on which mode you want to function either through an ImageFolder organisation of the files or through a composition of 2 train and validation `.csv` files there is 2 possible organisations for your root folder:
 
--First case : ImageFolder like functionning
+- First case : ImageFolder like functionning
 
 This mode is the one implemented on the main branch of this repository. For it to work your folder should look like this :
 
