@@ -653,9 +653,9 @@ def make_transforms(
         #forked.set_trace()
         if subset_path is not None:
             if unlabeled_frac >= 0:
-                keep_file = os.path.join(subset_path, f'{int(unlabeled_frac* 100)}percent.txt')
+                keep_file = os.path.join(subset_path, f'{int(unlabeled_frac* 100)}percent.csv')
             else:
-                keep_file = os.path.join(subset_path, 'val.txt')
+                keep_file = os.path.join(subset_path, 'val.csv')
             logger.info(f'keep file: {keep_file}')
 
         return _make_clustervec_transforms(
@@ -906,25 +906,13 @@ def _make_clustervec_transforms(
         new_targets, new_samples = [], []
 
         if training and (keep_file is not None) and os.path.exists(keep_file):
-            liste_samples = [ i[0] for i in samples]
             logger.info(f'Using {keep_file}')
-            with open(keep_file, 'r') as rfile:
-                for line in rfile:
 
-                    class_name = line.split('_')[:-1] #TODO change class_name method/function
-                    class_name = "_".join(class_name)
-                    try:
-                        target = class_to_idx[class_name]
-                    except:
-                        class_name = class_name.replace('_',' ')
-                        target = class_to_idx[class_name]
-
-                    img = line.split('\n')[0]
-                    img = img.split('_')[-1]
-                    n_sample = os.path.join(root, class_name, img)
-                    index_sample = liste_samples.index(n_sample)
-                    new_samples.append(samples[index_sample])
-                    new_targets.append(target)
+            df = pd.read_csv(keep_file)
+            rfile = list(zip(df['img_path'],df['target'],df[['x1','y1','x2','y2']].values.tolist()))
+            for line in rfile:
+                new_samples.append(line)
+                new_targets.append(line[1])
         else:
             logger.info('flipping coin to keep labels')
             g = torch.Generator()
@@ -932,7 +920,7 @@ def _make_clustervec_transforms(
             for sample in samples:
                 if torch.bernoulli(torch.tensor(unlabel_prob), generator=g) == 0:
                     target = sample[1]
-                    new_samples.append((sample[0], target))
+                    new_samples.append(sample)
                     new_targets.append(target)
         return np.array(new_targets), np.array(new_samples)
 
@@ -1676,7 +1664,7 @@ class TransClusterVec(ClusterVec):
                 mint = len(indices) if mint is None else min(mint, len(indices))
                 logger.debug(f'num-labeled target {t} {len(indices)}')
             logger.debug(f'min. labeled indices {mint}')
-    #from pudb import forked; forked.set_trace() 
+
     @property
     def classes(self):
         return self.dataset.classes
