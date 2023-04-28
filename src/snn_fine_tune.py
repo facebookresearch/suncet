@@ -38,7 +38,7 @@ from src.losses import (
     init_suncet_loss,
     make_labels_matrix
 )
-from src.data_manager import (
+from src.data_manager_clustervec import (
     init_data,
     make_transforms
 )
@@ -65,7 +65,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger()
 
 
-def main(args):
+def main(args,run):
 
     # -- META
     model_name = args['meta']['model_name']
@@ -133,7 +133,6 @@ def main(args):
         device=device,
         unique_classes=unique_classes,
         smoothing=label_smoothing)
-
     # -- make data transforms
     transform, init_transform = make_transforms(
         dataset_name=dataset_name,
@@ -190,7 +189,7 @@ def main(args):
         momentum=momentum,
         nesterov=nesterov,
         use_lars=use_lars)
-
+    #from pudb import forked;forked.set_trace()
     best_acc, val_top1 = None, None
     start_epoch = 0
     # -- load checkpoint
@@ -211,6 +210,7 @@ def main(args):
             # -- update distributed-data-loader epoch
             dist_sampler.set_epoch(epoch)
 
+            #from pudb import forked; forked.set_trace()
             for i, data in enumerate(data_loader):
                 imgs = torch.cat([s.to(device) for s in data[:-1]], 0)
                 labels = torch.cat([labels_matrix for _ in range(supervised_views)])
@@ -222,8 +222,10 @@ def main(args):
                 scaler.step(optimizer)
                 scaler.update()
                 scheduler.step()
+                run.log({'loss':loss,"batch":i})
                 if i % log_freq == 0:
                     logger.info('[%d, %5d] (loss: %.3f)' % (epoch + 1, i, loss))
+
 
         with torch.no_grad():
             with nostdout():
@@ -238,6 +240,7 @@ def main(args):
                     normalize=normalize,
                     split_seed=data_seed)
         logger.info('[%d] (val: %.3f%%)' % (epoch + 1, val_top1))
+        run.log({"val top1":val_top1, "epoch": epoch+1})
         train_step()
 
         # -- logging/checkpointing
@@ -258,6 +261,7 @@ def main(args):
             torch.save(save_dict, w_enc_path)
 
     logger.info('[%d] (best-val: %.3f%%)' % (epoch + 1, best_acc))
+    run.log({"best_val":best_acc, "epoch": epoch+1})
 
 
 def load_pretrained(

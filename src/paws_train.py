@@ -21,7 +21,9 @@ import logging
 import sys
 from collections import OrderedDict
 
+
 import numpy as np
+
 
 import torch
 
@@ -38,7 +40,8 @@ from src.losses import (
     init_paws_loss,
     make_labels_matrix
 )
-from src.data_manager import (
+#TODO change before trainning
+from src.data_manager_clustervec import (
     init_data,
     make_transforms,
     make_multicrop_transform
@@ -62,9 +65,9 @@ torch.backends.cudnn.benchmark = True
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 
-
-def main(args):
+def main(args,run):
 
     # ----------------------------------------------------------------------- #
     #  PASSED IN PARAMS FROM CONFIG FILE
@@ -112,6 +115,7 @@ def main(args):
         mc_size = 96
 
     # -- OPTIMIZATION
+    new = args['optimization']['new_opt']
     wd = float(args['optimization']['weight_decay'])
     num_epochs = args['optimization']['epochs']
     warmup = args['optimization']['warmup']
@@ -199,6 +203,7 @@ def main(args):
      supervised_loader,
      supervised_sampler) = init_data(
          dataset_name=dataset_name,
+         subset_path=subset_path,
          transform=transform,
          init_transform=init_transform,
          supervised_views=supervised_views,
@@ -214,6 +219,8 @@ def main(args):
          training=True,
          copy_data=copy_data)
     iter_supervised = None
+
+
     ipe = len(unsupervised_loader)
     logger.info(f'iterations per epoch: {ipe}')
 
@@ -241,6 +248,7 @@ def main(args):
             encoder=encoder,
             opt=optimizer,
             scaler=scaler,
+            new=new,
             use_fp16=use_fp16)
         for _ in range(start_epoch):
             for _ in range(ipe):
@@ -265,10 +273,11 @@ def main(args):
         for itr, udata in enumerate(unsupervised_loader):
 
             def load_imgs():
+                #from pudb import forked;forked.set_trace()
                 # -- unsupervised imgs
                 uimgs = [u.to(device, non_blocking=True) for u in udata[:-1]]
                 # -- supervised imgs
-                global iter_supervised
+                global iter_supervised 
                 try:
                     sdata = next(iter_supervised)
                 except Exception:
@@ -336,12 +345,21 @@ def main(args):
             ploss_meter.update(ploss)
             rloss_meter.update(rloss)
             time_meter.update(etime)
+            rloss_meter.update(rloss)
+            time_meter.update(etime)
 
             if (itr % log_freq == 0) or np.isnan(loss) or np.isinf(loss):
                 csv_logger.log(epoch + 1, itr,
                                ploss_meter.avg,
                                rloss_meter.avg,
                                time_meter.avg)
+                if dataset_name != "test":
+                    run.log({
+                            'itr':itr,
+                            'paws-xent-loss': ploss_meter.avg,
+                            'paws-me_max-reg': rloss_meter.avg,
+                            'time (ms)': time_meter.avg
+                            })
                 logger.info('[%d, %5d] loss: %.3f (%.3f %.3f) '
                             '(%d ms; %d ms)'
                             % (epoch + 1, itr,
@@ -358,9 +376,17 @@ def main(args):
                                    lr_stats.max))
 
             assert not np.isnan(loss), 'loss is nan'
+            
 
         # -- logging/checkpointing
         logger.info('avg. loss %.3f' % loss_meter.avg)
+        if dataset_name != "test" :
+            run.log({
+                "epoch":epoch+1,
+                "avg loss":loss_meter.avg
+                })
+
+        #run.watch(encoder)
 
         if rank == 0:
             save_dict = {
@@ -391,17 +417,23 @@ def load_checkpoint(
     encoder,
     opt,
     scaler,
+    new,
     use_fp16=False
 ):
     checkpoint = torch.load(r_path, map_location='cpu')
     epoch = checkpoint['epoch']
-
+    #from pudb import forked; forked.set_trace()
     # -- loading encoder
-    encoder.load_state_dict(checkpoint['encoder'])
+    if encoder.model_name == "resnet18":
+        encoder.load_state_dict(checkpoint['state_dict'], strict = False)
+    else:
+        encoder.load_state_dict(checkpoint['encoder'], strict = False)
     logger.info(f'loaded encoder from epoch {epoch}')
 
     # -- loading optimizer
-    opt.load_state_dict(checkpoint['opt'])
+    if not new:
+        opt.load_state_dict(checkpoint['optimizer'])
+
     if use_fp16:
         scaler.load_state_dict(checkpoint['amp'])
     logger.info(f'loaded optimizers from epoch {epoch}')
@@ -449,7 +481,7 @@ def init_model(
         pred_head['relu'] = torch.nn.ReLU(inplace=True)
         pred_head['fc2'] = torch.nn.Linear(output_dim//mx, output_dim)
         encoder.pred = torch.nn.Sequential(pred_head)
-
+    encoder.model_name = model_name
     encoder.to(device)
     logger.info(encoder)
     return encoder

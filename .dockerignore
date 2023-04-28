@@ -4,5 +4,3 @@ datasets
 .*.swp
 *.pdf
 *.ipynb
-configs/*
-env/docker

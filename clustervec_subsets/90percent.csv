@@ -1,0 +1,967 @@
+,Unnamed: 0,x1,y1,x2,y2,img_path,score,target
+24,4603,36,91,736,512,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A1/4603.jpg,1.0,0
+25,6639,238,190,1284,670,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A1/6639.jpg,1.0,0
+26,5873,70,362,527,588,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A1/5873.jpg,1.0,0
+27,3961,358,93,1007,495,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A1/3961.jpg,1.0,0
+28,6257,130,490,893,939,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A1/6257.jpg,1.0,0
+29,6565,547,100,1289,560,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A1/6565.jpg,1.0,0
+49,6196,60,632,1084,1111,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A3/6196.jpg,1.0,1
+50,5811,97,729,1157,1299,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A3/5811.jpg,1.0,1
+51,6512,110,391,436,641,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A3/6512.jpg,1.0,1
+52,1194,494,115,1191,467,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A3/1194.jpg,1.0,1
+71,6926,285,209,1105,698,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A4/6926.jpg,1.0,2
+72,9459,389,3,1390,575,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A4/9459.jpg,1.0,2
+73,7187,437,109,1171,533,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A4/7187.jpg,1.0,2
+74,7623,398,149,1276,655,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A4/7623.jpg,1.0,2
+98,9482,363,41,1351,647,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A5/9482.jpg,1.0,3
+99,985,497,247,1151,577,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A5/985.jpg,1.0,3
+100,6837,14,101,1023,639,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A5/6837.jpg,1.0,3
+101,8027,534,225,1265,586,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A5/8027.jpg,1.0,3
+102,9070,769,93,1431,411,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A5/9070.jpg,1.0,3
+125,60,576,106,1312,477,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A6/60.jpg,1.0,4
+126,1416,312,14,1205,468,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A6/1416.jpg,1.0,4
+127,1770,0,55,931,708,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A6/1770.jpg,1.0,4
+128,1582,21,357,768,730,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A6/1582.jpg,1.0,4
+129,5941,0,162,986,721,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI A6/5941.jpg,1.0,4
+152,119,682,519,1851,1211,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q3/119.jpg,1.0,5
+153,1448,51,60,1028,688,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q3/1448.jpg,1.0,5
+154,2519,131,0,1381,703,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q3/2519.jpg,1.0,5
+155,2195,563,48,1258,484,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q3/2195.jpg,1.0,5
+156,7168,139,100,1389,705,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q3/7168.jpg,1.0,5
+178,366,222,4,980,472,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q5/366.jpg,1.0,6
+179,504,67,543,1066,1133,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q5/504.jpg,1.0,6
+180,5366,589,41,1443,560,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q5/5366.jpg,1.0,6
+181,5445,522,25,1279,499,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q5/5445.jpg,1.0,6
+182,3491,0,5,765,641,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q5/3491.jpg,1.0,6
+209,8329,74,529,1341,1217,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q7/8329.jpg,1.0,7
+210,9052,46,29,1112,617,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q7/9052.jpg,1.0,7
+211,8856,420,3,1576,669,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q7/8856.jpg,1.0,7
+212,4369,45,9,865,504,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q7/4369.jpg,1.0,7
+213,272,40,311,561,610,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q7/272.jpg,1.0,7
+214,6488,0,0,964,690,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/AUDI Q7/6488.jpg,1.0,7
+238,8695,95,718,1260,1318,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 1/8695.jpg,1.0,8
+239,5642,170,219,742,603,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 1/5642.jpg,1.0,8
+240,2160,82,319,552,599,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 1/2160.jpg,1.0,8
+241,3872,451,205,1090,523,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 1/3872.jpg,1.0,8
+242,5332,307,200,1145,702,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 1/5332.jpg,1.0,8
+243,2118,520,151,1204,491,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 1/2118.jpg,1.0,8
+273,7240,610,190,1362,720,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KUGA/7240.jpg,1.0,48
+274,4812,28,323,516,612,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KUGA/4812.jpg,1.0,48
+275,6236,138,4,876,457,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KUGA/6236.jpg,1.0,48
+276,3059,650,232,1365,643,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KUGA/3059.jpg,1.0,48
+277,6899,424,208,1117,673,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KUGA/6899.jpg,1.0,48
+278,6397,755,70,1401,453,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KUGA/6397.jpg,1.0,48
+279,6001,311,91,1180,614,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KUGA/6001.jpg,1.0,48
+304,8627,81,606,1250,1214,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 2/8627.jpg,1.0,9
+305,5965,347,7,1103,472,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 2/5965.jpg,1.0,9
+306,9543,275,242,803,675,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 2/9543.jpg,1.0,9
+307,4423,570,60,1443,535,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 2/4423.jpg,1.0,9
+308,5776,230,107,989,564,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 2/5776.jpg,1.0,9
+309,2515,26,29,1237,659,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 2/2515.jpg,1.0,9
+336,8163,1,190,957,721,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 3/8163.jpg,1.0,10
+337,9096,141,105,977,500,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 3/9096.jpg,1.0,10
+338,9056,23,596,1098,1128,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 3/9056.jpg,1.0,10
+339,4449,408,284,1272,685,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 3/4449.jpg,1.0,10
+340,490,33,9,1377,630,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 3/490.jpg,1.0,10
+341,5880,46,344,502,614,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 3/5880.jpg,1.0,10
+368,2299,477,21,1453,529,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 5/2299.jpg,1.0,11
+369,627,597,117,1352,589,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 5/627.jpg,1.0,11
+370,3440,643,230,1215,539,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 5/3440.jpg,1.0,11
+371,9750,106,173,836,578,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 5/9750.jpg,1.0,11
+372,399,400,197,1095,566,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 5/399.jpg,1.0,11
+373,4110,46,181,867,583,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/BMW SERIE 5/4110.jpg,1.0,11
+396,7885,872,698,2581,1861,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN BERLINGO/7885.jpg,1.0,12
+397,4675,360,8,1000,468,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN BERLINGO/4675.jpg,1.0,12
+398,2557,271,182,771,613,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN BERLINGO/2557.jpg,1.0,12
+399,181,638,2,1385,537,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN BERLINGO/181.jpg,1.0,12
+400,4685,542,0,1246,514,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN BERLINGO/4685.jpg,1.0,12
+425,6053,469,110,1255,618,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C1/6053.jpg,1.0,13
+426,7917,466,0,1004,363,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C1/7917.jpg,1.0,13
+427,6389,0,12,857,539,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C1/6389.jpg,1.0,13
+428,5582,348,155,1052,616,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C1/5582.jpg,1.0,13
+429,7208,246,136,1126,644,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C1/7208.jpg,1.0,13
+430,7822,171,0,940,376,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C1/7822.jpg,1.0,13
+457,370,178,100,1009,671,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C2/370.jpg,1.0,14
+458,2907,6,0,703,284,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C2/2907.jpg,1.0,14
+459,9708,413,107,1148,577,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C2/9708.jpg,1.0,14
+460,36,672,22,1606,708,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C2/36.jpg,1.0,14
+461,2967,826,12,1614,491,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C2/2967.jpg,1.0,14
+462,1938,7,328,698,690,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GRAND C-MAX/1938.jpg,1.0,46
+488,5328,15,16,989,653,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GRAND C-MAX/5328.jpg,1.0,46
+489,8739,770,193,1303,601,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GRAND C-MAX/8739.jpg,1.0,46
+490,6089,515,68,1251,584,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GRAND C-MAX/6089.jpg,1.0,46
+491,3383,295,3,1032,487,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GRAND C-MAX/3383.jpg,1.0,46
+492,8129,82,437,768,828,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GRAND C-MAX/8129.jpg,1.0,46
+493,1057,719,69,1387,447,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GRAND C-MAX/1057.jpg,1.0,46
+518,4615,50,682,1083,1243,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3/4615.jpg,1.0,15
+519,6251,409,2,1196,353,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3/6251.jpg,1.0,15
+520,5320,673,145,1528,696,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3/5320.jpg,1.0,15
+521,4001,681,200,1389,720,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3/4001.jpg,1.0,15
+522,5753,178,191,862,666,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3/5753.jpg,1.0,15
+523,6134,52,267,446,538,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3/6134.jpg,1.0,15
+557,6238,736,0,1583,395,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3 PICASSO/6238.jpg,1.0,16
+558,857,289,90,1358,704,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3 PICASSO/857.jpg,1.0,16
+559,7610,478,7,1469,672,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3 PICASSO/7610.jpg,1.0,16
+560,7562,515,110,1133,525,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3 PICASSO/7562.jpg,1.0,16
+561,6560,1631,135,2335,670,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3 PICASSO/6560.jpg,1.0,16
+562,9960,565,0,1302,504,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3 PICASSO/9960.jpg,1.0,16
+563,9456,495,7,1385,675,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3 PICASSO/9456.jpg,1.0,16
+564,6833,99,40,993,565,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C3 PICASSO/6833.jpg,1.0,16
+596,8260,651,0,1381,434,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4/8260.jpg,1.0,17
+597,9813,0,153,706,577,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4/9813.jpg,1.0,17
+598,5472,16,8,1011,680,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4/5472.jpg,1.0,17
+599,2407,115,351,630,675,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4/2407.jpg,1.0,17
+600,4288,870,109,1622,601,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4/4288.jpg,1.0,17
+601,9466,560,60,1210,421,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4/9466.jpg,1.0,17
+602,9686,160,215,1029,674,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC60/9686.jpg,1.0,149
+633,623,101,1,1273,644,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC60/623.jpg,1.0,149
+634,7191,409,237,977,611,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC60/7191.jpg,1.0,149
+635,4952,305,2,1077,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC60/4952.jpg,1.0,149
+636,8158,277,32,1298,652,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC60/8158.jpg,1.0,149
+637,5573,281,8,1131,569,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC60/5573.jpg,1.0,149
+638,1449,498,14,1420,644,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC60/1449.jpg,1.0,149
+639,8721,337,0,1441,528,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC60/8721.jpg,1.0,149
+672,6702,684,36,1333,438,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 CACTUS/6702.jpg,1.0,18
+673,7598,507,77,1251,555,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 CACTUS/7598.jpg,1.0,18
+674,1018,132,599,1202,1197,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 CACTUS/1018.jpg,1.0,18
+675,5127,475,0,1125,354,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 CACTUS/5127.jpg,1.0,18
+676,1908,438,93,1373,692,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 CACTUS/1908.jpg,1.0,18
+677,3852,73,36,1010,590,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 CACTUS/3852.jpg,1.0,18
+678,2456,49,350,480,654,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 CACTUS/2456.jpg,1.0,18
+679,9202,83,321,608,625,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 CACTUS/9202.jpg,1.0,18
+710,8920,321,49,1390,702,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 PICASSO/8920.jpg,1.0,19
+711,9941,507,34,1359,673,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 PICASSO/9941.jpg,1.0,19
+712,4462,65,534,1083,1102,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 PICASSO/4462.jpg,1.0,19
+713,2338,71,630,1244,1296,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 PICASSO/2338.jpg,1.0,19
+714,4231,664,129,1373,701,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 PICASSO/4231.jpg,1.0,19
+715,2757,0,2,946,412,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 PICASSO/2757.jpg,1.0,19
+716,9996,204,7,946,476,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C4 PICASSO/9996.jpg,1.0,19
+748,8522,85,343,546,656,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C5/8522.jpg,1.0,20
+749,9491,662,117,1469,572,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C5/9491.jpg,1.0,20
+750,5286,135,736,729,1165,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C5/5286.jpg,1.0,20
+751,2932,16,339,419,662,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C5/2932.jpg,1.0,20
+752,4025,515,885,2789,1574,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C5/4025.jpg,1.0,20
+753,9339,116,681,1339,1356,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C5/9339.jpg,1.0,20
+754,9415,310,16,1242,614,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C5/9415.jpg,1.0,20
+783,8372,166,3,854,365,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C8/8372.jpg,1.0,21
+784,6128,21,0,835,420,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C8/6128.jpg,1.0,21
+785,2724,510,0,1272,403,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C8/2724.jpg,1.0,21
+786,3653,340,0,1343,554,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C8/3653.jpg,1.0,21
+787,511,338,0,1280,534,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C8/511.jpg,1.0,21
+788,7956,344,13,1282,651,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C8/7956.jpg,1.0,21
+789,7217,289,14,1391,669,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN C8/7217.jpg,1.0,21
+817,10320,27,0,981,447,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS4/10320.jpg,1.0,22
+818,5874,403,86,1192,547,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS4/5874.jpg,1.0,22
+819,5716,77,561,1067,1113,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS4/5716.jpg,1.0,22
+820,8339,305,33,1213,669,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS4/8339.jpg,1.0,22
+821,7426,0,1,941,635,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS4/7426.jpg,1.0,22
+822,1298,0,3,724,404,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS4/1298.jpg,1.0,22
+857,6569,55,293,618,600,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS5/6569.jpg,1.0,23
+858,4577,6,111,918,726,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS5/4577.jpg,1.0,23
+859,5136,100,717,1325,1396,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS5/5136.jpg,1.0,23
+860,9758,192,0,1017,495,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS5/9758.jpg,1.0,23
+861,2887,149,136,1055,669,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS5/2887.jpg,1.0,23
+862,5400,135,41,1215,688,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS5/5400.jpg,1.0,23
+863,233,329,187,1300,679,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS5/233.jpg,1.0,23
+864,6006,782,1198,1959,1827,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN DS5/6006.jpg,1.0,23
+881,803,0,0,1298,686,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPER/803.jpg,1.0,24
+882,7031,17,2,930,531,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPER/7031.jpg,1.0,24
+883,7899,14,0,1390,713,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPER/7899.jpg,1.0,24
+884,193,285,4,806,407,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPER/193.jpg,1.0,24
+907,522,329,149,1087,592,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPY/522.jpg,1.0,25
+908,1135,820,2,1380,334,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPY/1135.jpg,1.0,25
+909,1412,522,2,1197,408,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPY/1412.jpg,1.0,25
+910,1165,804,433,1750,1128,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPY/1165.jpg,1.0,25
+911,7735,602,123,1203,511,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN JUMPY/7735.jpg,1.0,25
+940,5818,410,173,859,473,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN SAXO/5818.jpg,1.0,26
+941,3993,623,181,1390,702,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN SAXO/3993.jpg,1.0,26
+942,2297,416,34,1004,456,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN SAXO/2297.jpg,1.0,26
+943,2439,329,837,1744,1694,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN SAXO/2439.jpg,1.0,26
+944,546,421,5,1306,506,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN SAXO/546.jpg,1.0,26
+945,5728,803,80,1363,424,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN SAXO/5728.jpg,1.0,26
+946,5194,424,163,1030,522,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN SAXO/5194.jpg,1.0,26
+979,7662,716,17,1390,701,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA/7662.jpg,1.0,27
+980,9246,291,264,1077,633,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA/9246.jpg,1.0,27
+981,1014,138,0,1003,545,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA/1014.jpg,1.0,27
+982,9769,405,176,1230,667,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA/9769.jpg,1.0,27
+983,2836,65,323,536,593,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA/2836.jpg,1.0,27
+984,3153,65,46,801,486,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA/3153.jpg,1.0,27
+985,9936,840,196,1401,478,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA/9936.jpg,1.0,27
+986,5214,500,103,1245,568,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA/5214.jpg,1.0,27
+1018,5962,3,16,947,621,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA PICASSO/5962.jpg,1.0,28
+1019,933,252,59,1072,656,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA PICASSO/933.jpg,1.0,28
+1020,10247,457,3,1142,404,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA PICASSO/10247.jpg,1.0,28
+1021,8392,620,88,1395,601,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA PICASSO/8392.jpg,1.0,28
+1022,5138,703,187,1469,685,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA PICASSO/5138.jpg,1.0,28
+1023,1857,71,0,1037,563,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA PICASSO/1857.jpg,1.0,28
+1024,2374,825,0,1376,359,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA PICASSO/2374.jpg,1.0,28
+1025,3554,652,61,1333,429,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/CITROEN XSARA PICASSO/3554.jpg,1.0,28
+1057,8968,180,551,908,1165,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V40/8968.jpg,1.0,147
+1058,10075,129,192,1060,705,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V40/10075.jpg,1.0,147
+1059,4365,389,75,1371,685,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V40/4365.jpg,1.0,147
+1060,1791,71,604,1393,1566,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V40/1791.jpg,1.0,147
+1061,4322,1222,770,2873,1664,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V40/4322.jpg,1.0,147
+1062,2493,224,703,1309,1279,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V40/2493.jpg,1.0,147
+1063,10230,224,27,863,410,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V40/10230.jpg,1.0,147
+1089,7647,520,0,1390,497,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA DUSTER/7647.jpg,1.0,29
+1090,9808,0,11,1103,683,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA DUSTER/9808.jpg,1.0,29
+1091,8020,628,78,1287,530,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA DUSTER/8020.jpg,1.0,29
+1092,6018,478,120,1163,520,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA DUSTER/6018.jpg,1.0,29
+1093,8914,683,17,1339,399,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA DUSTER/8914.jpg,1.0,29
+1094,2107,672,63,1487,502,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA DUSTER/2107.jpg,1.0,29
+1119,9155,266,0,1367,565,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LODGY/9155.jpg,1.0,30
+1120,5403,145,11,1127,640,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LODGY/5403.jpg,1.0,30
+1121,10071,23,274,564,612,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LODGY/10071.jpg,1.0,30
+1122,3474,666,77,1386,537,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LODGY/3474.jpg,1.0,30
+1123,5319,662,189,1622,734,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LODGY/5319.jpg,1.0,30
+1124,1847,675,61,1345,501,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LODGY/1847.jpg,1.0,30
+1151,7804,544,7,1556,636,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LOGAN/7804.jpg,1.0,31
+1152,9322,537,1,1320,459,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LOGAN/9322.jpg,1.0,31
+1153,9124,486,37,1228,505,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LOGAN/9124.jpg,1.0,31
+1154,3994,631,77,1318,529,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LOGAN/3994.jpg,1.0,31
+1155,350,623,63,1323,585,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LOGAN/350.jpg,1.0,31
+1156,4948,490,38,1462,683,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA LOGAN/4948.jpg,1.0,31
+1185,7715,20,85,898,588,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA SANDERO/7715.jpg,1.0,32
+1186,5126,479,43,1271,535,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA SANDERO/5126.jpg,1.0,32
+1187,7046,59,307,421,612,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA SANDERO/7046.jpg,1.0,32
+1188,2934,416,41,1164,527,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA SANDERO/2934.jpg,1.0,32
+1189,7585,39,2,926,492,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA SANDERO/7585.jpg,1.0,32
+1190,7408,545,280,1159,731,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA SANDERO/7408.jpg,1.0,32
+1191,6808,479,227,1227,633,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DACIA SANDERO/6808.jpg,1.0,32
+1222,528,646,97,1461,613,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DS DS 3/528.jpg,1.0,33
+1223,6545,117,670,1195,1289,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DS DS 3/6545.jpg,1.0,33
+1224,4361,329,117,1240,668,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DS DS 3/4361.jpg,1.0,33
+1225,6862,167,66,1178,637,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DS DS 3/6862.jpg,1.0,33
+1226,5826,46,303,550,599,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DS DS 3/5826.jpg,1.0,33
+1227,1728,57,329,524,636,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DS DS 3/1728.jpg,1.0,33
+1228,7775,101,400,715,734,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/DS DS 3/7775.jpg,1.0,33
+1256,10246,524,68,1481,707,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT 500/10246.jpg,1.0,34
+1257,5944,0,0,1255,645,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT 500/5944.jpg,1.0,34
+1258,5585,366,50,1170,610,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT 500/5585.jpg,1.0,34
+1259,7297,580,6,1100,380,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT 500/7297.jpg,1.0,34
+1260,6845,604,67,1347,550,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT 500/6845.jpg,1.0,34
+1261,1276,410,4,1002,375,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT 500/1276.jpg,1.0,34
+1286,9793,0,4,714,493,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DOBLO/9793.jpg,1.0,35
+1287,6903,168,494,1150,1200,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DOBLO/6903.jpg,1.0,35
+1288,9848,18,4,1372,735,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DOBLO/9848.jpg,1.0,35
+1289,5065,279,29,862,442,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DOBLO/5065.jpg,1.0,35
+1290,6673,227,51,827,509,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DOBLO/6673.jpg,1.0,35
+1291,2801,819,3,1347,378,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DOBLO/2801.jpg,1.0,35
+1313,7596,425,5,1250,488,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DUCATO/7596.jpg,1.0,36
+1314,2663,733,5,1462,453,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DUCATO/2663.jpg,1.0,36
+1315,2343,200,0,873,448,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DUCATO/2343.jpg,1.0,36
+1316,4519,650,0,1338,497,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DUCATO/4519.jpg,1.0,36
+1317,2459,2,7,368,402,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT DUCATO/2459.jpg,1.0,36
+1347,7757,581,84,1425,657,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PANDA/7757.jpg,1.0,37
+1348,1199,379,1,1008,396,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PANDA/1199.jpg,1.0,37
+1349,7141,101,341,542,605,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PANDA/7141.jpg,1.0,37
+1350,213,200,63,824,489,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PANDA/213.jpg,1.0,37
+1351,7871,836,54,1496,574,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PANDA/7871.jpg,1.0,37
+1352,6848,190,83,1173,646,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PANDA/6848.jpg,1.0,37
+1353,5625,32,299,289,498,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PANDA/5625.jpg,1.0,37
+1383,7309,0,110,626,477,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PUNTO/7309.jpg,1.0,38
+1384,1149,76,302,401,548,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PUNTO/1149.jpg,1.0,38
+1385,6904,298,209,938,666,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PUNTO/6904.jpg,1.0,38
+1386,128,612,13,1092,305,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PUNTO/128.jpg,1.0,38
+1387,7526,781,171,1350,494,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PUNTO/7526.jpg,1.0,38
+1388,6363,74,374,638,725,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PUNTO/6363.jpg,1.0,38
+1389,5994,251,64,1321,725,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT PUNTO/5994.jpg,1.0,38
+1415,6471,804,0,1376,540,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT SCUDO/6471.jpg,1.0,39
+1416,9074,363,136,998,561,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT SCUDO/9074.jpg,1.0,39
+1417,7002,0,281,657,736,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT SCUDO/7002.jpg,1.0,39
+1418,5159,25,229,602,602,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT SCUDO/5159.jpg,1.0,39
+1419,8725,535,159,1383,696,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT SCUDO/8725.jpg,1.0,39
+1420,1953,298,0,1435,889,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT SCUDO/1953.jpg,1.0,39
+1446,6863,25,7,1176,647,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT TIPO/6863.jpg,1.0,40
+1447,9160,848,238,1434,552,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT TIPO/9160.jpg,1.0,40
+1448,7127,392,21,1591,698,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT TIPO/7127.jpg,1.0,40
+1449,5663,134,499,1074,993,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT TIPO/5663.jpg,1.0,40
+1450,8737,665,249,1261,558,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT TIPO/8737.jpg,1.0,40
+1451,1497,46,411,597,728,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FIAT TIPO/1497.jpg,1.0,40
+1476,8846,436,9,1149,430,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD C-MAX/8846.jpg,1.0,41
+1477,7219,304,87,1124,589,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD C-MAX/7219.jpg,1.0,41
+1478,9836,694,46,1318,390,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD C-MAX/9836.jpg,1.0,41
+1479,5043,0,249,494,506,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD C-MAX/5043.jpg,1.0,41
+1480,6965,0,113,948,675,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD C-MAX/6965.jpg,1.0,41
+1481,2380,490,122,1198,565,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD C-MAX/2380.jpg,1.0,41
+1510,8433,699,83,1314,396,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FIESTA/8433.jpg,1.0,42
+1511,5959,375,95,1379,714,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FIESTA/5959.jpg,1.0,42
+1512,7903,507,218,1227,632,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FIESTA/7903.jpg,1.0,42
+1513,3167,292,0,1386,667,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FIESTA/3167.jpg,1.0,42
+1514,8187,320,142,1105,637,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FIESTA/8187.jpg,1.0,42
+1515,8025,478,85,1379,704,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FIESTA/8025.jpg,1.0,42
+1516,7646,38,423,774,850,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FIESTA/7646.jpg,1.0,42
+1541,9211,725,92,1498,563,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FOCUS/9211.jpg,1.0,43
+1542,6681,49,188,849,605,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FOCUS/6681.jpg,1.0,43
+1543,9454,327,104,1039,482,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FOCUS/9454.jpg,1.0,43
+1544,4761,461,45,1366,547,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FOCUS/4761.jpg,1.0,43
+1545,6616,868,134,1474,448,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FOCUS/6616.jpg,1.0,43
+1546,1924,582,142,1292,593,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FOCUS/1924.jpg,1.0,43
+1569,6434,8,25,1076,696,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FUSION/6434.jpg,1.0,44
+1570,3101,500,73,1400,694,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FUSION/3101.jpg,1.0,44
+1571,1431,331,189,1099,692,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FUSION/1431.jpg,1.0,44
+1572,386,683,152,1377,640,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FUSION/386.jpg,1.0,44
+1573,3185,699,34,1206,336,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD FUSION/3185.jpg,1.0,44
+1600,8097,339,51,1358,665,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GALAXY/8097.jpg,1.0,45
+1601,9536,56,289,562,635,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GALAXY/9536.jpg,1.0,45
+1602,9247,503,134,1293,581,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GALAXY/9247.jpg,1.0,45
+1603,3594,361,3,815,556,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GALAXY/3594.jpg,1.0,45
+1604,134,80,310,674,702,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GALAXY/134.jpg,1.0,45
+1605,5109,0,88,606,483,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD GALAXY/5109.jpg,1.0,45
+1632,6995,277,292,870,689,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KA/6995.jpg,1.0,47
+1633,9062,228,26,1325,692,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KA/9062.jpg,1.0,47
+1634,8592,104,274,503,500,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KA/8592.jpg,1.0,47
+1635,4029,56,409,809,809,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KA/4029.jpg,1.0,47
+1636,402,498,7,1393,560,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KA/402.jpg,1.0,47
+1637,5308,317,137,1126,693,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD KA/5308.jpg,1.0,47
+1669,7996,279,559,734,810,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD MONDEO/7996.jpg,1.0,49
+1670,9442,391,209,1152,656,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD MONDEO/9442.jpg,1.0,49
+1671,4909,0,34,925,688,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD MONDEO/4909.jpg,1.0,49
+1672,1878,325,16,996,559,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD MONDEO/1878.jpg,1.0,49
+1673,3897,354,35,1222,635,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD MONDEO/3897.jpg,1.0,49
+1674,9035,318,175,1282,724,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD MONDEO/9035.jpg,1.0,49
+1675,9409,351,154,1283,712,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD MONDEO/9409.jpg,1.0,49
+1700,4504,605,14,1626,720,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD RANGER/4504.jpg,1.0,50
+1701,1936,533,16,1371,554,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD RANGER/1936.jpg,1.0,50
+1702,6759,660,0,1624,569,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD RANGER/6759.jpg,1.0,50
+1703,3669,432,0,1626,712,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD RANGER/3669.jpg,1.0,50
+1704,3985,245,2,1279,532,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD RANGER/3985.jpg,1.0,50
+1733,8161,43,634,1374,1304,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD S-MAX/8161.jpg,1.0,51
+1734,5764,545,199,1165,601,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD S-MAX/5764.jpg,1.0,51
+1735,3035,0,81,737,634,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD S-MAX/3035.jpg,1.0,51
+1736,3146,451,14,1529,682,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD S-MAX/3146.jpg,1.0,51
+1737,289,488,165,1247,626,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD S-MAX/289.jpg,1.0,51
+1738,7848,291,16,931,377,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD S-MAX/7848.jpg,1.0,51
+1739,6952,294,8,1222,581,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD S-MAX/6952.jpg,1.0,51
+1757,9513,161,362,1398,1253,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD TRANSIT CUSTOM/9513.jpg,1.0,52
+1758,733,9,4,624,451,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD TRANSIT CUSTOM/733.jpg,1.0,52
+1759,4865,412,0,1182,479,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD TRANSIT CUSTOM/4865.jpg,1.0,52
+1760,7071,404,6,1240,647,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/FORD TRANSIT CUSTOM/7071.jpg,1.0,52
+1791,1398,657,93,1491,565,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CIVIC/1398.jpg,1.0,53
+1792,6830,148,527,1130,1063,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CIVIC/6830.jpg,1.0,53
+1793,4187,745,44,1371,477,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CIVIC/4187.jpg,1.0,53
+1794,7658,284,10,970,393,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CIVIC/7658.jpg,1.0,53
+1795,5981,433,132,1092,557,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CIVIC/5981.jpg,1.0,53
+1796,2322,322,96,1120,584,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CIVIC/2322.jpg,1.0,53
+1797,8002,342,4,1360,493,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CIVIC/8002.jpg,1.0,53
+1830,6054,551,104,1286,586,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CR-V/6054.jpg,1.0,54
+1831,8630,812,0,1552,378,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CR-V/8630.jpg,1.0,54
+1832,1067,483,66,1222,535,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CR-V/1067.jpg,1.0,54
+1833,9363,558,4,1499,579,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CR-V/9363.jpg,1.0,54
+1834,1694,293,14,1027,493,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CR-V/1694.jpg,1.0,54
+1835,1713,422,4,1366,591,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CR-V/1713.jpg,1.0,54
+1836,9866,439,47,1213,553,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CR-V/9866.jpg,1.0,54
+1837,3469,496,0,1025,611,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HONDA CR-V/3469.jpg,1.0,54
+1866,5131,290,40,1123,604,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HYUNDAI TUCSON/5131.jpg,1.0,55
+1867,6191,224,11,1111,492,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HYUNDAI TUCSON/6191.jpg,1.0,55
+1868,86,32,0,1602,701,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HYUNDAI TUCSON/86.jpg,1.0,55
+1869,6583,194,10,1067,585,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HYUNDAI TUCSON/6583.jpg,1.0,55
+1870,3332,543,77,1395,689,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HYUNDAI TUCSON/3332.jpg,1.0,55
+1871,9434,199,12,954,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/HYUNDAI TUCSON/9434.jpg,1.0,55
+1901,7345,484,38,1201,565,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/JEEP RENEGADE/7345.jpg,1.0,56
+1902,5133,249,162,1159,738,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/JEEP RENEGADE/5133.jpg,1.0,56
+1903,7167,165,2,1120,588,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/JEEP RENEGADE/7167.jpg,1.0,56
+1904,7375,297,122,1009,568,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/JEEP RENEGADE/7375.jpg,1.0,56
+1905,1017,556,52,1138,436,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/JEEP RENEGADE/1017.jpg,1.0,56
+1906,4409,504,0,1368,516,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/JEEP RENEGADE/4409.jpg,1.0,56
+1907,4707,384,3,1390,694,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/JEEP RENEGADE/4707.jpg,1.0,56
+1934,2447,334,84,947,463,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA CEE D/2447.jpg,1.0,57
+1935,931,698,212,2625,1386,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA CEE D/931.jpg,1.0,57
+1936,3509,132,651,1310,1267,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA CEE D/3509.jpg,1.0,57
+1937,10088,135,620,1119,1149,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA CEE D/10088.jpg,1.0,57
+1938,524,308,82,1215,633,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA CEE D/524.jpg,1.0,57
+1939,3805,20,323,551,642,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA CEE D/3805.jpg,1.0,57
+1965,5744,732,155,1210,544,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA PICANTO/5744.jpg,1.0,58
+1966,8645,582,72,1661,1030,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA PICANTO/8645.jpg,1.0,58
+1967,6149,76,491,820,932,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA PICANTO/6149.jpg,1.0,58
+1968,3864,449,127,1061,542,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA PICANTO/3864.jpg,1.0,58
+1969,7432,811,52,1486,474,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA PICANTO/7432.jpg,1.0,58
+1970,895,675,2,1316,385,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA PICANTO/895.jpg,1.0,58
+2003,712,938,232,1565,541,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA RIO/712.jpg,1.0,59
+2004,10162,106,634,1190,1230,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA RIO/10162.jpg,1.0,59
+2005,9291,314,77,1314,660,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA RIO/9291.jpg,1.0,59
+2006,6276,11,56,939,634,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA RIO/6276.jpg,1.0,59
+2007,1824,93,465,1016,876,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA RIO/1824.jpg,1.0,59
+2008,8148,0,61,1345,683,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA RIO/8148.jpg,1.0,59
+2009,3793,716,253,1342,578,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA RIO/3793.jpg,1.0,59
+2043,6406,399,21,1591,661,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA SPORTAGE/6406.jpg,1.0,60
+2044,835,544,0,1376,479,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA SPORTAGE/835.jpg,1.0,60
+2045,8259,57,272,522,581,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA SPORTAGE/8259.jpg,1.0,60
+2046,7974,0,3,744,475,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA SPORTAGE/7974.jpg,1.0,60
+2047,6601,251,84,1005,648,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA SPORTAGE/6601.jpg,1.0,60
+2048,10078,1708,218,2530,729,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA SPORTAGE/10078.jpg,1.0,60
+2049,9881,174,609,1183,1251,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA SPORTAGE/9881.jpg,1.0,60
+2050,6975,194,536,1186,1188,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/KIA SPORTAGE/6975.jpg,1.0,60
+2083,6828,73,553,1037,1165,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MAZDA CX-5/6828.jpg,1.0,61
+2084,8175,163,1,940,411,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MAZDA CX-5/8175.jpg,1.0,61
+2085,1361,8,6,920,672,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MAZDA CX-5/1361.jpg,1.0,61
+2086,5246,233,13,1449,694,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MAZDA CX-5/5246.jpg,1.0,61
+2087,1892,28,539,1097,1181,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MAZDA CX-5/1892.jpg,1.0,61
+2088,4036,701,25,1463,571,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MAZDA CX-5/4036.jpg,1.0,61
+2089,2823,313,72,1374,722,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MAZDA CX-5/2823.jpg,1.0,61
+2090,9510,257,47,1395,718,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MAZDA CX-5/9510.jpg,1.0,61
+2124,5970,835,65,1395,352,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLA/5970.jpg,1.0,62
+2125,756,20,5,1372,690,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLA/756.jpg,1.0,62
+2126,7689,8,0,624,306,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLA/7689.jpg,1.0,62
+2127,7511,76,635,1207,1212,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLA/7511.jpg,1.0,62
+2128,6346,555,90,1390,698,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLA/6346.jpg,1.0,62
+2129,10299,326,86,1134,544,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLA/10299.jpg,1.0,62
+2130,9663,374,83,1040,435,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLA/9663.jpg,1.0,62
+2131,7085,666,88,1387,718,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLA/7085.jpg,1.0,62
+2165,5618,0,0,1211,659,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE A/5618.jpg,1.0,63
+2166,7868,41,140,1315,695,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE A/7868.jpg,1.0,63
+2167,1130,602,116,1427,679,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE A/1130.jpg,1.0,63
+2168,7477,152,17,986,529,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE A/7477.jpg,1.0,63
+2169,1413,212,102,1270,727,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE A/1413.jpg,1.0,63
+2170,1618,95,714,1304,1340,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE A/1618.jpg,1.0,63
+2171,9974,407,31,1259,627,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE A/9974.jpg,1.0,63
+2172,1369,44,568,1011,1084,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE A/1369.jpg,1.0,63
+2202,7318,446,56,1376,671,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE B/7318.jpg,1.0,64
+2203,5298,121,97,960,618,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE B/5298.jpg,1.0,64
+2204,7084,86,529,1044,1136,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE B/7084.jpg,1.0,64
+2205,7349,271,0,1086,485,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE B/7349.jpg,1.0,64
+2206,818,619,308,1283,652,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE B/818.jpg,1.0,64
+2207,4568,440,547,1214,1035,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE B/4568.jpg,1.0,64
+2208,4930,61,418,793,849,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE B/4930.jpg,1.0,64
+2237,6232,99,57,1068,606,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE C/6232.jpg,1.0,65
+2238,7844,709,112,1294,511,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE C/7844.jpg,1.0,65
+2239,126,346,0,1172,437,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE C/126.jpg,1.0,65
+2240,8281,0,217,885,672,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE C/8281.jpg,1.0,65
+2241,4034,254,17,1012,443,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE C/4034.jpg,1.0,65
+2242,9864,258,197,1104,665,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE C/9864.jpg,1.0,65
+2271,6620,146,10,1038,476,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE E/6620.jpg,1.0,66
+2272,953,423,226,1181,582,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE E/953.jpg,1.0,66
+2273,5703,783,117,1291,422,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE E/5703.jpg,1.0,66
+2274,6771,948,65,1606,474,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE E/6771.jpg,1.0,66
+2275,9715,27,322,533,619,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE E/9715.jpg,1.0,66
+2276,3648,85,33,1181,666,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE E/3648.jpg,1.0,66
+2277,4198,400,114,1379,681,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE E/4198.jpg,1.0,66
+2307,7178,19,247,576,626,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE M/7178.jpg,1.0,67
+2308,871,229,4,1072,563,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE M/871.jpg,1.0,67
+2309,6906,0,26,890,704,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE M/6906.jpg,1.0,67
+2310,73,28,7,1016,648,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE M/73.jpg,1.0,67
+2311,7471,288,0,1070,432,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE M/7471.jpg,1.0,67
+2312,6102,638,0,1441,438,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE M/6102.jpg,1.0,67
+2313,5567,690,8,1509,326,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE M/5567.jpg,1.0,67
+2346,6650,211,91,782,424,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE S/6650.jpg,1.0,68
+2347,8366,23,522,1099,1026,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE S/8366.jpg,1.0,68
+2348,1259,561,0,926,398,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE S/1259.jpg,1.0,68
+2349,9142,108,116,1198,712,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE S/9142.jpg,1.0,68
+2350,2137,91,246,910,640,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE S/2137.jpg,1.0,68
+2351,2190,120,1,946,401,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE S/2190.jpg,1.0,68
+2352,9637,355,122,1251,610,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE S/9637.jpg,1.0,68
+2353,4388,17,77,568,454,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE S/4388.jpg,1.0,68
+2384,827,76,504,1418,1323,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE V/827.jpg,1.0,69
+2385,8014,341,38,1131,538,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE V/8014.jpg,1.0,69
+2386,4973,48,7,919,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE V/4973.jpg,1.0,69
+2387,8472,0,0,1390,727,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE V/8472.jpg,1.0,69
+2388,7259,29,421,1169,1076,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE V/7259.jpg,1.0,69
+2389,2516,9,311,785,714,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE V/2516.jpg,1.0,69
+2390,8834,16,0,1381,750,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES CLASSE V/8834.jpg,1.0,69
+2425,6797,111,3,1349,697,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLA/6797.jpg,1.0,70
+2426,680,415,10,1352,502,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLA/680.jpg,1.0,70
+2427,7961,310,9,1211,464,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLA/7961.jpg,1.0,70
+2428,7955,412,679,1694,1276,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLA/7955.jpg,1.0,70
+2429,6885,332,98,878,384,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLA/6885.jpg,1.0,70
+2430,10138,314,108,1345,703,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLA/10138.jpg,1.0,70
+2431,9763,257,22,1090,530,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLA/9763.jpg,1.0,70
+2432,7420,233,22,1341,662,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLA/7420.jpg,1.0,70
+2463,6414,92,128,988,571,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLC/6414.jpg,1.0,71
+2464,469,5,177,853,702,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLC/469.jpg,1.0,71
+2465,6554,653,0,1238,446,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLC/6554.jpg,1.0,71
+2466,293,0,109,735,603,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLC/293.jpg,1.0,71
+2467,6644,13,630,1249,1291,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLC/6644.jpg,1.0,71
+2468,4913,47,35,1271,708,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLC/4913.jpg,1.0,71
+2469,7235,57,282,498,537,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES GLC/7235.jpg,1.0,71
+2490,5144,5,4,932,663,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES SPRINTER/5144.jpg,1.0,72
+2491,207,0,14,313,560,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES SPRINTER/207.jpg,1.0,72
+2492,5933,15,7,1585,672,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES SPRINTER/5933.jpg,1.0,72
+2493,3750,0,29,1069,893,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES SPRINTER/3750.jpg,1.0,72
+2518,5987,171,4,1327,666,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES VITO/5987.jpg,1.0,73
+2519,7755,381,56,1292,621,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES VITO/7755.jpg,1.0,73
+2520,6418,426,110,1160,570,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES VITO/6418.jpg,1.0,73
+2521,5301,521,15,901,495,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES VITO/5301.jpg,1.0,73
+2522,6755,291,5,1196,483,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES VITO/6755.jpg,1.0,73
+2523,7237,86,0,1148,581,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MERCEDES VITO/7237.jpg,1.0,73
+2544,1100,433,132,1114,667,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MINI MINI/1100.jpg,1.0,74
+2545,8216,394,248,934,585,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MINI MINI/8216.jpg,1.0,74
+2546,4829,523,82,1150,443,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MINI MINI/4829.jpg,1.0,74
+2547,1780,566,20,1383,644,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MINI MINI/1780.jpg,1.0,74
+2548,10062,225,218,921,613,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/MINI MINI/10062.jpg,1.0,74
+2575,8098,173,72,901,503,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN JUKE/8098.jpg,1.0,75
+2576,9667,112,572,1199,1189,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN JUKE/9667.jpg,1.0,75
+2577,9656,850,87,1437,430,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN JUKE/9656.jpg,1.0,75
+2578,3781,7,9,1099,670,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN JUKE/3781.jpg,1.0,75
+2579,351,12,23,1207,717,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN JUKE/351.jpg,1.0,75
+2580,5591,58,3,1061,553,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN JUKE/5591.jpg,1.0,75
+2603,264,131,682,1116,1262,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN MICRA/264.jpg,1.0,76
+2604,1789,461,6,1388,643,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN MICRA/1789.jpg,1.0,76
+2605,1842,26,520,868,1024,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN MICRA/1842.jpg,1.0,76
+2606,1795,0,2,1040,689,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN MICRA/1795.jpg,1.0,76
+2607,7215,472,193,1346,724,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN MICRA/7215.jpg,1.0,76
+2634,7729,125,407,999,832,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN NOTE/7729.jpg,1.0,77
+2635,9821,228,1,1344,534,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN NOTE/9821.jpg,1.0,77
+2636,9655,266,2,971,415,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN NOTE/9655.jpg,1.0,77
+2637,4905,1,19,540,403,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN NOTE/4905.jpg,1.0,77
+2638,309,169,579,1193,1150,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN NOTE/309.jpg,1.0,77
+2639,6224,87,580,1151,1252,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN NOTE/6224.jpg,1.0,77
+2670,8660,874,105,1482,443,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI/8660.jpg,1.0,78
+2671,10090,788,28,1361,351,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI/10090.jpg,1.0,78
+2672,3618,269,112,841,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI/3618.jpg,1.0,78
+2673,1647,160,6,830,419,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI/1647.jpg,1.0,78
+2674,3206,869,5,1626,449,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI/3206.jpg,1.0,78
+2675,1811,23,291,377,607,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI/1811.jpg,1.0,78
+2676,10174,376,22,1134,524,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI/10174.jpg,1.0,78
+2705,5731,352,606,1592,1484,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI 2/5731.jpg,1.0,79
+2706,7249,437,4,1534,613,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI 2/7249.jpg,1.0,79
+2707,575,484,65,1228,588,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI 2/575.jpg,1.0,79
+2708,7688,160,10,872,471,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI 2/7688.jpg,1.0,79
+2709,3987,558,716,1415,1219,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI 2/3987.jpg,1.0,79
+2710,9412,915,45,1394,428,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN QASHQAI 2/9412.jpg,1.0,79
+2743,1032,52,0,894,461,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN X-TRAIL/1032.jpg,1.0,80
+2744,10122,11,0,615,391,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN X-TRAIL/10122.jpg,1.0,80
+2745,8958,658,774,1412,1243,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN X-TRAIL/8958.jpg,1.0,80
+2746,5171,171,46,1117,489,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN X-TRAIL/5171.jpg,1.0,80
+2747,1764,356,108,1258,695,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN X-TRAIL/1764.jpg,1.0,80
+2748,7363,626,606,1802,1232,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN X-TRAIL/7363.jpg,1.0,80
+2749,4178,130,115,915,589,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/NISSAN X-TRAIL/4178.jpg,1.0,80
+2777,10081,94,474,454,759,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ASTRA/10081.jpg,1.0,81
+2778,6754,456,17,1229,477,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ASTRA/6754.jpg,1.0,81
+2779,6709,633,48,1574,586,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ASTRA/6709.jpg,1.0,81
+2780,8743,6,0,658,389,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ASTRA/8743.jpg,1.0,81
+2781,8389,496,63,1183,456,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ASTRA/8389.jpg,1.0,81
+2782,2278,730,143,1411,379,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ASTRA/2278.jpg,1.0,81
+2813,8100,103,21,969,692,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL CORSA/8100.jpg,1.0,82
+2814,9972,36,323,567,632,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL CORSA/9972.jpg,1.0,82
+2815,4051,631,12,1243,355,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL CORSA/4051.jpg,1.0,82
+2816,2286,311,33,1099,460,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL CORSA/2286.jpg,1.0,82
+2817,3978,180,129,860,563,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL CORSA/3978.jpg,1.0,82
+2818,10020,626,121,1406,629,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL CORSA/10020.jpg,1.0,82
+2819,2392,74,265,586,632,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN CADDY/2392.jpg,1.0,136
+2843,9906,348,72,1007,554,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN CADDY/9906.jpg,1.0,136
+2844,2034,15,0,1447,1023,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN CADDY/2034.jpg,1.0,136
+2845,7739,22,0,1124,626,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN CADDY/7739.jpg,1.0,136
+2846,8899,271,80,996,552,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN CADDY/8899.jpg,1.0,136
+2847,9718,18,0,706,422,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN CADDY/9718.jpg,1.0,136
+2878,8090,0,17,844,573,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL INSIGNIA/8090.jpg,1.0,83
+2879,9316,104,448,949,885,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL INSIGNIA/9316.jpg,1.0,83
+2880,3361,152,73,1386,693,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL INSIGNIA/3361.jpg,1.0,83
+2881,1786,206,601,1135,1147,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL INSIGNIA/1786.jpg,1.0,83
+2882,3342,183,125,1345,695,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL INSIGNIA/3342.jpg,1.0,83
+2883,1899,1486,107,2299,579,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL INSIGNIA/1899.jpg,1.0,83
+2884,9323,0,174,1059,720,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL INSIGNIA/9323.jpg,1.0,83
+2914,7308,390,52,1122,571,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MERIVA/7308.jpg,1.0,84
+2915,5952,503,4,1197,457,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MERIVA/5952.jpg,1.0,84
+2916,7275,970,81,1532,464,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MERIVA/7275.jpg,1.0,84
+2917,7472,22,15,970,635,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MERIVA/7472.jpg,1.0,84
+2918,950,17,162,1429,1275,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MERIVA/950.jpg,1.0,84
+2919,4287,405,114,1287,688,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MERIVA/4287.jpg,1.0,84
+2920,4809,574,441,1406,971,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MERIVA/4809.jpg,1.0,84
+2953,6436,128,19,1249,634,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MOKKA/6436.jpg,1.0,85
+2954,7860,321,51,1100,529,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MOKKA/7860.jpg,1.0,85
+2955,1056,90,135,757,560,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MOKKA/1056.jpg,1.0,85
+2956,9014,216,46,851,534,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MOKKA/9014.jpg,1.0,85
+2957,1719,70,438,709,781,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MOKKA/1719.jpg,1.0,85
+2958,1944,369,16,1361,672,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MOKKA/1944.jpg,1.0,85
+2959,9408,369,34,1114,546,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MOKKA/9408.jpg,1.0,85
+2960,4326,3,69,683,554,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL MOKKA/4326.jpg,1.0,85
+2979,6602,7,1,1243,630,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL VIVARO/6602.jpg,1.0,86
+2980,9089,496,446,1415,1022,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL VIVARO/9089.jpg,1.0,86
+2981,6770,63,368,1130,995,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL VIVARO/6770.jpg,1.0,86
+2982,5093,8,0,1029,495,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL VIVARO/5093.jpg,1.0,86
+3014,7810,581,5,1264,430,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA/7810.jpg,1.0,87
+3015,10003,490,16,1208,473,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA/10003.jpg,1.0,87
+3016,4802,569,0,1062,400,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA/4802.jpg,1.0,87
+3017,1605,597,41,1307,531,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA/1605.jpg,1.0,87
+3018,3478,41,597,971,1249,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA/3478.jpg,1.0,87
+3019,9675,402,54,1021,463,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA/9675.jpg,1.0,87
+3020,9958,133,27,1295,741,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA/9958.jpg,1.0,87
+3045,6108,649,87,1402,601,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA TOURER/6108.jpg,1.0,88
+3046,7123,36,412,712,904,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA TOURER/7123.jpg,1.0,88
+3047,6248,414,134,1209,641,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA TOURER/6248.jpg,1.0,88
+3048,5435,871,81,1626,695,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA TOURER/5435.jpg,1.0,88
+3049,6596,365,128,1141,607,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA TOURER/6596.jpg,1.0,88
+3050,7043,36,11,624,407,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/OPEL ZAFIRA TOURER/7043.jpg,1.0,88
+3075,5414,144,15,1261,669,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 107/5414.jpg,1.0,89
+3076,6692,109,501,875,943,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 107/6692.jpg,1.0,89
+3077,5788,472,1,962,400,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 107/5788.jpg,1.0,89
+3078,4428,198,152,970,649,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 107/4428.jpg,1.0,89
+3079,6449,518,31,1003,636,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 107/6449.jpg,1.0,89
+3080,6577,561,67,1255,546,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 107/6577.jpg,1.0,89
+3109,7651,12,60,659,597,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 108/7651.jpg,1.0,90
+3110,5733,474,189,1309,702,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 108/5733.jpg,1.0,90
+3111,3768,495,156,1305,629,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 108/3768.jpg,1.0,90
+3112,4005,390,161,1255,661,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 108/4005.jpg,1.0,90
+3113,361,347,187,762,534,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 108/361.jpg,1.0,90
+3114,7239,644,218,1623,735,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 108/7239.jpg,1.0,90
+3115,6587,826,107,1367,415,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 108/6587.jpg,1.0,90
+3144,5338,189,21,1386,669,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 2008/5338.jpg,1.0,91
+3145,7378,354,44,1004,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 2008/7378.jpg,1.0,91
+3146,763,529,236,1093,582,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 2008/763.jpg,1.0,91
+3147,7830,0,116,768,625,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 2008/7830.jpg,1.0,91
+3148,4125,579,93,1239,517,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 2008/4125.jpg,1.0,91
+3149,9416,533,32,1237,496,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 2008/9416.jpg,1.0,91
+3176,8759,447,134,1218,664,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 206/8759.jpg,1.0,92
+3177,10008,481,48,937,532,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 206/10008.jpg,1.0,92
+3178,10004,36,321,370,606,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 206/10004.jpg,1.0,92
+3179,5270,476,6,1452,779,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 206/5270.jpg,1.0,92
+3180,372,581,47,1155,381,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 206/372.jpg,1.0,92
+3181,7229,262,6,1100,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 206/7229.jpg,1.0,92
+3210,7975,292,37,1032,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 207/7975.jpg,1.0,93
+3211,5186,5,37,1055,639,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 207/5186.jpg,1.0,93
+3212,7135,42,557,859,1034,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 207/7135.jpg,1.0,93
+3213,3055,395,20,1344,578,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 207/3055.jpg,1.0,93
+3214,7649,492,155,1182,581,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 207/7649.jpg,1.0,93
+3215,7397,322,109,1390,707,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 207/7397.jpg,1.0,93
+3216,6130,420,46,944,453,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 207/6130.jpg,1.0,93
+3245,5541,290,0,1390,691,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 208/5541.jpg,1.0,94
+3246,7351,294,36,1345,707,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 208/7351.jpg,1.0,94
+3247,1023,286,141,805,481,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 208/1023.jpg,1.0,94
+3248,8120,293,46,1187,654,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 208/8120.jpg,1.0,94
+3249,3386,64,115,869,622,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 208/3386.jpg,1.0,94
+3250,9823,672,137,1297,517,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 208/9823.jpg,1.0,94
+3282,6624,425,0,1303,421,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 3008/6624.jpg,1.0,95
+3283,7793,484,169,1130,567,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 3008/7793.jpg,1.0,95
+3284,1227,478,129,1325,685,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 3008/1227.jpg,1.0,95
+3285,4986,478,195,1082,582,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 3008/4986.jpg,1.0,95
+3286,1891,97,561,1271,1183,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 3008/1891.jpg,1.0,95
+3287,3707,465,483,1329,948,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 3008/3707.jpg,1.0,95
+3288,2884,0,37,747,627,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 3008/2884.jpg,1.0,95
+3289,9888,38,301,485,547,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 3008/9888.jpg,1.0,95
+3322,531,133,535,963,984,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 306/531.jpg,1.0,96
+3323,10282,277,0,911,378,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 306/10282.jpg,1.0,96
+3324,8793,577,105,1599,708,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 306/8793.jpg,1.0,96
+3325,5056,146,101,931,596,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 306/5056.jpg,1.0,96
+3326,1704,126,855,1716,1692,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 306/1704.jpg,1.0,96
+3327,8261,852,166,1344,476,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 306/8261.jpg,1.0,96
+3328,3140,367,144,1370,674,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 306/3140.jpg,1.0,96
+3356,6779,4,186,825,631,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 307/6779.jpg,1.0,97
+3357,671,274,22,1401,722,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 307/671.jpg,1.0,97
+3358,6271,345,0,1008,368,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 307/6271.jpg,1.0,97
+3359,353,19,369,753,725,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 307/353.jpg,1.0,97
+3360,6807,114,17,1258,678,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 307/6807.jpg,1.0,97
+3361,5277,163,116,966,625,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 307/5277.jpg,1.0,97
+3362,4375,226,114,1019,552,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 307/4375.jpg,1.0,97
+3392,7537,77,280,377,498,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TWINGO/7537.jpg,1.0,120
+3393,752,397,158,1054,576,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TWINGO/752.jpg,1.0,120
+3394,6578,116,123,1263,638,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TWINGO/6578.jpg,1.0,120
+3395,7777,621,1,1390,514,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TWINGO/7777.jpg,1.0,120
+3396,9354,215,4,780,345,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TWINGO/9354.jpg,1.0,120
+3397,3627,603,167,1170,604,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TWINGO/3627.jpg,1.0,120
+3398,3811,217,94,1064,629,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TWINGO/3811.jpg,1.0,120
+3426,8421,277,174,995,548,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT LAGUNA/8421.jpg,1.0,113
+3427,8970,137,112,1098,640,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT LAGUNA/8970.jpg,1.0,113
+3428,8876,163,149,1090,615,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT LAGUNA/8876.jpg,1.0,113
+3429,5037,416,115,1319,643,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT LAGUNA/5037.jpg,1.0,113
+3430,746,30,357,663,616,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT LAGUNA/746.jpg,1.0,113
+3431,6388,500,90,1413,637,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT LAGUNA/6388.jpg,1.0,113
+3458,2465,139,538,991,1004,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 308/2465.jpg,1.0,98
+3459,729,92,146,824,557,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 308/729.jpg,1.0,98
+3460,3928,31,155,913,611,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 308/3928.jpg,1.0,98
+3461,10137,394,2,1284,632,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 308/10137.jpg,1.0,98
+3462,667,481,103,1149,492,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 308/667.jpg,1.0,98
+3463,4097,571,5,1240,374,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 308/4097.jpg,1.0,98
+3492,7660,416,269,1110,642,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 406/7660.jpg,1.0,99
+3493,1681,113,182,765,567,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 406/1681.jpg,1.0,99
+3494,7262,62,382,646,679,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 406/7262.jpg,1.0,99
+3495,7842,16,0,857,572,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 406/7842.jpg,1.0,99
+3496,8943,143,269,880,619,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 406/8943.jpg,1.0,99
+3497,4807,141,160,1182,717,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 406/4807.jpg,1.0,99
+3498,4904,41,311,559,602,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 406/4904.jpg,1.0,99
+3524,4316,228,96,1125,547,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 407/4316.jpg,1.0,100
+3525,5701,703,56,1325,379,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 407/5701.jpg,1.0,100
+3526,7280,485,480,945,872,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 407/7280.jpg,1.0,100
+3527,2936,26,303,753,642,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 407/2936.jpg,1.0,100
+3528,9905,325,19,1094,476,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 407/9905.jpg,1.0,100
+3529,1148,113,628,1127,1183,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 407/1148.jpg,1.0,100
+3530,2110,517,198,1390,704,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 407/2110.jpg,1.0,100
+3557,9854,475,188,1281,707,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 5008/9854.jpg,1.0,101
+3558,9555,67,18,1332,732,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 5008/9555.jpg,1.0,101
+3559,1516,118,0,809,373,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 5008/1516.jpg,1.0,101
+3560,4624,241,38,1519,712,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 5008/4624.jpg,1.0,101
+3561,230,134,10,873,429,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 5008/230.jpg,1.0,101
+3562,9299,495,56,1342,632,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 5008/9299.jpg,1.0,101
+3586,9509,0,62,878,435,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 508/9509.jpg,1.0,102
+3587,2779,429,219,1215,633,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 508/2779.jpg,1.0,102
+3588,6984,0,83,923,640,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 508/6984.jpg,1.0,102
+3589,8318,67,36,648,462,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 508/8318.jpg,1.0,102
+3590,9372,415,96,1390,652,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 508/9372.jpg,1.0,102
+3617,8348,1568,6,2366,452,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 807/8348.jpg,1.0,103
+3618,9135,118,13,1273,655,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 807/9135.jpg,1.0,103
+3619,9104,76,622,1303,1324,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 807/9104.jpg,1.0,103
+3620,5034,794,103,1574,556,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 807/5034.jpg,1.0,103
+3621,824,671,41,1623,699,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 807/824.jpg,1.0,103
+3622,6538,578,3,1314,401,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT 807/6538.jpg,1.0,103
+3644,398,82,20,784,508,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT BOXER/398.jpg,1.0,104
+3645,572,267,2,1373,668,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT BOXER/572.jpg,1.0,104
+3646,7173,721,20,1390,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT BOXER/7173.jpg,1.0,104
+3647,7263,841,17,1385,452,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT BOXER/7263.jpg,1.0,104
+3648,4346,0,0,744,589,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT BOXER/4346.jpg,1.0,104
+3680,907,700,145,1462,619,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF/907.jpg,1.0,137
+3681,7653,386,214,1121,695,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF/7653.jpg,1.0,137
+3682,4438,603,4,1150,396,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF/4438.jpg,1.0,137
+3683,8142,95,375,526,619,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF/8142.jpg,1.0,137
+3684,5505,334,252,902,606,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF/5505.jpg,1.0,137
+3685,2387,250,48,1580,707,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF/2387.jpg,1.0,137
+3686,8444,425,164,1144,633,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF/8444.jpg,1.0,137
+3709,9094,0,421,1167,1121,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT EXPERT/9094.jpg,1.0,105
+3710,2080,321,65,922,395,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT EXPERT/2080.jpg,1.0,105
+3711,6484,162,53,990,590,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT EXPERT/6484.jpg,1.0,105
+3712,7360,492,1,1387,526,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT EXPERT/7360.jpg,1.0,105
+3713,9005,12,299,877,774,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT EXPERT/9005.jpg,1.0,105
+3736,333,669,24,1599,715,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT PARTNER/333.jpg,1.0,106
+3737,2170,85,261,589,620,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT PARTNER/2170.jpg,1.0,106
+3738,2650,455,0,1252,430,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT PARTNER/2650.jpg,1.0,106
+3739,2191,85,503,1154,1200,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT PARTNER/2191.jpg,1.0,106
+3740,6933,608,1,1575,482,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/PEUGEOT PARTNER/6933.jpg,1.0,106
+3769,7287,27,519,909,1043,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CAPTUR/7287.jpg,1.0,107
+3770,868,936,166,1436,493,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CAPTUR/868.jpg,1.0,107
+3771,6562,135,15,1583,669,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CAPTUR/6562.jpg,1.0,107
+3772,7473,262,131,981,561,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CAPTUR/7473.jpg,1.0,107
+3773,9607,111,59,926,635,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CAPTUR/9607.jpg,1.0,107
+3774,3914,501,2,1101,323,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CAPTUR/3914.jpg,1.0,107
+3775,4630,30,325,525,648,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CAPTUR/4630.jpg,1.0,107
+3806,897,265,218,926,617,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CLIO/897.jpg,1.0,108
+3807,6338,94,334,544,619,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CLIO/6338.jpg,1.0,108
+3808,4011,61,363,695,686,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CLIO/4011.jpg,1.0,108
+3809,7006,36,518,986,1041,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CLIO/7006.jpg,1.0,108
+3810,5443,67,283,385,498,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CLIO/5443.jpg,1.0,108
+3811,1871,4,121,916,667,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CLIO/1871.jpg,1.0,108
+3812,7533,603,87,1381,650,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT CLIO/7533.jpg,1.0,108
+3843,8685,261,13,1562,699,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT ESPACE/8685.jpg,1.0,109
+3844,9791,97,370,782,896,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT ESPACE/9791.jpg,1.0,109
+3845,4284,495,4,1086,567,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT ESPACE/4284.jpg,1.0,109
+3846,1958,105,407,995,1015,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT ESPACE/1958.jpg,1.0,109
+3847,4020,353,19,1144,582,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT ESPACE/4020.jpg,1.0,109
+3848,1996,56,310,571,616,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT ESPACE/1996.jpg,1.0,109
+3849,9810,722,147,1542,609,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT ESPACE/9810.jpg,1.0,109
+3880,6515,0,7,745,569,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KADJAR/6515.jpg,1.0,110
+3881,1391,81,0,711,321,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KADJAR/1391.jpg,1.0,110
+3882,6636,247,5,905,427,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KADJAR/6636.jpg,1.0,110
+3883,510,320,45,1075,463,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KADJAR/510.jpg,1.0,110
+3884,6689,39,106,1109,701,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KADJAR/6689.jpg,1.0,110
+3885,5801,7,27,484,349,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KADJAR/5801.jpg,1.0,110
+3886,7342,216,35,1022,543,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KADJAR/7342.jpg,1.0,110
+3909,8050,801,166,1278,494,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KANGOO/8050.jpg,1.0,111
+3910,4500,36,277,509,656,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KANGOO/4500.jpg,1.0,111
+3911,395,513,0,1366,558,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KANGOO/395.jpg,1.0,111
+3912,4741,182,10,1231,642,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KANGOO/4741.jpg,1.0,111
+3938,5494,24,2,805,480,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KOLEOS/5494.jpg,1.0,112
+3939,8055,508,82,816,501,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KOLEOS/8055.jpg,1.0,112
+3940,5903,425,3,1326,505,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KOLEOS/5903.jpg,1.0,112
+3941,4146,26,298,662,674,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KOLEOS/4146.jpg,1.0,112
+3942,7120,87,286,597,633,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KOLEOS/7120.jpg,1.0,112
+3943,1125,29,290,547,631,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT KOLEOS/1125.jpg,1.0,112
+3964,3066,0,0,655,391,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MASTER/3066.jpg,1.0,114
+3965,6221,580,4,1380,547,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MASTER/6221.jpg,1.0,114
+3966,5613,17,1,775,453,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MASTER/5613.jpg,1.0,114
+3967,7492,0,233,816,563,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MASTER/7492.jpg,1.0,114
+3968,5867,0,0,939,444,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MASTER/5867.jpg,1.0,114
+3997,7361,474,98,1362,635,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MEGANE/7361.jpg,1.0,115
+3998,856,297,0,1390,712,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MEGANE/856.jpg,1.0,115
+3999,6679,264,180,1096,674,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MEGANE/6679.jpg,1.0,115
+4000,7713,46,30,1164,671,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MEGANE/7713.jpg,1.0,115
+4001,9622,242,152,1178,670,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MEGANE/9622.jpg,1.0,115
+4002,3736,0,0,445,399,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MEGANE/3736.jpg,1.0,115
+4003,4891,0,7,1564,691,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MEGANE/4891.jpg,1.0,115
+4032,8269,25,458,826,1003,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MODUS/8269.jpg,1.0,116
+4033,6635,500,81,1475,707,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MODUS/6635.jpg,1.0,116
+4034,3147,0,105,883,708,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MODUS/3147.jpg,1.0,116
+4035,3403,222,153,906,627,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MODUS/3403.jpg,1.0,116
+4036,303,99,365,792,753,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MODUS/303.jpg,1.0,116
+4037,7770,443,228,1097,622,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MODUS/7770.jpg,1.0,116
+4038,7169,48,339,541,655,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT MODUS/7169.jpg,1.0,116
+4069,7462,298,0,1085,508,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT SCENIC/7462.jpg,1.0,117
+4070,365,20,294,342,554,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT SCENIC/365.jpg,1.0,117
+4071,7535,114,0,1185,559,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT SCENIC/7535.jpg,1.0,117
+4072,223,424,0,1591,672,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT SCENIC/223.jpg,1.0,117
+4073,7604,312,12,1041,423,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT SCENIC/7604.jpg,1.0,117
+4074,6423,613,46,1189,697,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT SCENIC/6423.jpg,1.0,117
+4075,8164,237,13,876,462,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT SCENIC/8164.jpg,1.0,117
+4110,6660,2,561,611,923,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TALISMAN/6660.jpg,1.0,118
+4111,5175,25,0,1376,692,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TALISMAN/5175.jpg,1.0,118
+4112,5648,53,16,1390,642,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TALISMAN/5648.jpg,1.0,118
+4113,9752,785,185,1294,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TALISMAN/9752.jpg,1.0,118
+4114,3012,194,55,982,498,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TALISMAN/3012.jpg,1.0,118
+4115,5671,371,13,1110,507,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TALISMAN/5671.jpg,1.0,118
+4116,331,425,334,1015,680,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TALISMAN/331.jpg,1.0,118
+4117,6290,471,110,1331,629,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TALISMAN/6290.jpg,1.0,118
+4136,7466,583,0,1622,456,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TRAFIC/7466.jpg,1.0,119
+4137,3458,899,0,1526,320,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TRAFIC/3458.jpg,1.0,119
+4138,7824,601,90,1251,490,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TRAFIC/7824.jpg,1.0,119
+4139,8234,2,29,449,532,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/RENAULT TRAFIC/8234.jpg,1.0,119
+4168,7652,93,602,1167,1153,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT IBIZA/7652.jpg,1.0,121
+4169,1002,462,109,1352,658,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT IBIZA/1002.jpg,1.0,121
+4170,7276,242,328,594,617,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT IBIZA/7276.jpg,1.0,121
+4171,7741,462,92,1122,497,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT IBIZA/7741.jpg,1.0,121
+4172,8972,969,161,1387,471,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT IBIZA/8972.jpg,1.0,121
+4173,3340,420,252,1141,700,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT IBIZA/3340.jpg,1.0,121
+4174,3890,801,236,1380,584,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT IBIZA/3890.jpg,1.0,121
+4203,4780,374,9,1626,717,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT LEON/4780.jpg,1.0,122
+4204,6698,333,219,1125,659,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT LEON/6698.jpg,1.0,122
+4205,120,741,157,1451,518,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT LEON/120.jpg,1.0,122
+4206,7654,230,837,1616,1597,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT LEON/7654.jpg,1.0,122
+4207,3058,207,58,1049,572,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT LEON/3058.jpg,1.0,122
+4208,9733,116,707,1301,1369,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SEAT LEON/9733.jpg,1.0,122
+4235,1595,269,44,1178,661,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA FABIA/1595.jpg,1.0,123
+4236,243,710,117,1419,581,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA FABIA/243.jpg,1.0,123
+4237,3100,571,102,1914,956,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA FABIA/3100.jpg,1.0,123
+4238,10245,469,69,1123,453,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA FABIA/10245.jpg,1.0,123
+4239,95,88,301,420,555,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA FABIA/95.jpg,1.0,123
+4240,3298,360,6,1064,461,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA FABIA/3298.jpg,1.0,123
+4265,9260,114,25,958,507,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA OCTAVIA/9260.jpg,1.0,124
+4266,5348,65,560,1093,1186,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA OCTAVIA/5348.jpg,1.0,124
+4267,2514,5,73,574,523,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA OCTAVIA/2514.jpg,1.0,124
+4268,3743,0,72,868,716,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA OCTAVIA/3743.jpg,1.0,124
+4269,5203,501,506,1590,1114,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA OCTAVIA/5203.jpg,1.0,124
+4270,2497,163,67,1017,520,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA OCTAVIA/2497.jpg,1.0,124
+4298,10201,1474,103,2222,573,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA SUPERB/10201.jpg,1.0,125
+4299,4768,33,598,1083,1102,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA SUPERB/4768.jpg,1.0,125
+4300,4516,67,136,983,707,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA SUPERB/4516.jpg,1.0,125
+4301,8207,576,63,1465,513,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA SUPERB/8207.jpg,1.0,125
+4302,7628,453,145,1255,635,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA SUPERB/7628.jpg,1.0,125
+4303,956,557,241,1598,724,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SKODA SUPERB/956.jpg,1.0,125
+4332,7853,561,0,1368,702,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SMART FORTWO/7853.jpg,1.0,126
+4333,5351,97,542,932,1123,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SMART FORTWO/5351.jpg,1.0,126
+4334,7107,144,121,954,713,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SMART FORTWO/7107.jpg,1.0,126
+4335,3158,340,118,1451,729,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SMART FORTWO/3158.jpg,1.0,126
+4336,7850,877,157,1520,665,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SMART FORTWO/7850.jpg,1.0,126
+4337,7340,306,5,994,498,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SMART FORTWO/7340.jpg,1.0,126
+4338,6568,49,290,366,565,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SMART FORTWO/6568.jpg,1.0,126
+4369,8101,17,0,666,244,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SUZUKI SWIFT/8101.jpg,1.0,127
+4370,9569,543,15,1390,582,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SUZUKI SWIFT/9569.jpg,1.0,127
+4371,3581,150,472,716,884,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SUZUKI SWIFT/3581.jpg,1.0,127
+4372,1860,300,75,1031,637,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SUZUKI SWIFT/1860.jpg,1.0,127
+4373,3400,52,534,775,1069,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SUZUKI SWIFT/3400.jpg,1.0,127
+4374,1898,604,0,1232,335,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SUZUKI SWIFT/1898.jpg,1.0,127
+4375,9598,640,47,1432,537,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/SUZUKI SWIFT/9598.jpg,1.0,127
+4408,1507,427,192,1001,531,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AURIS/1507.jpg,1.0,128
+4409,10318,365,9,1271,613,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AURIS/10318.jpg,1.0,128
+4410,8800,550,76,1296,528,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AURIS/8800.jpg,1.0,128
+4411,6198,1062,561,2649,1500,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AURIS/6198.jpg,1.0,128
+4412,2863,127,103,1114,654,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AURIS/2863.jpg,1.0,128
+4413,8016,270,44,1224,648,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AURIS/8016.jpg,1.0,128
+4414,5483,648,126,1473,633,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AURIS/5483.jpg,1.0,128
+4447,987,151,590,1088,1143,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AVENSIS/987.jpg,1.0,129
+4448,9998,141,125,1219,719,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AVENSIS/9998.jpg,1.0,129
+4449,8900,409,229,1062,611,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AVENSIS/8900.jpg,1.0,129
+4450,6204,611,42,1554,684,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AVENSIS/6204.jpg,1.0,129
+4451,1529,1108,707,2575,1573,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AVENSIS/1529.jpg,1.0,129
+4452,7877,40,319,518,637,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AVENSIS/7877.jpg,1.0,129
+4453,4927,61,296,652,597,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AVENSIS/4927.jpg,1.0,129
+4484,935,464,98,1221,613,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AYGO/935.jpg,1.0,130
+4485,6427,71,12,720,387,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AYGO/6427.jpg,1.0,130
+4486,3808,108,457,872,874,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AYGO/3808.jpg,1.0,130
+4487,7372,92,302,725,614,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AYGO/7372.jpg,1.0,130
+4488,5386,223,104,1189,680,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AYGO/5386.jpg,1.0,130
+4489,1785,255,11,1498,694,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AYGO/1785.jpg,1.0,130
+4490,8358,48,447,700,831,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA AYGO/8358.jpg,1.0,130
+4519,7858,642,7,1149,398,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA COROLLA/7858.jpg,1.0,131
+4520,6068,60,3,775,467,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA COROLLA/6068.jpg,1.0,131
+4521,7327,476,44,1440,602,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA COROLLA/7327.jpg,1.0,131
+4522,3479,0,89,1079,712,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA COROLLA/3479.jpg,1.0,131
+4523,7828,35,474,897,918,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA COROLLA/7828.jpg,1.0,131
+4524,7521,636,84,1223,432,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA COROLLA/7521.jpg,1.0,131
+4525,6954,397,139,1321,710,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA COROLLA/6954.jpg,1.0,131
+4547,8567,326,16,907,444,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA LAND CRUISER/8567.jpg,1.0,132
+4548,4787,475,7,1385,669,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA LAND CRUISER/4787.jpg,1.0,132
+4549,3404,486,93,1204,515,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA LAND CRUISER/3404.jpg,1.0,132
+4550,6408,582,4,1571,557,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA LAND CRUISER/6408.jpg,1.0,132
+4551,3637,44,504,1149,1185,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA LAND CRUISER/3637.jpg,1.0,132
+4584,6025,222,140,1043,627,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA PRIUS/6025.jpg,1.0,133
+4585,7920,382,179,1175,658,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA PRIUS/7920.jpg,1.0,133
+4586,1111,364,177,1173,643,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA PRIUS/1111.jpg,1.0,133
+4587,4158,0,54,775,574,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA PRIUS/4158.jpg,1.0,133
+4588,1808,510,140,1195,520,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA PRIUS/1808.jpg,1.0,133
+4589,3024,475,105,1382,562,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA PRIUS/3024.jpg,1.0,133
+4590,2198,4,104,714,691,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA PRIUS/2198.jpg,1.0,133
+4591,9975,690,96,1347,477,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA PRIUS/9975.jpg,1.0,133
+4616,8838,557,93,1263,567,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA VERSO/8838.jpg,1.0,134
+4617,7125,9,11,758,458,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA VERSO/7125.jpg,1.0,134
+4618,10038,628,257,1112,550,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA VERSO/10038.jpg,1.0,134
+4619,5044,362,17,1371,708,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA VERSO/5044.jpg,1.0,134
+4620,6610,32,345,595,714,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA VERSO/6610.jpg,1.0,134
+4621,3116,370,36,1183,550,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA VERSO/3116.jpg,1.0,134
+4653,7350,554,109,1378,651,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA YARIS/7350.jpg,1.0,135
+4654,9817,35,300,371,549,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA YARIS/9817.jpg,1.0,135
+4655,4197,696,76,1409,517,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA YARIS/4197.jpg,1.0,135
+4656,1738,82,0,792,351,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA YARIS/1738.jpg,1.0,135
+4657,3228,56,557,942,1050,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA YARIS/3228.jpg,1.0,135
+4658,9483,676,307,1289,662,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA YARIS/9483.jpg,1.0,135
+4659,9551,0,0,840,513,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/TOYOTA YARIS/9551.jpg,1.0,135
+4684,8884,0,23,956,652,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF SPORTSVAN/8884.jpg,1.0,138
+4685,5893,225,117,1124,702,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF SPORTSVAN/5893.jpg,1.0,138
+4686,9197,415,497,1201,966,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF SPORTSVAN/9197.jpg,1.0,138
+4687,4019,42,218,427,502,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF SPORTSVAN/4019.jpg,1.0,138
+4688,4631,27,42,557,450,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF SPORTSVAN/4631.jpg,1.0,138
+4689,2263,416,16,1390,682,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN GOLF SPORTSVAN/2263.jpg,1.0,138
+4715,6874,448,229,1028,523,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN MULTIVAN/6874.jpg,1.0,139
+4716,7322,515,3,1277,521,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN MULTIVAN/7322.jpg,1.0,139
+4717,9209,36,0,1265,743,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN MULTIVAN/9209.jpg,1.0,139
+4718,4793,940,142,1626,697,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN MULTIVAN/4793.jpg,1.0,139
+4719,9856,238,0,934,461,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN MULTIVAN/9856.jpg,1.0,139
+4720,1481,689,10,1327,431,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN MULTIVAN/1481.jpg,1.0,139
+4750,7869,1158,838,3039,1840,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN PASSAT/7869.jpg,1.0,140
+4751,1307,116,355,649,659,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN PASSAT/1307.jpg,1.0,140
+4752,7367,772,31,1580,537,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN PASSAT/7367.jpg,1.0,140
+4753,578,0,23,1347,725,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN PASSAT/578.jpg,1.0,140
+4754,8222,590,62,1396,535,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN PASSAT/8222.jpg,1.0,140
+4755,6619,64,39,813,478,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN PASSAT/6619.jpg,1.0,140
+4756,6075,796,88,1440,434,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN PASSAT/6075.jpg,1.0,140
+4789,6472,246,67,1386,700,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN POLO/6472.jpg,1.0,141
+4790,1113,288,72,1295,626,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN POLO/1113.jpg,1.0,141
+4791,10255,108,306,611,602,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN POLO/10255.jpg,1.0,141
+4792,9011,109,713,1233,1294,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN POLO/9011.jpg,1.0,141
+4793,5575,521,120,1387,638,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN POLO/5575.jpg,1.0,141
+4794,2423,240,199,843,628,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN POLO/2423.jpg,1.0,141
+4795,3068,114,343,601,632,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN POLO/3068.jpg,1.0,141
+4796,4598,250,194,1034,660,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN POLO/4598.jpg,1.0,141
+4825,7481,522,45,1257,536,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN SHARAN/7481.jpg,1.0,142
+4826,747,166,78,1142,673,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN SHARAN/747.jpg,1.0,142
+4827,6490,254,0,1340,643,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN SHARAN/6490.jpg,1.0,142
+4828,7565,528,151,1204,541,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN SHARAN/7565.jpg,1.0,142
+4829,9060,286,0,1440,712,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN SHARAN/9060.jpg,1.0,142
+4830,3671,81,399,853,848,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN SHARAN/3671.jpg,1.0,142
+4831,3905,12,172,740,549,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN SHARAN/3905.jpg,1.0,142
+4864,6286,544,0,1586,650,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TIGUAN/6286.jpg,1.0,143
+4865,8035,263,67,1057,565,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TIGUAN/8035.jpg,1.0,143
+4866,1623,784,76,1446,456,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TIGUAN/1623.jpg,1.0,143
+4867,4699,32,317,712,684,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TIGUAN/4699.jpg,1.0,143
+4868,2291,439,130,1212,685,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TIGUAN/2291.jpg,1.0,143
+4869,3682,241,27,900,526,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TIGUAN/3682.jpg,1.0,143
+4870,2986,394,6,1309,622,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TIGUAN/2986.jpg,1.0,143
+4871,9495,399,43,1115,436,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TIGUAN/9495.jpg,1.0,143
+4902,816,242,0,1164,516,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOUAREG/816.jpg,1.0,144
+4903,7611,0,12,1161,688,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOUAREG/7611.jpg,1.0,144
+4904,4302,514,658,1791,1355,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOUAREG/4302.jpg,1.0,144
+4905,8285,233,5,1236,626,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOUAREG/8285.jpg,1.0,144
+4906,6288,202,0,1384,659,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOUAREG/6288.jpg,1.0,144
+4907,2323,420,5,1390,599,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOUAREG/2323.jpg,1.0,144
+4908,8484,76,646,1140,1153,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOUAREG/8484.jpg,1.0,144
+4941,1392,0,0,719,394,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOURAN/1392.jpg,1.0,145
+4942,10263,41,511,997,1086,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOURAN/10263.jpg,1.0,145
+4943,9324,476,5,1475,691,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOURAN/9324.jpg,1.0,145
+4944,5780,910,97,1462,441,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOURAN/5780.jpg,1.0,145
+4945,2415,40,262,622,570,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOURAN/2415.jpg,1.0,145
+4946,8256,494,0,1380,732,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOURAN/8256.jpg,1.0,145
+4947,3943,53,509,922,1064,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TOURAN/3943.jpg,1.0,145
+4970,387,595,0,1337,465,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TRANSPORTER/387.jpg,1.0,146
+4971,1174,663,76,1300,534,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TRANSPORTER/1174.jpg,1.0,146
+4972,1427,329,88,1120,613,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TRANSPORTER/1427.jpg,1.0,146
+4973,1349,211,0,988,388,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TRANSPORTER/1349.jpg,1.0,146
+4974,5888,533,0,1211,329,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLKSWAGEN TRANSPORTER/5888.jpg,1.0,146
+5007,6111,449,2,1087,439,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V60/6111.jpg,1.0,148
+5008,1024,38,73,1175,709,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V60/1024.jpg,1.0,148
+5009,10300,405,1,1233,469,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V60/10300.jpg,1.0,148
+5010,9180,302,0,1157,425,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V60/9180.jpg,1.0,148
+5011,5670,328,80,862,398,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V60/5670.jpg,1.0,148
+5012,2078,288,6,1442,666,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V60/2078.jpg,1.0,148
+5013,2385,432,38,980,354,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V60/2385.jpg,1.0,148
+5014,3836,76,470,827,907,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO V60/3836.jpg,1.0,148
+5044,7284,307,9,1216,583,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC90/7284.jpg,1.0,150
+5045,4713,0,415,919,924,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC90/4713.jpg,1.0,150
+5046,6962,1390,458,2229,1018,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC90/6962.jpg,1.0,150
+5047,7625,93,243,639,598,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC90/7625.jpg,1.0,150
+5048,336,183,10,1341,663,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC90/336.jpg,1.0,150
+5049,3601,67,389,896,851,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC90/3601.jpg,1.0,150
+5050,4026,597,0,1277,384,/scratch2/clear/larbez/Workspace/datasets/clustervec-small/anonym2open/VOLVO XC90/4026.jpg,1.0,150

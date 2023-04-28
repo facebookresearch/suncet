@@ -1,27 +1,27 @@
 data:
   data_seed: 152
-  dataset: imagenet_fine_tune
-  image_folder: ImageNet2012/
+  dataset: clustervec_fine_tune
+  image_folder: null
   normalize: true
-  num_classes: 1000
-  root_path: /scratch2/clear/dataset/
-  subset_path: imagenet_subsets/
-  unlabeled_frac: 0.90
+  num_classes: 151
+  root_path: /scratch2/clear/larbez/Workspace/datasets/clustervec-small/
+  subset_path: clustervec_subsets/
+  unlabeled_frac: 0.9
 logging:
-  folder: /scratch2/clear/larbez/Workspace/PAWS/imagenet_finetune/
+  folder: /scratch2/clear/larbez/Workspace/PAWS/Test_new_dataloaders_bis/
   pretrain_path: /scratch2/clear/larbez/Workspace/PAWS/pretrained_weights_paws/paws_imgnt_10percent_300ep.pth.tar
   write_tag: paws-latest
 meta:
-  copy_data: true
+  copy_data: false
   device: cuda:0
   load_checkpoint: false
   master_port: 4029
   model_name: resnet50
   training: true
-  use_fp16: true
+  use_fp16: false
 optimization:
-  epochs: 50
+  epochs: 300
   lr: 0.02
   use_lars: false
   weight_decay: 0.0
-  zero_init: true
+  zero_init: false

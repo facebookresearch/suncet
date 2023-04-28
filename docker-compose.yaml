@@ -1,0 +1,33 @@
+version: '3.1'
+services:
+   paws:
+    container_name: paws
+    build:
+      context: .
+      args:
+        - http_proxy=${http_proxy}
+        - https_proxy=${https_proxy}
+    runtime: nvidia
+    ipc: host
+    cpus: 16
+    env_file:
+      - env.list
+    environment:
+     - TORCH_MODEL_ZOO=/model
+     - http_proxy=${http_proxy}
+     - https_proxy=${http_proxy}
+     - no_proxy=${no_proxy}
+    ports:
+     - "8888:8888"
+    volumes:
+     - /vgdata:/vgdata
+     - /data:/data
+     - /home/model:/model
+     - ./:/workspace/paws
+     - /home/notebooks/.jupyter:/root/.jupyter
+     - /home/notebooks:/workspace/notebooks
+    command:
+      - /bin/sh
+      - -c
+      - jupyter notebook --ip=0.0.0.0 --no-browser --allow-root  --notebook-dir=/workspace/notebooks
+

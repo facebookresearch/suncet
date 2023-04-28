@@ -11,14 +11,18 @@ import time
 
 from logging import getLogger
 
+
 import numpy as np
 from math import ceil
 
 import torch
 
+
 import torchvision.transforms as transforms
 import torchvision
-
+import pandas as pd
+import json
+from src.custom_generator import DatasetDataframe, Crop
 import PIL
 from PIL import Image
 from PIL import ImageFilter
@@ -27,9 +31,9 @@ from PIL import ImageOps
 _GLOBAL_SEED = 0
 logger = getLogger()
 
-
 def init_data(
     dataset_name,
+    subset_path,
     transform,
     init_transform,
     u_batch_size,
@@ -133,6 +137,43 @@ def init_data(
             image_folder=image_folder,
             training=training,
             copy_data=copy_data)
+    
+    if dataset_name == 'clustervec':
+        return _init_clustervec_data(
+            transform=transform,
+            subset_path=subset_path,
+            init_transform=init_transform,
+            u_batch_size=u_batch_size,
+            s_batch_size=s_batch_size,
+            classes_per_batch=classes_per_batch,
+            unique_classes=unique_classes,
+            multicrop_transform=multicrop_transform,
+            supervised_views=supervised_views,
+            world_size=world_size,
+            rank=rank,
+            root_path=root_path,
+            image_folder=image_folder,
+            training=training,
+            copy_data=copy_data)
+
+    elif dataset_name == 'clustervec_fine_tune':
+        batch_size = s_batch_size
+        return _init_clustervec_ft_data(
+            transform=transform,
+            subset_path=subset_path,
+            init_transform=init_transform,
+            batch_size=batch_size,
+            stratify=stratify,
+            classes_per_batch=classes_per_batch,
+            unique_classes=unique_classes,
+            world_size=world_size,
+            rank=rank,
+            root_path=root_path,
+            image_folder=image_folder,
+            training=training,
+            drop_last=drop_last,
+            copy_data=copy_data)
+
 
 
 def _init_cifar10_ft_data(
@@ -258,68 +299,6 @@ def _init_cifar10_data(
     return (unsupervised_loader, unsupervised_sampler,
             supervised_loader, supervised_sampler)
 
-#TODO create a _init_clustervec and clustervec_ft
-def _init_imgnt_ft_data(
-    transform,
-    init_transform,
-    batch_size,
-    stratify=False,
-    classes_per_batch=1,
-    unique_classes=False,
-    world_size=1,
-    rank=0,
-    root_path='/datasets/',
-    image_folder='imagenet_full_size/061417/',
-    training=True,
-    copy_data=False,
-    drop_last=True,
-    tar_folder='imagenet_full_size/',
-    tar_file='imagenet_full_size-061417.tar',
-):
-    imagenet = ImageNet(
-        root=root_path,
-        image_folder=image_folder,
-        tar_folder=tar_folder,
-        tar_file=tar_file,
-        transform=transform,
-        train=training,
-        copy_data=copy_data)
-    logger.info('ImageNet fine-tune dataset created')
-    dataset = TransImageNet(
-        dataset=imagenet,
-        supervised=True,
-        init_transform=init_transform,
-        seed=_GLOBAL_SEED)
-
-    if not stratify:
-        dist_sampler = torch.utils.data.distributed.DistributedSampler(
-            dataset=dataset,
-            num_replicas=world_size,
-            rank=rank)
-        data_loader = torch.utils.data.DataLoader(
-            dataset,
-            sampler=dist_sampler,
-            batch_size=batch_size,
-            drop_last=drop_last,
-            pin_memory=True,
-            num_workers=8)
-    else:
-        dist_sampler = ClassStratifiedSampler(
-            data_source=dataset,
-            world_size=world_size,
-            rank=rank,
-            batch_size=batch_size,
-            classes_per_batch=classes_per_batch,
-            seed=_GLOBAL_SEED,
-            unique_classes=unique_classes)
-        data_loader = torch.utils.data.DataLoader(
-            dataset,
-            batch_sampler=dist_sampler,
-            pin_memory=True,
-            num_workers=8)
-
-    return (data_loader, dist_sampler)
-
 
 def _init_imgnt_data(
     transform,
@@ -398,6 +377,216 @@ def _init_imgnt_data(
     return (unsupervised_loader, unsupervised_sampler,
             supervised_loader, supervised_sampler)
 
+def _init_imgnt_ft_data(
+    transform,
+    init_transform,
+    batch_size,
+    stratify=False,
+    classes_per_batch=1,
+    unique_classes=False,
+    world_size=1,
+    rank=0,
+    root_path='/datasets/',
+    image_folder='imagenet_full_size/061417/',
+    training=True,
+    copy_data=False,
+    drop_last=True,
+    tar_folder='imagenet_full_size/',
+    tar_file='imagenet_full_size-061417.tar',
+):
+    imagenet = ImageNet(
+        root=root_path,
+        image_folder=image_folder,
+        tar_folder=tar_folder,
+        tar_file=tar_file,
+        transform=transform,
+        train=training,
+        copy_data=copy_data)
+    logger.info('ImageNet fine-tune dataset created')
+    dataset = TransImageNet(
+        dataset=imagenet,
+        supervised=True,
+        init_transform=init_transform,
+        seed=_GLOBAL_SEED)
+
+    if not stratify:
+        dist_sampler = torch.utils.data.distributed.DistributedSampler(
+            dataset=dataset,
+            num_replicas=world_size,
+            rank=rank)
+        data_loader = torch.utils.data.DataLoader(
+            dataset,
+            sampler=dist_sampler,
+            batch_size=batch_size,
+            drop_last=drop_last,
+            pin_memory=True,
+            num_workers=8)
+    else:
+        dist_sampler = ClassStratifiedSampler(
+            data_source=dataset,
+            world_size=world_size,
+            rank=rank,
+            batch_size=batch_size,
+            classes_per_batch=classes_per_batch,
+            seed=_GLOBAL_SEED,
+            unique_classes=unique_classes)
+        data_loader = torch.utils.data.DataLoader(
+            dataset,
+            batch_sampler=dist_sampler,
+            pin_memory=True,
+            num_workers=8)
+
+    return (data_loader, dist_sampler)
+
+
+#### Custom dataset implementation
+#TODO create a _init_clustervec and clustervec_ft
+def _init_clustervec_ft_data(
+    transform,
+    init_transform,
+    batch_size,
+    stratify=False,
+    classes_per_batch=1,
+    unique_classes=False,
+    world_size=1,
+    rank=0,
+    root_path='/scratch2/clear/larbez/Workspace/datasets/CLIP/',
+    image_folder='split_70-30/',
+    training=True,
+    copy_data=False,
+    drop_last=True,
+    tar_folder='imagenet_full_size/',
+    tar_file='imagenet_full_size-061417.tar',
+):
+    imagenet = ClusterVec(
+        root=root_path,
+        image_folder=image_folder,
+        tar_folder=tar_folder,
+        tar_file=tar_file,
+        transform=transform,
+        train=training,
+        copy_data=copy_data)
+    logger.info('ClusterVec fine-tune dataset created')
+    dataset = TransClusterVec(
+        dataset=imagenet,
+        root='/'.join((root_path,image_folder)),
+        supervised=True,
+        init_transform=init_transform,
+        seed=_GLOBAL_SEED)
+
+    if not stratify:
+        dist_sampler = torch.utils.data.distributed.DistributedSampler(
+            dataset=dataset,
+            num_replicas=world_size,
+            rank=rank)
+        data_loader = torch.utils.data.DataLoader(
+            dataset,
+            sampler=dist_sampler,
+            batch_size=batch_size,
+            drop_last=drop_last,
+            pin_memory=True,
+            num_workers=1)
+    else:
+        dist_sampler = ClassStratifiedSampler(
+            data_source=dataset,
+            world_size=world_size,
+            rank=rank,
+            batch_size=batch_size,
+            classes_per_batch=classes_per_batch,
+            seed=_GLOBAL_SEED,
+            unique_classes=unique_classes)
+        data_loader = torch.utils.data.DataLoader(
+            dataset,
+            batch_sampler=dist_sampler,
+            pin_memory=True,
+            num_workers=1)
+
+    return (data_loader, dist_sampler)
+
+
+def _init_clustervec_data(
+    transform,
+    subset_path,
+    init_transform,
+    u_batch_size,
+    s_batch_size,
+    classes_per_batch,
+    unique_classes=False,
+    multicrop_transform=(0, None),
+    supervised_views=1,
+    world_size=1,
+    rank=0,
+    root_path='/datasets/',
+    image_folder='imagenet_full_size/061417/',
+    training=True,
+    copy_data=False,
+    tar_folder='imagenet_full_size/',
+    tar_file='imagenet_full_size-061417.tar'
+):
+    clustervec = ClusterVec(
+        root=root_path,
+        subset_path=subset_path,
+        image_folder=image_folder,
+        tar_folder=tar_folder,
+        tar_file=tar_file,
+        transform=transform,
+        train=training,
+        copy_data=copy_data)
+    logger.info('ClusterVec dataset created')
+    unsupervised_set = TransClusterVec(
+        dataset=clustervec,
+        root= '/'.join((root_path, image_folder)),
+        supervised=False,
+        init_transform=init_transform,
+        multicrop_transform=multicrop_transform,
+        seed=_GLOBAL_SEED)
+    unsupervised_sampler = torch.utils.data.distributed.DistributedSampler(
+        dataset=unsupervised_set,
+        num_replicas=world_size,
+        rank=rank)
+    unsupervised_loader = torch.utils.data.DataLoader(
+        unsupervised_set,
+        sampler=unsupervised_sampler,
+        batch_size=u_batch_size,
+        drop_last=True,
+        pin_memory=True,
+        num_workers=8)#changed_numworkers
+    logger.info('ClusterVec unsupervised data loader created')
+    #forked.set_trace()
+    supervised_sampler, supervised_loader = None, None
+    if classes_per_batch > 0 and s_batch_size > 0:
+        logger.info('Making supervised ClusterVec data loader...')
+        #from pudb import forked; forked.set_trace()
+        supervised_set = TransClusterVec(
+            dataset=clustervec,
+            root="/".join((root_path, image_folder)),
+            supervised=True,
+            supervised_views=supervised_views,
+            init_transform=init_transform,
+            seed=_GLOBAL_SEED)
+        supervised_sampler = ClassStratifiedSampler(
+            data_source=supervised_set,
+            world_size=world_size,
+            rank=rank,
+            batch_size=s_batch_size,
+            classes_per_batch=classes_per_batch,
+            unique_classes=unique_classes,
+            seed=_GLOBAL_SEED)
+        supervised_loader = torch.utils.data.DataLoader(
+            supervised_set,
+            batch_sampler=supervised_sampler,
+            pin_memory=True,
+            num_workers=8)#changed num_workers
+        if len(supervised_loader) > 0:
+            tmp = ceil(len(unsupervised_loader) / len(supervised_loader))
+            supervised_sampler.set_inner_epochs(tmp)
+            logger.info(f'supervised-reset-period {tmp}')
+        logger.info('ClusterVec supervised data loader created')
+
+    
+    return (unsupervised_loader, unsupervised_sampler,
+            supervised_loader, supervised_sampler)
+
 
 def make_transforms(
     dataset_name,
@@ -461,7 +650,29 @@ def make_transforms(
             scale=crop_scale,
             color_distortion=color_jitter,
             keep_file=keep_file)
+    
+    elif 'clustervec' in dataset_name:
+        logger.info('making clustervec data transforms')
 
+        # -- file identifying which imagenet labels to keep
+        keep_file = None
+        #forked.set_trace()
+        if subset_path is not None:
+            if unlabeled_frac >= 0:
+                keep_file = os.path.join(subset_path, f'{int(unlabeled_frac* 100)}percent.csv')
+            else:
+                keep_file = os.path.join(subset_path, 'val.csv')
+            logger.info(f'keep file: {keep_file}')
+
+        return _make_clustervec_transforms(
+            unlabel_prob=unlabeled_frac,
+            training=training,
+            basic=basic_augmentations,
+            force_center_crop=force_center_crop,
+            normalize=normalize,
+            color_distortion=color_jitter,
+            scale=crop_scale,
+            keep_file=keep_file)
 
 def _make_cifar10_transforms(
     unlabel_prob,
@@ -597,11 +808,13 @@ def _make_imgnt_transforms(
              transforms.Normalize(
                  (0.485, 0.456, 0.406),
                  (0.229, 0.224, 0.225))])
+    
 
     def init_transform(root, samples, class_to_idx, seed,
                        keep_file=keep_file,
                        training=training):
         """ Transforms applied to dataset at the start of training """
+        
 
         new_targets, new_samples = [], []
         if training and (keep_file is not None) and os.path.exists(keep_file):
@@ -624,11 +837,100 @@ def _make_imgnt_transforms(
                     target = sample[1]
                     new_samples.append((sample[0], target))
                     new_targets.append(target)
-
+        
         return np.array(new_targets), np.array(new_samples)
 
     return transform, init_transform
 
+
+def _make_clustervec_transforms(
+    unlabel_prob,
+    training=True,
+    basic=False,
+    force_center_crop=False,
+    normalize=False,
+    scale=(0.08, 1.0),
+    color_distortion=1.0,
+    keep_file=None
+):
+    """
+    Make data transformations
+
+    :param unlabel_prob: probability of sampling unlabeled data point
+    :param training: generate data transforms for train (alternativly test)
+    :param basic: whether train transforms include more sofisticated transforms
+    :param force_center_crop: whether to override settings and apply center crop to image
+    :param normalize: whether to normalize image means and stds
+    :param scale: random scaling range for image before resizing
+    :param color_distortion: strength of color distortion
+    :param keep_file: file containing names of images to use for semisupervised
+    """
+    def get_color_distortion(s=1.0):
+        # s is the strength of color distortion.
+        color_jitter = transforms.ColorJitter(0.8*s, 0.8*s, 0.8*s, 0.2*s)
+        rnd_color_jitter = transforms.RandomApply([color_jitter], p=0.8)
+        rnd_gray = transforms.RandomGrayscale(p=0.2)
+        color_distort = transforms.Compose([
+            rnd_color_jitter,
+            rnd_gray])
+        return color_distort
+
+    logger.debug(f'uprob: {unlabel_prob}\t training: {training}\t basic: {basic}\t normalize: {normalize}\t color_distortion: {color_distortion}')
+    if training and (not force_center_crop):
+        if basic:
+            transform = transforms.Compose(
+                [transforms.RandomResizedCrop(size=224, scale=scale),
+                 transforms.RandomHorizontalFlip(),
+                 transforms.ToTensor()])
+        else:
+            logger.debug('making training (non-basic) transforms')
+            transform = transforms.Compose(
+                [transforms.RandomResizedCrop(size=224, scale=scale),
+                 transforms.RandomHorizontalFlip(),
+                 transforms.RandomAffine([-30,+30]),
+                 get_color_distortion(s=color_distortion),
+                 GaussianBlur(p=0.5),
+                 transforms.ToTensor()])
+    else:
+        transform = transforms.Compose(
+            [transforms.Resize(size=256),
+             transforms.CenterCrop(size=224),
+             transforms.ToTensor()])
+
+    if normalize:
+        transform = transforms.Compose(
+            [transform,
+             transforms.Normalize(
+                 (0.485, 0.456, 0.406),
+                 (0.229, 0.224, 0.225))])
+
+    def init_transform(root, samples, class_to_idx, seed,
+                       keep_file=keep_file,
+                       training=training):
+        """ Transforms applied to dataset at the start of training """
+        #forked.set_trace()
+        new_targets, new_samples = [], []
+
+        if training and (keep_file is not None) and os.path.exists(keep_file):
+            logger.info(f'Using {keep_file}')
+
+            df = pd.read_csv(keep_file)
+            rfile = list(zip(df['img_path'],df['target'],df[['x1','y1','x2','y2']].values.tolist()))
+            for line in rfile:
+                new_samples.append(line)
+                new_targets.append(line[1])
+        else:
+            logger.info('flipping coin to keep labels')
+            g = torch.Generator()
+            g.manual_seed(seed)
+            for sample in samples:
+                if torch.bernoulli(torch.tensor(unlabel_prob), generator=g) == 0:
+                    target = sample[1]
+                    new_samples.append(sample)
+                    new_targets.append(target)
+        return np.array(new_targets), np.array(new_samples)
+
+    return transform, init_transform
 
 def make_multicrop_transform(
     dataset_name,
@@ -652,8 +954,14 @@ def make_multicrop_transform(
             scale=crop_scale,
             normalize=normalize,
             color_distortion=color_distortion)
+    elif 'clustervec' in dataset_name:
+        return _make_multicrop_clustervec_transforms(
+            num_crops=num_crops,
+            size=size,
+            scale=crop_scale,
+            normalize=normalize,
+            color_distortion=color_distortion)
 
-    #TODO add a clustervec option
 
 
 def _make_multicrop_cifar10_transforms(
@@ -726,6 +1034,40 @@ def _make_multicrop_imgnt_transforms(
     return (num_crops, transform)
 
 
+
+def _make_multicrop_clustervec_transforms(
+    num_crops,
+    size=96,
+    scale=(0.05, 0.14),
+    normalize=False,
+    color_distortion=1.0,
+):
+    def get_color_distortion(s=1.0):
+        color_jitter = transforms.ColorJitter(0.8*s, 0.8*s, 0.8*s, 0.2*s)
+        rnd_color_jitter = transforms.RandomApply([color_jitter], p=0.8)
+        rnd_gray = transforms.RandomGrayscale(p=0.2)
+        color_distort = transforms.Compose([
+            rnd_color_jitter,
+            rnd_gray])
+        return color_distort
+
+    logger.debug('making multicrop transforms')
+    transform = transforms.Compose(
+        [transforms.RandomResizedCrop(size=size, scale=scale),
+         transforms.RandomHorizontalFlip(),
+         get_color_distortion(s=color_distortion),
+         GaussianBlur(p=0.5),
+         transforms.ToTensor()])
+
+    if normalize:
+        transform = transforms.Compose(
+            [transform,
+             transforms.Normalize(
+                 (0.485, 0.456, 0.406),
+                 (0.229, 0.224, 0.225))])
+
+    return (num_crops, transform)
+
 class ClassStratifiedSampler(torch.utils.data.Sampler):
 
     def __init__(
@@ -760,7 +1102,7 @@ class ClassStratifiedSampler(torch.utils.data.Sampler):
         """
         super(ClassStratifiedSampler, self).__init__(data_source)
         self.data_source = data_source
-
+        #forked.set_trace()
         self.rank = rank
         self.world_size = world_size
         self.cpb = classes_per_batch
@@ -771,7 +1113,9 @@ class ClassStratifiedSampler(torch.utils.data.Sampler):
         self.outer_epoch = 0
 
         if not self.unique_cpb:
-            assert self.num_classes % self.cpb == 0
+            #assert self.num_classes % self.cpb == 0
+            if self.num_classes % self.cpb != 0:
+                self.careful = True
 
         self.base_seed = seed  # instance seed
         self.seed = seed  # subsample sampler seed
@@ -835,13 +1179,14 @@ class ClassStratifiedSampler(torch.utils.data.Sampler):
         return zip(*subsampled_samplers)
 
     def __iter__(self):
+        #forked.set_trace()
         self._ssi = self.rank*self.cpb if self.unique_cpb else 0
         self._next_perm()
+        
 
         # -- iterations per epoch (extract batch-size samples from each class)
         ipe = (self.num_classes // self.cpb if not self.unique_cpb
                else self.num_classes // (self.cpb * self.world_size)) * self.batch_size
-
         for epoch in range(self.epochs):
 
             # -- shuffle class order
@@ -872,7 +1217,7 @@ class ImageNet(torchvision.datasets.ImageFolder):
     def __init__(
         self,
         root,
-        image_folder='ImageNet2012/',
+        image_folder='imagenet_full_size/061417/',
         tar_folder='imagenet_full_size/',
         tar_file='imagenet_full_size-061417.tar',
         train=True,
@@ -910,7 +1255,6 @@ class ImageNet(torchvision.datasets.ImageFolder):
                 job_id=job_id,
                 local_rank=local_rank)
         if (not copy_data) or (data_path is None):
-            #from pudb import forked; forked.set_trace() 
             data_path = os.path.join(root, image_folder, suffix)
         logger.info(f'data-path {data_path}')
 
@@ -939,12 +1283,12 @@ class TransImageNet(ImageNet):
         return multiple transformed copies of the same image in each call
         to __getitem__
         """
+        
         self.dataset = dataset
         self.supervised = supervised
         self.supervised_views = supervised_views
         self.multicrop_transform = multicrop_transform
-
-        self.targets, self.samples = dataset.targets, dataset.samples
+        self.targets, self.samples = dataset.targets.astype(int), dataset.samples
         if self.supervised:
             self.targets, self.samples = init_transform(
                 dataset.root,
@@ -1200,23 +1544,26 @@ class GaussianBlur(object):
 ################################## CUSTOM DATALOADER CLASS ##############################################
 
 
-class ClusterVec(torchvision.datasets.ImageFolder):
+class ClusterVec(DatasetDataframe):
 
     def __init__(
         self,
         root,
+        subset_path,
         image_folder='imagenet_full_size/061417/',
-        tar_folder='imagenet_full_size/',
-        tar_file='imagenet_full_size-061417.tar',
         train=True,
         transform=None,
         target_transform=None,
         job_id=None,
         local_rank=None,
-        copy_data=True
+        tar_folder='imagenet_full_size/',
+        tar_file='imagenet_full_size-061417.tar',
+        copy_data=False
     ):
+        
+
         """
-        ImageNet
+        ClusterVec
 
         Dataset wrapper (can copy data locally to machine)
 
@@ -1229,37 +1576,47 @@ class ClusterVec(torchvision.datasets.ImageFolder):
         :param job_id: scheduler job-id used to create dir on local machine
         :param copy_data: whether to copy data from network file locally
         """
-
-        suffix = 'train/' if train else 'val/'
+        
+        if train: 
+            df_dir = os.path.join(subset_path, 'train.csv')
+        else:
+            df_dir = os.path.join(subset_path, 'val.csv')
+        
+        def get_class_to_idx(root):
+            with open(os.path.join(root,"idx_to_class.json")) as json_file:
+                data = json.load(json_file)
+            
+            return {v: k for k, v in data.items()}
+        
+        data = get_class_to_idx(subset_path)
+        self.class_to_idx = data
         data_path = None
-        if copy_data:
-            logger.info('copying data locally')
-            data_path = copy_imgnt_locally(
-                root=root,
-                suffix=suffix,
-                image_folder=image_folder,
-                tar_folder=tar_folder,
-                tar_file=tar_file,
-                job_id=job_id,
-                local_rank=local_rank)
-        if (not copy_data) or (data_path is None):
-            data_path = os.path.join(root, image_folder, suffix)
+        self.image_folder = image_folder
+        data_path = os.path.join(root, image_folder)
+        dataframe = pd.read_csv(df_dir,usecols=['img_path',  'x1', 'y1', 'x2', 'y2', 'score' ,'target'], index_col=False)
+        self.classes = list(data.keys()) #Careful with methods myboy
+        dataframe['target'] = dataframe['target'].astype(int)
         logger.info(f'data-path {data_path}')
 
-        super(ImageNet, self).__init__(
-            root=data_path,
+        super(ClusterVec, self).__init__(
+            data_path,
+            df=dataframe,
             transform=transform,
             target_transform=target_transform)
-        logger.info('Initialized ImageNet')
+        logger.info('Initialized ClusterVec')
 
+        
     #TODO override the original getitem to get the image_class
 
 
-class TransClusterVec(ImageNet):
+class TransClusterVec(ClusterVec):
 
+    
     def __init__(
         self,
         dataset,
+        root=None , 
+        image_path = None,
         supervised=False,
         supervised_views=1,
         init_transform=None,
@@ -1267,30 +1624,53 @@ class TransClusterVec(ImageNet):
         seed=0
     ):
         """
-        TransImageNet
-
+        Transclustervec
         Dataset that can apply transforms to images on initialization and can
         return multiple transformed copies of the same image in each call
         to __getitem__
         """
+        
+
+        
         self.dataset = dataset
         self.supervised = supervised
         self.supervised_views = supervised_views
         self.multicrop_transform = multicrop_transform
+        
+        
+        
+        self.targets, self.samples = dataset.target, dataset.samples
+        
+        if dataset is not None:
+            self.root_dir_img = root 
+        else :
+            self.root_dir_img = dataset.root_dir
 
-        self.targets, self.samples = dataset.targets, dataset.samples
+        self.image_folder = image_path
         if self.supervised:
             self.targets, self.samples = init_transform(
-                dataset.root,
+                dataset.root_dir,
                 dataset.samples,
                 dataset.class_to_idx,
                 seed)
+            
+            
+            self.targets = self.targets.astype(int)
+            
             logger.debug(f'num-labeled {len(self.samples)}')
             mint = None
             self.target_indices = []
+            self.flag = []
             for t in range(len(dataset.classes)):
                 indices = np.squeeze(np.argwhere(
                     self.targets == t)).tolist()
+                
+                if type(indices) != list:
+                    #forked.set_trace()
+                    list_i = []
+                    list_i.append(indices)
+                    indices = list_i
+                
                 self.target_indices.append(indices)
                 mint = len(indices) if mint is None else min(mint, len(indices))
                 logger.debug(f'num-labeled target {t} {len(indices)}')
@@ -1301,13 +1681,14 @@ class TransClusterVec(ImageNet):
         return self.dataset.classes
 
     def __getitem__(self, index):
-        target = self.targets[index]
-        path = self.samples[index][0]
-        img = self.dataset.loader(path)
-
+        #from pudb import forked; forked.set_trace()
+        path, target, coords = self.samples[index] # coords [x1,y1,x2,y2]
+        full_path = '/'.join((self.root_dir_img, path))
+        img = self.dataset.loader(full_path)
+        img = img.crop(coords)
+            
         if self.dataset.target_transform is not None:
             target = self.dataset.target_transform(target)
-
         if self.dataset.transform is not None:
             if self.supervised:
                 return *[self.dataset.transform(img) for _ in range(self.supervised_views)], target
@@ -1324,3 +1705,146 @@ class TransClusterVec(ImageNet):
 
         return img, target
         
+
+
+
+class ClusterVecSampler(ClassStratifiedSampler):
+
+    def __init__(
+        self,
+        data_source,
+        world_size,
+        rank,
+        batch_size=1,
+        classes_per_batch=10,
+        epochs=1,
+        seed=0,
+        unique_classes=False
+    ):
+        """
+        ClassStratifiedSampler
+
+        Batch-sampler that samples 'batch-size' images from subset of randomly
+        chosen classes e.g., if classes a,b,c are randomly sampled,
+        the sampler returns
+            torch.cat([a,b,c], [a,b,c], ..., [a,b,c], dim=0)
+        where a,b,c, are images from classes a,b,c respectively.
+        Sampler, samples images WITH REPLACEMENT (i.e., not epoch-based)
+
+        :param data_source: dataset of type "TransImageNet" or "TransCIFAR10'
+        :param world_size: total number of workers in network
+        :param rank: local rank in network
+        :param batch_size: num. images to load from each class
+        :param classes_per_batch: num. classes to randomly sample for batch
+        :param epochs: num consecutive epochs thru data_source before gen.reset
+        :param seed: common seed across workers for subsampling classes
+        :param unique_classes: true ==> each worker samples a distinct set of classes; false ==> all workers sample the same classes
+        """
+        super(ClassStratifiedSampler, self).__init__(data_source)
+        self.data_source = data_source
+
+        self.rank = rank
+        self.world_size = world_size
+        self.cpb = classes_per_batch
+        self.unique_cpb = unique_classes
+        self.batch_size = batch_size
+        self.num_classes = len(data_source.classes)
+        self.epochs = epochs
+        self.outer_epoch = 0
+
+        if not self.unique_cpb:
+            assert self.num_classes % self.cpb == 0
+
+        self.base_seed = seed  # instance seed
+        self.seed = seed  # subsample sampler seed
+
+    def set_epoch(self, epoch):
+        self.outer_epoch = epoch
+
+    def set_inner_epochs(self, epochs):
+        self.epochs = epochs
+
+    def _next_perm(self):
+        self.seed += 1
+        g = torch.Generator()
+        g.manual_seed(self.seed)
+        self._perm = torch.randperm(self.num_classes, generator=g)
+
+    def _get_perm_ssi(self):
+        start = self._ssi
+        end = self._ssi + self.cpb
+        subsample = self._perm[start:end]
+        return subsample
+
+    def _next_ssi(self):
+        if not self.unique_cpb:
+            self._ssi = (self._ssi + self.cpb) % self.num_classes
+            if self._ssi == 0:
+                self._next_perm()
+        else:
+            self._ssi += self.cpb * self.world_size
+            max_end = self._ssi + self.cpb * (self.world_size - self.rank)
+            if max_end > self.num_classes:
+                self._ssi = self.rank * self.cpb
+                self._next_perm()
+
+    def _get_local_samplers(self, epoch):
+        """ Generate samplers for local data set in given epoch """
+        seed = int(self.base_seed + epoch
+                   + self.epochs * self.rank
+                   + self.outer_epoch * self.epochs * self.world_size)
+        g = torch.Generator()
+        g.manual_seed(seed)
+        samplers = []
+        for t in range(self.num_classes):
+            t_indices = np.array(self.data_source.target_indices[t])
+            if not self.unique_cpb:
+                i_size = len(t_indices) // self.world_size
+                if i_size > 0:
+                    t_indices = t_indices[self.rank*i_size:(self.rank+1)*i_size]
+            if len(t_indices) > 1:
+                t_indices = t_indices[torch.randperm(len(t_indices), generator=g)]
+            samplers.append(iter(t_indices))
+        return samplers
+
+    def _subsample_samplers(self, samplers):
+        """ Subsample a small set of samplers from all class-samplers """
+        subsample = self._get_perm_ssi()
+        subsampled_samplers = []
+        for i in subsample:
+            subsampled_samplers.append(samplers[i])
+        self._next_ssi()
+        return zip(*subsampled_samplers)
+
+    def __iter__(self):
+        self._ssi = self.rank*self.cpb if self.unique_cpb else 0
+        self._next_perm()
+
+        # -- iterations per epoch (extract batch-size samples from each class)
+        ipe = (self.num_classes // self.cpb if not self.unique_cpb
+               else self.num_classes // (self.cpb * self.world_size)) * self.batch_size
+
+        #from pudb import forked; forked.set_trace()
+        for epoch in range(self.epochs):
+
+            # -- shuffle class order
+            samplers = self._get_local_samplers(epoch)
+            subsampled_samplers = self._subsample_samplers(samplers)
+
+            counter, batch = 0, []
+            for i in range(ipe):
+                batch += list(next(subsampled_samplers))
+                counter += 1
+                if counter == self.batch_size:
+                    yield batch
+                    counter, batch = 0, []
+                    if i + 1 < ipe:
+                        subsampled_samplers = self._subsample_samplers(samplers)
+
+    def __len__(self):
+        if self.batch_size == 0:
+            return 0
+
+        ipe = (self.num_classes // self.cpb if not self.unique_cpb
+               else self.num_classes // (self.cpb * self.world_size))
+        return self.epochs * ipe

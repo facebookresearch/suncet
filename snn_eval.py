@@ -16,7 +16,7 @@ import torch
 
 import src.resnet as resnet
 import src.wide_resnet as wide_resnet
-from src.data_manager import (
+from src.data_manager_clustervec import (
     init_data,
     make_transforms
 )
@@ -34,6 +34,7 @@ parser.add_argument(
     help='model architecture',
     default='resnet50',
     choices=[
+        "resnet18",
         'resnet50',
         'resnet50w2',
         'resnet50w4',
@@ -73,7 +74,8 @@ parser.add_argument(
     help='name of dataset to evaluate on',
     choices=[
         'imagenet_fine_tune',
-        'cifar10_fine_tune'
+        'cifar10_fine_tune',
+        'clustervec_fine_tune'
     ])
 parser.add_argument(
     '--subset-path', type=str,
@@ -81,7 +83,9 @@ parser.add_argument(
     help='name of dataset to evaluate on',
     choices=[
         'imagenet_subsets/',
-        'cifar10_subsets/'
+        'cifar10_subsets/',
+        'clustervec_subsets/',
+        "BRANDS_subsets/"
     ])
 
 logging.basicConfig()
@@ -111,7 +115,7 @@ def main(
 ):
     device = torch.device(device_str)
     torch.cuda.set_device(device)
-    num_classes = 1000 if 'imagenet' in dataset_name else 10
+    num_classes = 151#TODO chaneg to use the global parameter #1000 if 'imagenet' in dataset_name else 10
 
     def init_pipe(training):
         # -- make data transforms
