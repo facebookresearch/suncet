@@ -1,7 +1,7 @@
 data:
   data_seed: 152
   dataset: clustervec_fine_tune
-  image_folder: anonym2open/
+  image_folder: null
   normalize: true
   num_classes: 151
   root_path: /scratch2/clear/larbez/Workspace/datasets/clustervec-small/

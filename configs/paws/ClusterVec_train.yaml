@@ -15,7 +15,7 @@ data:
   multicrop: 6
   normalize: true
   root_path: /scratch2/clear/larbez/Workspace/datasets/clustervec-small/
-  subset_path: /scratch2/clear/larbez/Workspace/datasets/clustervec-small/
+  subset_path: /scratch2/clear/larbez/Workspace/datasets/clustervec-small/subsets/
   unique_classes_per_rank: true
   unlabeled_frac: 0.9
 logging:

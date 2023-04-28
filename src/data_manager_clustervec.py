@@ -33,6 +33,7 @@ logger = getLogger()
 
 def init_data(
     dataset_name,
+    subset_path,
     transform,
     init_transform,
     u_batch_size,
@@ -140,6 +141,7 @@ def init_data(
     if dataset_name == 'clustervec':
         return _init_clustervec_data(
             transform=transform,
+            subset_path=subset_path,
             init_transform=init_transform,
             u_batch_size=u_batch_size,
             s_batch_size=s_batch_size,
@@ -158,6 +160,7 @@ def init_data(
         batch_size = s_batch_size
         return _init_clustervec_ft_data(
             transform=transform,
+            subset_path=subset_path,
             init_transform=init_transform,
             batch_size=batch_size,
             stratify=stratify,
@@ -466,6 +469,7 @@ def _init_clustervec_ft_data(
     logger.info('ClusterVec fine-tune dataset created')
     dataset = TransClusterVec(
         dataset=imagenet,
+        root='/'.join((root_path,image_folder)),
         supervised=True,
         init_transform=init_transform,
         seed=_GLOBAL_SEED)
@@ -481,7 +485,7 @@ def _init_clustervec_ft_data(
             batch_size=batch_size,
             drop_last=drop_last,
             pin_memory=True,
-            num_workers=8)
+            num_workers=1)
     else:
         dist_sampler = ClassStratifiedSampler(
             data_source=dataset,
@@ -495,13 +499,14 @@ def _init_clustervec_ft_data(
             dataset,
             batch_sampler=dist_sampler,
             pin_memory=True,
-            num_workers=8)
+            num_workers=1)
 
     return (data_loader, dist_sampler)
 
 
 def _init_clustervec_data(
     transform,
+    subset_path,
     init_transform,
     u_batch_size,
     s_batch_size,
@@ -520,6 +525,7 @@ def _init_clustervec_data(
 ):
     clustervec = ClusterVec(
         root=root_path,
+        subset_path=subset_path,
         image_folder=image_folder,
         tar_folder=tar_folder,
         tar_file=tar_file,
@@ -529,6 +535,7 @@ def _init_clustervec_data(
     logger.info('ClusterVec dataset created')
     unsupervised_set = TransClusterVec(
         dataset=clustervec,
+        root= '/'.join((root_path, image_folder)),
         supervised=False,
         init_transform=init_transform,
         multicrop_transform=multicrop_transform,
@@ -549,11 +556,10 @@ def _init_clustervec_data(
     supervised_sampler, supervised_loader = None, None
     if classes_per_batch > 0 and s_batch_size > 0:
         logger.info('Making supervised ClusterVec data loader...')
-        from pudb import forked; forked.set_trace()
+        #from pudb import forked; forked.set_trace()
         supervised_set = TransClusterVec(
             dataset=clustervec,
-            root=root_path,
-            image_path = image_folder,
+            root="/".join((root_path, image_folder)),
             supervised=True,
             supervised_views=supervised_views,
             init_transform=init_transform,
@@ -1543,6 +1549,7 @@ class ClusterVec(DatasetDataframe):
     def __init__(
         self,
         root,
+        subset_path,
         image_folder='imagenet_full_size/061417/',
         train=True,
         transform=None,
@@ -1551,7 +1558,7 @@ class ClusterVec(DatasetDataframe):
         local_rank=None,
         tar_folder='imagenet_full_size/',
         tar_file='imagenet_full_size-061417.tar',
-        copy_data=True
+        copy_data=False
     ):
         
 
@@ -1571,9 +1578,9 @@ class ClusterVec(DatasetDataframe):
         """
         
         if train: 
-            df_dir = os.path.join(root, 'train.csv')
+            df_dir = os.path.join(subset_path, 'train.csv')
         else:
-            df_dir = os.path.join(root, 'val.csv')
+            df_dir = os.path.join(subset_path, 'val.csv')
         
         def get_class_to_idx(root):
             with open(os.path.join(root,"idx_to_class.json")) as json_file:
@@ -1581,9 +1588,10 @@ class ClusterVec(DatasetDataframe):
             
             return {v: k for k, v in data.items()}
         
-        data = get_class_to_idx(root)
+        data = get_class_to_idx(subset_path)
         self.class_to_idx = data
         data_path = None
+        self.image_folder = image_folder
         data_path = os.path.join(root, image_folder)
         dataframe = pd.read_csv(df_dir,usecols=['img_path',  'x1', 'y1', 'x2', 'y2', 'score' ,'target'], index_col=False)
         self.classes = list(data.keys()) #Careful with methods myboy
@@ -1633,7 +1641,11 @@ class TransClusterVec(ClusterVec):
         
         self.targets, self.samples = dataset.target, dataset.samples
         
-        self.root= root
+        if dataset is not None:
+            self.root_dir_img = root 
+        else :
+            self.root_dir_img = dataset.root_dir
+
         self.image_folder = image_path
         if self.supervised:
             self.targets, self.samples = init_transform(
@@ -1658,7 +1670,6 @@ class TransClusterVec(ClusterVec):
                     list_i = []
                     list_i.append(indices)
                     indices = list_i
-                    self.flag.append("Careful a singleton is in there "+str(t))
                 
                 self.target_indices.append(indices)
                 mint = len(indices) if mint is None else min(mint, len(indices))
@@ -1670,9 +1681,10 @@ class TransClusterVec(ClusterVec):
         return self.dataset.classes
 
     def __getitem__(self, index):
-        
+        #from pudb import forked; forked.set_trace()
         path, target, coords = self.samples[index] # coords [x1,y1,x2,y2]
-        img = self.dataset.loader(path)
+        full_path = '/'.join((self.root_dir_img, path))
+        img = self.dataset.loader(full_path)
         img = img.crop(coords)
             
         if self.dataset.target_transform is not None:

@@ -203,6 +203,7 @@ def main(args,run):
      supervised_loader,
      supervised_sampler) = init_data(
          dataset_name=dataset_name,
+         subset_path=subset_path,
          transform=transform,
          init_transform=init_transform,
          supervised_views=supervised_views,
