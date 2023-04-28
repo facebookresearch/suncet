@@ -21,9 +21,11 @@ services:
      - "8888:8888"
     volumes:
      - /vgdata:/vgdata
+     - /data:/data
      - /home/model:/model
-     - ./:/workspace
+     - ./:/workspace/paws
      - /home/notebooks/.jupyter:/root/.jupyter
+     - /home/notebooks:/workspace/notebooks
     command:
       - /bin/sh
       - -c

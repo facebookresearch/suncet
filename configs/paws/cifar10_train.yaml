@@ -10,16 +10,16 @@ data:
   color_jitter_strength: 0.5
   data_seed: 152
   dataset: cifar10
-  image_folder: cifar10-data/
+  image_folder: cifar10/
   label_smoothing: 0.1
   multicrop: 6
   normalize: true
-  root_path: /scratch2/clear/larbez/Workspace/datasets/
+  root_path: /data/
   subset_path: cifar10_subsets/
   unique_classes_per_rank: false
   unlabeled_frac: 0.92
 logging:
-  folder: /scratch2/clear/larbez/Workspace/PAWS/test_cifar2_train/
+  folder: /data/cifar10
   write_tag: paws
 meta:
   copy_data: false
@@ -39,3 +39,4 @@ optimization:
   start_lr: 0.8
   warmup: 10
   weight_decay: 1.0e-06
+  new_opt: false
